@@ -2,7 +2,7 @@
 	<b>Minishell</b>
 </h1>
 
-![VM](https://thumbs.dreamstime.com/b/concha-do-mar-do-caracol-de-mar-muito-grande-do-g%C3%A1lea-de-tonna-ou-tun-gigante-x-95861899.jpg)
+![VM](https://static.vecteezy.com/ti/vetor-gratis/p1/658484-concha-de-caracol-em-branco-gr%C3%A1tis-vetor.jpg)
 
 <h2 align=center> Table of Contents </h2>
 <h3><b>
