@@ -6,40 +6,14 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/09 18:54:51 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/09 20:11:03 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/ft_minishell.h"
 # include <stdio.h>
 
-
-
-
-void fill_prompt(t_prompt *prompt)
-{
-	prompt->user = getenv("USER");
-	prompt->hostname = getenv("NAME");
-	prompt->path = getenv("PWD");
-}
-
-char *find_path(char *abs_path)
-{
-	int i;
-	char *pointer;
-
-	i = -1;
-	
-	pointer = abs_path + 1;
-	while (++i < 2)
-	{
-		pointer = ft_strchr(pointer, '/');
-		pointer++;
-	}
-	pointer--;
-	return pointer;
-}
-
+/* Concatena duas string e da free na primeira(s1) */
 char	*concat_and_clean(char *s1, char *s2)
 {
 	char	*str;
@@ -56,39 +30,61 @@ char	*concat_and_clean(char *s1, char *s2)
 	return (str);
 }
 
+/* Retorna o path retirando /home/nome_do_user */
+char *find_path(char *abs_path)
+{
+	char *pointer;
 
-char *prompt_concat(t_prompt *prompt)
+	pointer = abs_path + 1;
+	pointer = ft_strchr(pointer, '/');
+	pointer++;
+	pointer = ft_strchr(pointer, '/');
+	return (pointer);
+}
+
+/* preenche a struct prompt com as variáveis de ambiente user, hostname e 
+path absoluto */
+void fill_prompt(t_prompt *prompt)
+{
+	prompt->user = getenv("USER");
+	prompt->hostname = getenv("NAME");
+	prompt->path = getenv("PWD");
+}
+
+/* Gera a linha do prompt de comando formatada */
+char *prompt_concat()
 {
 	char 	*right_path;
 	char	*result;
+	t_prompt prompt;
 
-	right_path = find_path(prompt->path);
-
-	result = ft_strdup(prompt->user);
+	fill_prompt(&prompt);
+	right_path = find_path(prompt.path);
+	result = ft_strdup(prompt.user);
+	/* Aqui poderia fazer uma função pra concatenar de uma vez só
+		mas talvez essa função seja util dessa forma no futuro,
+		concat_n_clean é só um strjoin que não deixa o leak de s1 */
 	result = concat_and_clean(result, "@");
-	result = concat_and_clean(result, prompt->hostname);
+	result = concat_and_clean(result, prompt.hostname);
 	result = concat_and_clean(result, ":~");
 	result = concat_and_clean(result, right_path);
 	result = concat_and_clean(result, "$ ");
 	return (result);
 }
 
+void tests()
+{	
+	char *prompt_string;
+
+	prompt_string = prompt_concat();
+	printf("testando se a linha de comando esta sendo formatada corretamente e sem leaks\n");
+	printf("%s\n", prompt_string);
+	free(prompt_string);
+}
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	**input;	
-	t_prompt prompt;
-	char *test;
-
-	fill_prompt(&prompt);
-
-	test = prompt_concat(&prompt);
+	tests();
 	
-	printf("%s\n", test);
-	printf("%s\n", prompt.user);
-	printf("%s\n", prompt.hostname);
-	printf("%s\n", prompt.path);
-
-	free(test);
 	return (0);
 }
