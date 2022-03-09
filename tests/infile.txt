@@ -1,0 +1,53 @@
+readline
+rl_clear_history
+rl_on_new_line
+rl_replace_line
+rl_redisplay
+add_history
+printf (ok)
+malloc (ok)
+free (ok)
+write (ok)
+access (ok)
+open (ok)
+read (ok)
+close (ok)
+fork (ok)
+wait (ok)
+waitpid
+wait3
+wait4
+signal (ok)
+sigaction
+sigemptyset
+sigaddset
+kill
+exit
+getcwd (ok)
+chdir (ok)
+stat
+lstat
+fstat
+unlink (ok)
+execve (ok)
+dup (ok)
+dup2 (ok)
+pipe (ok)
+opendir
+readdir
+closedir
+strerror (ok)
+perror (ok)
+isatty (ok)
+ttyname
+ttyslot (ok)
+ioctl
+getenv (ok)
+tcsetattr
+tcgetattr
+tgetent
+tgetflag
+tgetnum
+tgetstr
+tgoto
+tputs
