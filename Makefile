@@ -1,6 +1,6 @@
 NAME = ./bin/minishell
 DIRNAME = ./bin
-CC = clang -g
+CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 APP = ./apps
 LIB_PATH = ./libft
