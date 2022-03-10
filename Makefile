@@ -15,7 +15,7 @@ SRC_PARSE +=
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
-SRC_RUNTIME +=
+SRC_RUNTIME += ft_event_loop.c ft_prompt_concat.c
 OBJRUNTIME = $(SRC_RUNTIME:.c=.o)
 OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 
@@ -24,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
 	$(MAKE) -C $(LIB_PATH)
 	@mkdir -p ./bin/
-	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(LIB_PATH)/$(LIBFT)
+	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(LIB_PATH)/$(LIBFT) -lreadline
 
 $(OBJDIR)/%.o: $(SRCDIR_PARSE)/%.c
 	@mkdir -p $(OBJDIR)
