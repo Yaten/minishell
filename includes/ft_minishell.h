@@ -6,7 +6,7 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:27:22 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 12:03:12 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:01:46 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define MAGENTA "\e[35;1m"
 # define CYAN "\e[36;1m"
 # define WHITE "\e[37;1m"
+# define Reset "\e[0m"
 
 typedef struct	s_prompt
 {

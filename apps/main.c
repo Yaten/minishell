@@ -6,18 +6,38 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 12:02:36 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:19:59 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/ft_minishell.h"
+# include <errno.h>
 
+t_prompt prompt;
 
+/* lida com o Ctrl C */
+void sigint_handler(int sig)
+{
+	(void)sig;
+	printf("\n%s", prompt.result);
+}
+
+void ft_set_signal(void (*function)(int) , int sig)
+{
+	void	*function_pointer;
+
+	function_pointer = function;
+	signal(sig, function_pointer);
+}
+
+void ft_init_signals(void)
+{
+	ft_set_signal(sigint_handler, SIGINT);
+}
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	t_prompt	prompt;
-
+	ft_init_signals();
 	ft_event_loop(&prompt);
 	return (0);
 }
