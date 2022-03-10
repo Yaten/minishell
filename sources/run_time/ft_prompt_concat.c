@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt_concat.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 17:29:18 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:47:48 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void color_string(t_prompt *prompt)
 	char *str2;
 	char *tmp;
 
-	
+
 	strings = ft_split(prompt->result, ':');
 	str1 = ft_strjoin(GREEN, strings[0]);
 	str2 = ft_strjoin(BLUE, strings[1]);
