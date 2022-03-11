@@ -6,26 +6,11 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 15:33:58 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:47:59 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
-# include "../../printf/include/ft_printf.h"
-
-// não sei se realmente é necessario.
-// lembram do caso root (sudo su)
-/* Retorna o path retirando /home/nome_do_user */
-char	*ft_find_path(char *abs_path)
-{
-	char *pointer;
-
-	pointer = abs_path + 1;
-	pointer = ft_strchr(pointer, '/');
-	pointer++;
-	pointer = ft_strchr(pointer, '/');
-	return (pointer);
-}
 
 /* preenche a struct prompt com as variáveis de ambiente user, hostname e
 path absoluto */
@@ -41,7 +26,7 @@ int	concat_and_clean(t_prompt *prompt)
 	char *pointer;
 
 
-	pointer = ft_printf("%s@%s:%s$ ", prompt->user, prompt->hostname, prompt->path);
+	pointer = ft_sprintf("%s@%s:%s$ ", prompt->user, prompt->hostname, prompt->path);
 	if (!(pointer))
 		exit(1);
 	prompt->result = pointer;
@@ -53,7 +38,7 @@ void color_string(t_prompt *prompt)
 	char **strings;
 
 	strings = ft_split(prompt->result, ':');
-	char *teste = ft_printf("\e[32;1m%s\e[37;1m:\e[34;1m%s\e[0m$ ", strings[0], strings[1]);
+	char *teste = ft_sprintf("\e[32;1m%s\e[37;1m:\e[34;1m%s\e[0m$ ", strings[0], strings[1]);
 	free(prompt->result);
 	free(strings[0]);
 	free(strings[1]);

@@ -6,7 +6,7 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 14:06:48 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:45:38 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_print_dir(t_prompt *prompt)
 	free(prompt->result);
 	if (!buf)
 	{
-		printf("\n");
+		ft_printf("\n");
 		exit(0);
 	}
 	if (ft_strlen(buf) != 0)

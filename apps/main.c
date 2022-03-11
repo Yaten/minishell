@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 17:46:42 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:46:14 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_prompt prompt;
 void sigint_handler(int sig)
 {
 	(void)sig;
-	printf("\n%s", prompt.result);
+	ft_printf("\n%s", prompt.result);
 }
 
 void ft_set_signal(void (*function)(int) , int sig)

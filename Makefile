@@ -3,8 +3,8 @@ DIRNAME = ./bin
 CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 APP = ./apps
-LIB_PATH = ./libft
-LIBFT = libft.a
+PRINTF_PATH = ./ft_printf
+PRINTF = libftprintf.a
 OBJDIR = ./objects
 SRCDIR_PARSE = ./sources/parse
 SRCDIR_RUNTIME = ./sources/run_time
@@ -22,9 +22,9 @@ OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 all: $(NAME)
 
 $(NAME): $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
-	$(MAKE) -C $(LIB_PATH)
+	$(MAKE) -C $(PRINTF_PATH)
 	@mkdir -p ./bin/
-	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(LIB_PATH)/$(LIBFT) -lreadline libftprintf.a
+	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline
 
 $(OBJDIR)/%.o: $(SRCDIR_PARSE)/%.c
 	@mkdir -p $(OBJDIR)
@@ -35,7 +35,7 @@ $(OBJDIR)/%.o: $(SRCDIR_RUNTIME)/%.c
 	$(CC) $(CFLAGS) -c $< -I $(INCLUDE) -o $@
 
 clean:
-	$(MAKE) fclean -C $(LIB_PATH)
+	$(MAKE) fclean -C $(PRINTF_PATH)
 
 fclean: clean
 	$(REMOVE) $(OBJDIR)
