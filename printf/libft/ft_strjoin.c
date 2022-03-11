@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsiqueir <rsiqueir@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 20:26:27 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/05/20 20:42:14 by rsiqueir         ###   ########.fr       */
+/*   Created: 2021/08/01 10:22:08 by user              #+#    #+#             */
+/*   Updated: 2021/08/06 20:37:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,15 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		a;
-	int		b;
-	char	*pointer;
+	char	*str;
 
-	a = 0;
-	b = 0;
-	if (s1 == NULL || s2 == NULL)
+	str = NULL;
+	if (!s1 || !s2)
 		return (NULL);
-	pointer = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!(pointer))
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
 		return (NULL);
-	while (s1[a])
-	{
-		pointer[a] = s1[a];
-		a++;
-	}
-	while (s2[b])
-	{
-		pointer[a] = s2[b];
-		b++;
-		a++;
-	}
-	pointer[a] = '\0';
-	return (pointer);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcat(str, s2, (ft_strlen(s1) + ft_strlen(s2) + 1));
+	return (str);
 }

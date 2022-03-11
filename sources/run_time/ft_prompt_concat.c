@@ -6,12 +6,12 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 14:43:46 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:33:58 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
-# include "../../sprintf/include/ft_printf.h"
+# include "../../printf/include/ft_printf.h"
 
 // não sei se realmente é necessario.
 // lembram do caso root (sudo su)

@@ -3,76 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rogeriorslf <rogeriorslf@student.42.fr>    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 09:08:21 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/06/08 21:48:25 by rogeriorslf      ###   ########.fr       */
+/*   Created: 2021/08/02 15:55:14 by user              #+#    #+#             */
+/*   Updated: 2021/08/07 14:19:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	int_length(int nb)
+static int	count(int n)
 {
-	if (nb < 0)
-		nb = nb * -1;
-	if (nb <= 9)
-		return (1);
+	int	len;
+
+	if (n <= 0)
+		len = 1;
 	else
-		return (int_length(nb / 10) + 1);
-}
-
-char	*nb_to_string(char *stringnb, int n, int cases, char sign)
-{
-	if (sign == '-')
+		len = 0;
+	while (n)
 	{
-		stringnb[0] = '-';
-		cases++;
+		n /= 10;
+		len++;
 	}
-	while ((cases - 1) >= 0)
-	{
-		stringnb[cases - 1] = (n % 10) + '0';
-		n = n / 10;
-		cases--;
-		if (cases == 1 && sign == '-')
-			cases--;
-	}
-	return (stringnb);
-}
-
-char	*min_number(void)
-{
-	char	*stringnb;
-
-	stringnb = ft_calloc(sizeof(char), 12);
-	if (!stringnb)
-		return (NULL);
-	ft_strlcpy(stringnb, "-2147483648", 12);
-	return (stringnb);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		cases;
-	char	*stringnb;
+	int		len;
+	int		neg;
+	char	*tmp;
 
-	cases = int_length(n);
+	neg = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	len = count(n);
+	tmp = malloc(sizeof(char) * (len + 1));
+	if (tmp == NULL)
+		return (NULL);
+	tmp[len] = '\0';
 	if (n < 0)
 	{
-		if (n == -2147483648)
-			return (min_number());
+		neg = 1;
 		n *= -1;
-		stringnb = ft_calloc(cases + 2, sizeof(char));
-		if (!stringnb)
-			return (NULL);
-		stringnb = nb_to_string(stringnb, n, cases, '-');
 	}
-	else
+	while (--len >= neg)
 	{
-		stringnb = ft_calloc(cases + 1, sizeof(char));
-		if (!stringnb)
-			return (NULL);
-		stringnb = nb_to_string(stringnb, n, cases, '+');
+		tmp[len] = (n % 10) + '0';
+		n /= 10;
 	}
-	return (stringnb);
+	if (neg)
+		tmp[len] = '-';
+	return (tmp);
 }

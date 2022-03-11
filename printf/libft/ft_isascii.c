@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rogeriorslf <rogeriorslf@student.42.fr>    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 13:13:16 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/05/31 16:45:53 by rogeriorslf      ###   ########.fr       */
+/*   Created: 2021/07/29 11:10:48 by user              #+#    #+#             */
+/*   Updated: 2021/07/29 11:10:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rogeriorslf <rogeriorslf@student.42.fr>    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/25 10:59:12 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/05/26 22:55:55 by rogeriorslf      ###   ########.fr       */
+/*   Created: 2021/08/01 20:14:02 by user              #+#    #+#             */
+/*   Updated: 2021/08/07 11:32:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*pointer;
-	int		i;
+	char			*ret;
+	unsigned int	i;
 
+	if (!s || !f)
+		return (NULL);
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ret)
+		return (NULL);
 	i = 0;
-	if (s == NULL)
-		return (NULL);
-	pointer = malloc(ft_strlen(s) + 1);
-	if (!pointer)
-		return (NULL);
-	pointer[ft_strlen(s)] = 0;
 	while (s[i])
 	{
-		pointer[i] = f(i, s[i]);
+		ret[i] = f(i, s[i]);
 		i++;
 	}
-	return (pointer);
+	ret[i] = '\0';
+	return (ret);
 }

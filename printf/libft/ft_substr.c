@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rogeriorslf <rogeriorslf@student.42.fr>    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/20 13:12:56 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/05/28 12:16:16 by rogeriorslf      ###   ########.fr       */
+/*   Created: 2021/07/31 21:41:44 by user              #+#    #+#             */
+/*   Updated: 2021/08/05 22:21:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	count;
-	char			*pointer;
+	char	*p;
+	size_t	src_len;
+	size_t	i;
 
-	count = -1;
-	if (s == NULL)
+	i = 0;
+	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
-	{
-		pointer = ft_calloc(sizeof(char), 1);
-		if (!pointer)
-			return (NULL);
-		return (pointer);
-	}
-	if (len > ft_strlen(s + start))
-		pointer = (char *)ft_calloc(sizeof(char), (ft_strlen(s + start)) + 1);
+	src_len = ft_strlen(s);
+	if (src_len > start)
+		while (s[i + start] && i < len)
+			i++;
 	else
-		pointer = (char *)ft_calloc(sizeof(char), (len + 1));
-	if (!pointer)
+		return (ft_strdup(""));
+	p = (char *)malloc(sizeof(char) * (i + 1));
+	if (!p)
 		return (NULL);
-	while (++count < len)
-		pointer[count] = s[count + start];
-	return (pointer);
+	ft_strlcpy(p, s + start, i + 1);
+	return (p);
 }

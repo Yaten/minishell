@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsiqueir <rsiqueir@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 13:14:20 by rsiqueir          #+#    #+#             */
-/*   Updated: 2021/05/18 13:14:21 by rsiqueir         ###   ########.fr       */
+/*   Created: 2021/07/29 13:54:23 by user              #+#    #+#             */
+/*   Updated: 2021/07/29 13:54:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	size;
+	size_t	i;
 
-	size = 0;
-	while (s[size])
-		size++;
-	return (size);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

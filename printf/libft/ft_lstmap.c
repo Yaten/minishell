@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rogeriorslf <rogeriorslf@student.42.fr>    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 15:07:33 by rogeriorslf       #+#    #+#             */
-/*   Updated: 2021/05/30 15:25:36 by rogeriorslf      ###   ########.fr       */
+/*   Created: 2021/08/06 11:25:24 by user              #+#    #+#             */
+/*   Updated: 2021/08/06 11:39:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,20 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*ret;
 	t_list	*tmp;
-	t_list	*tmp2;
 
-	if (!lst)
-		return (NULL);
-	tmp = ft_lstnew(f(lst->content));
-	if (!tmp)
-	{
-		ft_lstdelone(tmp, del);
-		return (NULL);
-	}
-	tmp2 = tmp;
-	lst = lst->next;
+	ret = NULL;
 	while (lst)
 	{
-		tmp->next = ft_lstnew(f(lst->content));
-		if (!tmp->next)
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
 		{
-			ft_lstclear(&tmp2, del);
+			ft_lstclear(&ret, del);
 			return (NULL);
 		}
-		tmp = tmp->next;
+		ft_lstadd_back(&ret, tmp);
 		lst = lst->next;
 	}
-	return (tmp2);
+	return (ret);
 }
