@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 17:47:34 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:19:13 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ int	ft_print_dir(t_prompt *prompt)
 
 void	ft_event_loop(t_prompt *prompt)
 {
-
 	while (TRUE)
 	{
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt))
 			continue ;
-		// printf("depois do if: %s\n", getenv("USER"));
+		if (ft_set_new_line(prompt))
+			continue ;
+		// ft_expand(prompt);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 17:47:48 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:39:32 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void color_string(t_prompt *prompt)
 	char *str2;
 	char *tmp;
 
-
 	strings = ft_split(prompt->result, ':');
 	str1 = ft_strjoin(GREEN, strings[0]);
 	str2 = ft_strjoin(BLUE, strings[1]);
@@ -85,7 +84,7 @@ void color_string(t_prompt *prompt)
 	free(strings[1]);
 	free(strings);
 	free(str2);
-	prompt->result=str1;
+	prompt->result = str1;
 }
 
 /* Gera a linha do prompt de comando formatada */

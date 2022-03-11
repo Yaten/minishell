@@ -15,7 +15,7 @@ SRC_PARSE +=
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
-SRC_RUNTIME += ft_event_loop.c ft_prompt_concat.c
+SRC_RUNTIME += ft_event_loop.c ft_prompt_concat.c ft_set_new_line.c
 OBJRUNTIME = $(SRC_RUNTIME:.c=.o)
 OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 

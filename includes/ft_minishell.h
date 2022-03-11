@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:27:22 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 17:47:02 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:18:08 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define TRUE 1
 # define FALSE 0
 # define MAXINPUT 1024
+# define QUOTES "Quotes not paired\n"
+# define BACKSLASH "Escape character is not allowed\n"
+# define SEMICOLON "Comma is not allowed\n"
+
 # define BLACK "\e[30;1m"
 # define RED "\e[31;1m"
 # define GREEN "\e[32;1m"
@@ -55,5 +59,13 @@ void	ft_event_loop(t_prompt *prompt);
  * @param prompt
  */
 void	ft_prompt_concat(t_prompt *prompt);
+
+/**
+ * @brief
+ *
+ * @param prompt
+ * @return int
+ */
+int		ft_set_new_line(t_prompt *prompt);
 
 # endif
