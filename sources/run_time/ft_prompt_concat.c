@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt_concat.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/10 18:39:32 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:43:46 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
+# include "../../sprintf/include/ft_printf.h"
 
 // não sei se realmente é necessario.
 // lembram do caso root (sudo su)
@@ -35,27 +36,14 @@ void	ft_fill_prompt(t_prompt *prompt)
 	prompt->path = getenv("PWD");
 }
 
-int	concat_and_clean(t_prompt *prompt, char *path)
+int	concat_and_clean(t_prompt *prompt)
 {
-	int		a;
-	int		b;
-	char	*pointer;
+	char *pointer;
 
-	a = ft_strlen(prompt->user);
-	b = ft_strlen(prompt->hostname);
-	pointer = malloc(a + b + ft_strlen(path) + 4);
+
+	pointer = ft_printf("%s@%s:%s$ ", prompt->user, prompt->hostname, prompt->path);
 	if (!(pointer))
 		exit(1);
-	ft_strlcpy(pointer, prompt->user, a + 1);
-	pointer[a++] = '@';
-	ft_strlcpy(&pointer[a], prompt->hostname, b + 1);
-	a+=b;
-	pointer[a++] = ':';
-	pointer[a++] = '~';
-	b = ft_strlen(path);
-	ft_strlcpy(&pointer[a], path, b + 1);
-	a+=b;
-	pointer[a] = '\0';
 	prompt->result = pointer;
 	return (0);
 }
@@ -63,37 +51,20 @@ int	concat_and_clean(t_prompt *prompt, char *path)
 void color_string(t_prompt *prompt)
 {
 	char **strings;
-	char *str1;
-	char *str2;
-	char *tmp;
 
 	strings = ft_split(prompt->result, ':');
-	str1 = ft_strjoin(GREEN, strings[0]);
-	str2 = ft_strjoin(BLUE, strings[1]);
-	tmp = str1;
-	str1 = ft_strjoin(str1, "\e[37;1m:");
-	free(tmp);
-	tmp = str1;
-	str1 = ft_strjoin(str1, str2);
-	free(tmp);
-	tmp = str1;
-	str1 = ft_strjoin(str1, "\e[0m$ ");
-	free(tmp);
+	char *teste = ft_printf("\e[32;1m%s\e[37;1m:\e[34;1m%s\e[0m$ ", strings[0], strings[1]);
 	free(prompt->result);
 	free(strings[0]);
 	free(strings[1]);
 	free(strings);
-	free(str2);
-	prompt->result = str1;
+	prompt->result = teste;
 }
 
 /* Gera a linha do prompt de comando formatada */
 void	ft_prompt_concat(t_prompt *prompt)
 {
-	char	*right_path;
-
 	ft_fill_prompt(prompt);
-	right_path = ft_find_path(prompt->path);
-	concat_and_clean(prompt, right_path);
+	concat_and_clean(prompt);
 	color_string(prompt);
 }
