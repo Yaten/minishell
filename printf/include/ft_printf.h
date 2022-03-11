@@ -1,0 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/11 05:47:09 by rogeriorslf       #+#    #+#             */
+/*   Updated: 2022/03/11 12:59:51 by rsiqueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "../libft/libft.h"
+
+typedef struct t_parameters
+{
+	int	flags;
+	int	width;
+	int	precision;
+	int	precision_bool;
+	int	specifier;
+}				t_params;
+
+char	*ft_printf(const char *input, ...);
+int		ft_isvalid(t_params *parameters, char *pointer);
+char	*ft_convert(t_params *params, va_list args);
+
+char	*ft_apply_specifiers(t_params *params, va_list args);
+char	*ft_apply_flag(char *pointer, t_params *parameters);
+char	*ft_apply_precision(char *pointer, t_params *parameters);
+
+char	*ft_case_c(va_list args);
+char	*ft_case_s(va_list args);
+char	*ft_case_p(va_list args);
+char	*ft_case_d(va_list args, int precision);
+char	*ft_case_u(va_list args, int precision);
+char	*ft_case_x(va_list args, int precision);
+char	*ft_case_upperx(va_list args, int precision);
+
+char	*ft_hextoa(unsigned long nb);
+char	*ft_utoa(unsigned int n);
+char	*ft_uitoa(unsigned int nb);
+
+int		ft_move_forward(char *s);
+int		ft_write_and_count(char *s, int count, int czero);
+char	*ft_negfirst(char *s, t_params *params);
+void	ft_czero(char *pointer, char *czero);
+
+#endif
