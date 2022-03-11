@@ -6,7 +6,7 @@
 /*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 05:47:09 by rogeriorslf       #+#    #+#             */
-/*   Updated: 2022/03/11 12:59:51 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:28:32 by rsiqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct t_parameters
 	int	specifier;
 }				t_params;
 
-char	*ft_printf(const char *input, ...);
+int		ft_printf(const char *input, ...);
 int		ft_isvalid(t_params *parameters, char *pointer);
-char	*ft_convert(t_params *params, va_list args);
+int		ft_convert(t_params *params, va_list args);
 
 char	*ft_apply_specifiers(t_params *params, va_list args);
 char	*ft_apply_flag(char *pointer, t_params *parameters);
@@ -51,5 +51,7 @@ int		ft_move_forward(char *s);
 int		ft_write_and_count(char *s, int count, int czero);
 char	*ft_negfirst(char *s, t_params *params);
 void	ft_czero(char *pointer, char *czero);
+
+char	*ft_sprintf(const char *input, ...);
 
 #endif

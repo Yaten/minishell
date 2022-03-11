@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rogerio <rogerio@student.42.fr>            +#+  +:+       +#+         #
+#    By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 05:54:15 by rogeriorslf       #+#    #+#              #
-#    Updated: 2021/08/05 11:58:41 by rsiqueir         ###   ########.fr        #
+#    Updated: 2022/03/11 15:19:42 by rsiqueir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS =	src/ft_apply_flag.c				\
 		src/ft_isvalid.c				\
 		src/ft_utils.c					\
 		src/ft_utoa.c					\
+		src/ft_sprintf.c				\
 		src/ft_printf.c
 
 OBJS = 		${SRCS:%.c=%.o}
