@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 15:45:38 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/12 08:19:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,23 @@ int	ft_print_dir(t_prompt *prompt)
 		return (1);
 }
 
-char *ft_expand(char *variable)
-{
-	char *content;
+// char *ft_expand(char *variable)
+// {
+// 	char *content;
 
-	content = getenv((variable + 1));
-	if (!content)
-		return ("");
-	return (content);
-}
+// 	content = getenv((variable + 1));
+// 	if (!content)
+// 		return ("");
+// 	return (content);
+// }
 
 void	ft_event_loop(t_prompt *prompt)
 {
 	while (TRUE)
 	{
 		ft_prompt_concat(prompt);
-		if (ft_print_dir(prompt))
+		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
-		if (ft_set_new_line(prompt))
-			continue ;
+		ft_expand(prompt, FALSE);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:27:22 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 15:47:23 by rsiqueir         ###   ########.fr       */
+/*   Updated: 2022/03/12 08:31:37 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define QUOTES "Quotes not paired\n"
 # define BACKSLASH "Escape character is not allowed\n"
 # define SEMICOLON "Comma is not allowed\n"
+
+# define SEPARATORS " ><\'\"|?$"
 
 # define BLACK "\e[30;1m"
 # define RED "\e[31;1m"
@@ -67,5 +69,13 @@ void	ft_prompt_concat(t_prompt *prompt);
  * @return int
  */
 int		ft_set_new_line(t_prompt *prompt);
+
+/**
+ * @brief
+ *
+ * @param prompt
+ * @param bool_quotes
+ */
+void	ft_expand(t_prompt *prompt, int bool_quotes);
 
 # endif

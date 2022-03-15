@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rsiqueir <rsiqueir@student.42.fr>          +#+  +:+       +#+         #
+#    By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 05:54:15 by rogeriorslf       #+#    #+#              #
-#    Updated: 2022/03/11 15:19:42 by rsiqueir         ###   ########.fr        #
+#    Updated: 2022/03/12 10:48:54 by wrosendo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

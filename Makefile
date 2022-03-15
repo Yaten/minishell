@@ -11,7 +11,7 @@ SRCDIR_RUNTIME = ./sources/run_time
 INCLUDE = ./includes
 REMOVE = rm -rf
 
-SRC_PARSE +=
+SRC_PARSE += ft_expand.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
