@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:27:22 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/12 08:31:37 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:27:2 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include "../ft_printf/include/ft_printf.h"
+# include "ft_doubly_linked_list.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -47,6 +48,37 @@ typedef struct	s_prompt
 	char	input_string[MAXINPUT];
 }t_prompt;
 
+
+typedef struct Ht_item Ht_item;
+// Define the hash table item here
+struct Ht_item
+{
+	char	*key;
+	char	*value;
+};
+//Hash table has an array of pointers which themselves point to Ht_item, so it is a double-pointer
+
+typedef struct LinkedList LinkedList;
+// Define the Linkedlisthere
+struct LinkedList
+{
+	Ht_item		*item;
+	LinkedList	*next;
+};
+
+typedef struct HashTable HashTable;
+// Define the hash table here
+struct HashTable
+{
+	Ht_item	**items;
+	LinkedList	**overflow_buckets;
+	int		size;
+	int		count;
+};
+//we will also keep track of the number of elements in the Hash table using count, and store the size of the table in size.
+
+
+
 /**
  * @brief
  *
@@ -79,3 +111,4 @@ int		ft_set_new_line(t_prompt *prompt);
 void	ft_expand(t_prompt *prompt, int bool_quotes);
 
 # endif
+

@@ -8,8 +8,15 @@ PRINTF = libftprintf.a
 OBJDIR = ./objects
 SRCDIR_PARSE = ./sources/parse
 SRCDIR_RUNTIME = ./sources/run_time
+SRCDIR_LINKEDLIST = ./sources/doubly_linked_list
 INCLUDE = ./includes
 REMOVE = rm -rf
+
+SRC_LINKEDLIST += ft_list_add_first.c ft_list_create.c ft_list_destroy.c
+SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c ft_list_print.c
+SRC_LINKEDLIST += ft_list_add_last.c
+OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
+OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
 SRC_PARSE += ft_expand.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
@@ -21,10 +28,14 @@ OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
+$(NAME): $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
 	$(MAKE) -C $(PRINTF_PATH)
 	@mkdir -p ./bin/
-	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline
+	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline
+
+$(OBJDIR)/%.o: $(SRCDIR_LINKEDLIST)/%.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -I $(INCLUDE) -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR_PARSE)/%.c
 	@mkdir -p $(OBJDIR)
@@ -44,3 +55,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: bonus clean fclean re
+
