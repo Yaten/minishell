@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 19:29:42 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:51:05 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ int	main()
 {
 	t_doubly *l;
 	l = ft_list_create();
-	ft_list_add_first(l, 0);
-	ft_list_add_first(l, -1);
-	ft_list_add_first(l, 42);
+	ft_list_add_first(l, "carro");
+	ft_list_add_first(l, "barco");
+	ft_list_add_first(l, "ave");
 	ft_list_print(l);
 	printf("-\n");
-	ft_list_add_last(l, 84);
+	ft_list_add_last(l, "zoio");
 	ft_list_print(l);
 	printf("-\n");
-	ft_list_add_first(l, 123);
+	ft_list_add_first(l, "zero");
 	ft_list_print(l);
 	printf("-\n");
-	//ft_list_destroy(&l);
+	ft_list_destroy(&l);
 	//ft_list_print(l);
 	return (0);
 }

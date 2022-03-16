@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:00:46 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 19:25:38 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:46:31 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-void	ft_list_add_last(t_doubly *l, int val)
+void	ft_list_add_last(t_doubly *l, char *val)
 {
 	t_node	*new;
 

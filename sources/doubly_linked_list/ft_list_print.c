@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:05:28 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 19:16:29 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:48:50 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_list_print(const t_doubly *l)
 
 	while(tmp != NULL)
 	{
-		printf("%d\n", tmp->val);
+		printf("%s\n", tmp->val);
 		tmp = tmp->next;
 	}
 }

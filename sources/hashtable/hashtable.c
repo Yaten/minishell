@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:11:58 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/16 16:38:51 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:52:53 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static Ht_item	*linkedlist_remove(LinkedList *list)
 	return (it);
 }
 
-static void	free_linke
+static void	free_linke;
 
 Ht_item *create_item(char *key, char *value)
 {
