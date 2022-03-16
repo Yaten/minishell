@@ -8,7 +8,7 @@
 <h3><b>
 	<a href="#extfun">1. External Functs.</br></a>
 </b></h3>
-	<span> • </span><a href="#apirest">1.1 What is API REST?</br></a>
+	<span> • </span><a href="#apirest">1.1 </br></a>
 <h3><b>
 	<a href="#cli">2. Command line interface</br></a>
 </b></h3>
