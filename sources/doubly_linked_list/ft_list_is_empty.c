@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:54:09 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 19:00:19 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:26:28 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,3 @@ int		ft_list_is_empty(t_doubly *l)
 {
 	return(l->size == 0);
 }
-
-

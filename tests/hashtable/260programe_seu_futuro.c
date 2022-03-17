@@ -39,6 +39,7 @@ int	busca(int t[], int chave)
 	int	id;
 
 	id = funcaoHash(chave);
+	printf("\n\tIndice gerado: %d\n", id);
 	while (t[id] != 0)
 	{
 		if (t[id] == chave)
@@ -67,6 +68,7 @@ int	main(void)
 	int	tabela[TAM];
 
 	i = 1;
+	inicializarTabela(tabela);
 	system("clear");
 	while (i)
 	{

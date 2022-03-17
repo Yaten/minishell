@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 20:46:31 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:26:16 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ void	ft_list_add_first(t_doubly *l, char *val)
 	l->begin = new;
 	l->size++;
 }
-
