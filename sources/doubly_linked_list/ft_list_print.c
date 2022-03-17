@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 19:05:28 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/16 20:48:50 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/16 19:05:28 by prafael-          #+#    #+#             */
+/*   Updated: 2022/03/17 14:52:56 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+# include "ft_parse.h"
 
-void	ft_list_print(const t_doubly *l)
+void	ft_list_print(const t_circular *l)
 {
-	t_node	*tmp;
-	tmp = l->begin;
+	t_cmd	*tmp;
+	tmp = l->head;
 
 	while(tmp != NULL)
 	{
-		printf("%s\n", tmp->val);
+		printf("%s\n", tmp->args);
 		tmp = tmp->next;
 	}
 }

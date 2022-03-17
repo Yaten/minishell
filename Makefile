@@ -13,7 +13,7 @@ INCLUDE = ./includes
 REMOVE = rm -rf
 
 SRC_LINKEDLIST += ft_list_add_first.c ft_list_create.c ft_list_destroy.c
-SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c ft_list_print.c
+SRC_LINKEDLIST += ft_list_is_empty.c ft_cmd_create.c ft_list_print.c
 SRC_LINKEDLIST += ft_list_add_last.c
 OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
 OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))

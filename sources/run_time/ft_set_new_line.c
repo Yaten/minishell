@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quotes_and_notallowed.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 11:04:17 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/11 11:13:12 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/11 11:04:17 by prafael-          #+#    #+#             */
+/*   Updated: 2022/03/11 11:13:12 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

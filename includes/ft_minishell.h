@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 09:27:22 by wrosendo          #+#    #+#             */
+/*   Created: 2022/03/09 09:27:22 by prafael-          #+#    #+#             */
 /*   Updated: 2022/03/16 14:27:2 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # include "../ft_printf/include/ft_printf.h"
-# include "ft_doubly_linked_list.h"
+# include "ft_parse.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -45,6 +45,7 @@ typedef struct	s_prompt
 	char	*hostname;
 	char	*path;
 	char	*result;
+	char	*cmd;
 	char	input_string[MAXINPUT];
 }t_prompt;
 

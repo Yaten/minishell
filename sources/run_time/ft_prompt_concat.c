@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt_concat.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 23:12:41 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/12 10:44:12 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/09 23:12:41 by prafael-          #+#    #+#             */
+/*   Updated: 2022/03/12 10:44:12 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
