@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_add_first.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/17 15:26:16 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:50:04 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+void	ft_list_add_first(t_cmd *l, char *val)
 {
 	t_node	*new;
 

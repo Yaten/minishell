@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/12 08:19:14 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/18 01:23:03 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
-		ft_expand(prompt, FALSE);
+		ft_parse(prompt);
+		//ft_expand(prompt, FALSE);
 	}
 }
