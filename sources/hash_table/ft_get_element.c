@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_get_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 17:46:40 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/21 12:19:03 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+t_hnode	*ft_get_element(t_hnode *list, int find_index)
 {
-	t_node	*new;
+	int		i;
+	t_hnode	*temp;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	i = -1;
+	temp = list;
+	while (++i != find_index)
+		temp = temp->next;
+	return (temp);
 }

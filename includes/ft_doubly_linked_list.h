@@ -10,25 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #ifndef Ft_circular_LINKED_LIST
-// # define Ft_circular_LINKED_LIST
+#ifndef FT_DOUBLY_LINKED_LIST
+# define FT_DOUBLY_LINKED_LIST
 
-// # include "../ft_printf/include/ft_printf.h"
-// # include <stdio.h>
-// # include <stdlib.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-// typedef struct	s_doubly_node
-// {
-// 	char					*val;
-// 	struct s_doubly_node	*prev;
-// 	struct s_doubly_node	*next;
-// }t_cmd;
+typedef struct	s_doubly_node
+{
+	char					*val;
+	struct s_doubly_node	*prev;
+	struct s_doubly_node	*next;
+}t_node;
 
-// typedef struct	s_doubly
-// {
-// 	t_cmd	*begin;
-// 	t_cmd	*end;
-// 	size_t	size;
-// }t_circular;
+typedef struct	s_doubly
+{
+	t_node	*begin;
+	t_node	*end;
+	size_t	size;
+}t_doubly;
 
-// #endif
+t_node		*ft_node_create(char *val);
+
+t_doubly	*ft_list_create(void);
+
+void		ft_list_destroy(t_doubly **l_ref);
+
+void		ft_list_add_first(t_doubly *l, char *val);
+
+int			ft_list_is_empty(t_doubly *l);
+
+void		ft_list_print(const t_doubly *l);
+
+void		ft_list_add_last(t_doubly *l, char *val);
+
+#endif

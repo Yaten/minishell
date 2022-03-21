@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_split_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 17:44:51 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/20 18:57:56 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+int	ft_split_env(t_hash *array, char *envp[])
 {
-	t_node	*new;
+	int		j;
+	char	*last;
+	char	*tmp1;
+	char	*before;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	j = -1;
+	while (envp[++j])
+	{
+		tmp1 = ft_strchr(envp[j], '=');
+		before = ft_substr(envp[j], 0, tmp1 - envp[j]);
+		last = ft_substr(envp[j], tmp1 + 1 - envp[j], ft_strlen(envp[j]));
+		ft_insert(array, before, last);
+		free (before);
+		free (last);
+	}
+	return (0);
 }

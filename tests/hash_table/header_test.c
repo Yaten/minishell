@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   header_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 18:46:15 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/20 18:46:58 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+# include "../../includes/ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+int	main(void)
 {
-	t_node	*new;
-
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	ft_putstr_fd("hello\n", 1);
+	return (0);
 }

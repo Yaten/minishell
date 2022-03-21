@@ -113,9 +113,9 @@ int	buscar_na_lista(t_slist *l, int val)
 
 void	inicializarTabela(t_slist t[])
 {
-	int	i;
+	t_slist
 
-	t[i] = 'i';
+	t = 'i';
 	while (++i < TAM)
 		t[i] = ft_slinkedlist_create();
 
@@ -167,7 +167,7 @@ int	main(void)
 	int	opcao;
 	int	retorno;
 	int	valor;
-	int	tabela[TAM];
+	t_slist	tabela[TAM];
 
 	i = 1;
 	inicializarTabela(tabela);

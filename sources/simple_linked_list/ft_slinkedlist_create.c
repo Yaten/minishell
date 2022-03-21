@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_slinkedlist_create.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/17 19:40:27 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/17 19:49:21 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+# include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+t_slist	*ft_slinkedlist_create()
 {
-	t_node	*new;
+	t_slist	*l;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	l = (t_slist *)calloc(1, sizeof(t_slist));
+	l->begin = NULL;
+	l->end = NULL;
+	l->size = 0;
+	return (l);
 }

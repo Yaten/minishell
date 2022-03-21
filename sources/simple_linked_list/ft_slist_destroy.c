@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_slist_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/17 19:32:50 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/17 19:50:29 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+# include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+void	ft_slist_destroy(t_slist **l_ref)
 {
-	t_node	*new;
+	t_slist	*l;
+	t_snode	*p;
+	t_snode	*aux;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	l = *l_ref;
+	p = l->begin;
+	while (p != NULL)
+	{
+		aux = p;
+		p = p->next;
+		free(aux);
+	}
+	free(l);
+	*l_ref = NULL;
 }

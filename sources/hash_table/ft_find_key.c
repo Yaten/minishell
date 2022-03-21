@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_find_key.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 17:47:27 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/21 12:18:41 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+int	ft_find_key(t_hnode *list, char *key)
 {
-	t_node	*new;
+	int		retval;
+	t_hnode	*temp;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	retval = 0;
+	temp = list;
+	while (temp != NULL)
+	{
+		if (!strcmp(temp->key, key))
+			return (retval);
+		temp = temp->next;
+		retval++;
+	}
+	return (-1);
 }

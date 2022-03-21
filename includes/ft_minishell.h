@@ -13,12 +13,17 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../ft_printf/include/ft_printf.h"
+# include "ft_hash_table.h"
 # include "ft_parse.h"
+# include "ft_doubly_linked_list.h"
+# include "ft_simple_linked_list.h"
+# include "../ft_printf/include/ft_printf.h"
 # include <stdio.h>
+# include <signal.h>
+# include <stdlib.h>
+# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <signal.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -48,37 +53,6 @@ typedef struct	s_prompt
 	char	*cmd;
 	char	input_string[MAXINPUT];
 }t_prompt;
-
-
-typedef struct Ht_item Ht_item;
-// Define the hash table item here
-struct Ht_item
-{
-	char	*key;
-	char	*value;
-};
-//Hash table has an array of pointers which themselves point to Ht_item, so it is a double-pointer
-
-typedef struct LinkedList LinkedList;
-// Define the Linkedlisthere
-struct LinkedList
-{
-	Ht_item		*item;
-	LinkedList	*next;
-};
-
-typedef struct HashTable HashTable;
-// Define the hash table here
-struct HashTable
-{
-	Ht_item	**items;
-	LinkedList	**overflow_buckets;
-	int		size;
-	int		count;
-};
-//we will also keep track of the number of elements in the Hash table using count, and store the size of the table in size.
-
-
 
 /**
  * @brief

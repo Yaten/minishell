@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/17 15:01:36 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:01:50 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,10 @@ void ft_init_signals(void)
 
 int	main(int argc, char *argv[], char *envp[])
 {
+	t_hash	*array;
+
+	array = ft_create_table(envp);
 	ft_init_signals();
 	ft_event_loop(&prompt);
 	return (0);
 }
-
-// int	main()
-// {
-// 	t_circular *l;
-// 	l = ft_list_create();
-// 	ft_list_add_first(l, "carro");
-// 	ft_list_add_first(l, "barco");
-// 	ft_list_add_first(l, "ave");
-// 	ft_list_print(l);
-// 	printf("-\n");
-// 	ft_list_add_last(l, "zoio");
-// 	ft_list_print(l);
-// 	printf("-\n");
-// 	ft_list_add_first(l, "zero");
-// 	ft_list_print(l);
-// 	printf("-\n");
-// 	ft_list_destroy(&l);
-// 	//ft_list_print(l);
-// 	return (0);
-// }

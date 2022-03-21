@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_create_table.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/21 10:35:53 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/21 10:37:40 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+# include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+t_hash	*ft_create_table(char *envp[])
 {
-	t_node	*new;
+	t_hash	*array;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	array = (t_hash *)malloc(TABLE_SIZE * sizeof(t_hash));
+	ft_init_array(array);
+	ft_split_env(array, envp);
+	return (array);
 }

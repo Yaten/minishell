@@ -10,6 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_parse.h"
+#include "ft_minishell.h"
 
+t_node	*ft_node_create(char *val)
+{
+	t_node	*node;
 
+	node = (t_node *)ft_calloc(1, sizeof(t_node));
+	node->prev = NULL;
+	node->next = NULL;
+	node->val = val;
+	return (node);
+}

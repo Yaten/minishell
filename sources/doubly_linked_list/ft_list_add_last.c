@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_add_last.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:00:46 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/17 14:58:03 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/21 12:20:25 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_parse.h"
+#include "ft_minishell.h"
 
-void	ft_list_add_last(t_circular *l, char *val)
+void	ft_list_add_last(t_doubly *l, char *val)
 {
-	t_cmd	*new;
+	t_node	*new;
 
-	new = ft_cmd_create(val);
-	new->prev = l->tail;
+	new = ft_node_create(val);
+	new->prev = l->end;
 	if(ft_list_is_empty(l))
-		l->head = new;
+		l->begin = new;
 	else
-		l->tail->next = new;
-	l->tail = new;
+		l->end->next = new;
+	l->end = new;
 	l->size++;
 }

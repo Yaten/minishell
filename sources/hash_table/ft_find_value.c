@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_find_value.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 17:48:10 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/21 11:23:07 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+char	*ft_find_value(t_hash *array, char *key)
 {
-	t_node	*new;
+	t_hash	*temp;
+	int		i;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	i = -1;
+	temp = array;
+	while (++i < TABLE_SIZE)
+	{
+		while (temp[i].head)
+		{
+			if (!strcmp(temp[i].head->key, key))
+				return (temp[i].head->value);
+			temp[i].head = temp[i].head->next;
+		}
+	}
+	return (NULL);
 }

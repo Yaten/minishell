@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/12 08:19:14 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/21 10:07:43 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	ft_print_dir(t_prompt *prompt)
 // char *ft_expand(char *variable)
 // {
 // 	char *content;
-
 // 	content = getenv((variable + 1));
 // 	if (!content)
 // 		return ("");

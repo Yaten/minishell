@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_hashcode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/20 17:43:09 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/20 18:57:21 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+int	ft_hashcode(char *key)
 {
-	t_node	*new;
+	char			*ptr;
+	int				tmp;
+	unsigned int	val;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	val = 0;
+	ptr = key;
+	while (*ptr != '\0')
+	{
+		val = (val << 4) + (*ptr);
+		tmp = (val & 0xf0000000);
+		if (tmp)
+		{
+			val = val ^ (tmp >> 24);
+			val = val ^ tmp;
+		}
+		ptr++;
+	}
+	return (val % TABLE_SIZE);
 }

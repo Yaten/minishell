@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_first.c                                :+:      :+:    :+:   */
+/*   ft_destroy_hash.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 17:51:57 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:44 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/03/21 09:38:55 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/03/21 09:58:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_list_add_first(t_doubly *l, char *val)
+void	ft_destroy_hash(t_hash *array)
 {
-	t_node	*new;
+	t_hash	*temp;
+	t_hash	*aux;
+	int		i;
 
-	new = ft_node_create(val);
-	new->next = l->begin;
-	if(ft_list_is_empty(l))
-		l->end = new;
-	else
-		l->begin->prev = new;
-	l->begin = new;
-	l->size++;
+	i = -1;
+	temp = array;
+	while (++i < TABLE_SIZE)
+	{
+		while (temp[i].head)
+		{
+			free(temp[i].head->key);
+			free(temp[i].head->value);
+			aux = temp;
+			temp[i].head = temp[i].head->next;
+			free(aux[i].head);
+			free(aux[i].tail);
+		}
+	}
+	free(array);
 }
