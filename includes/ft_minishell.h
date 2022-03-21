@@ -42,7 +42,7 @@
 # define MAGENTA "\e[35;1m"
 # define CYAN "\e[36;1m"
 # define WHITE "\e[37;1m"
-# define Reset "\e[0m"
+# define RESET "\e[0m"
 
 typedef struct	s_prompt
 {
