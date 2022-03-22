@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/21 14:25:39 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:21:52 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
-		// ft_parse(prompt);
-		ft_expand(prompt, FALSE);
+		ft_parse(prompt->input_string, g_data.envp);
+		// ft_expand(prompt, FALSE);
 	}
 }
