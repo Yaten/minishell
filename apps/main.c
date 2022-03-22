@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/22 19:29:58 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:17:40 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_shell	g_data;
 
 // static void	init_operators(void);
 
-/* lida com o Ctrl C */
+/* Ctrl C */
 void sigint_handler(int sig)
 {
 	(void)sig;

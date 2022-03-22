@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/22 19:21:52 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:17:28 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_print_dir(t_prompt *prompt)
 	if (!buf)
 	{
 		ft_printf("\n");
+		// ft_destroy_hash(g_data.array);
+		puts("sai do programa");
 		exit(0);
 	}
 	if (ft_strlen(buf) != 0)

@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/22 19:30:18 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:07:32 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,8 @@ static void	*ft_find_path(t_node *node)
 	char	*path_slash;
 	int		i;
 
-	// path = ft_find_value(array, "PATH");
 	paths = ft_split(ft_find_value(g_data.array, "PATH"), ':');
 
-	// i = -1;
-	// while (!ft_strnstr(g_data.envp[++i], PATH, 4))
-	// 	;
-	// chest->paths = ft_split(g_data.envp[i], COLON);
 	i = -1;
 	while (paths[++i])
 	{
@@ -83,12 +78,6 @@ void	ft_parse(char *line, char **envp)
 	(void)envp;
 	ft_destroy_list();
 }
-
-/*
-	para cada comando
-	abrir a relação de input e output
-	com o dup2();
- */
 
 void	ft_create_cmd(char *line)
 {
@@ -147,11 +136,6 @@ void	ft_destroy_list()
 		g_data.node = tmp;
 	}
 }
-/*
-	fd[0] read;
-	fd[1] write;
- */
-
 
 void	ft_child_process(int *fd)
 {
@@ -160,7 +144,6 @@ void	ft_child_process(int *fd)
 	close(fd[1]);
 	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
 	// if (execve(g_data.node->args[0], g_data.node->args, g_data.envp) == -1)
-
 }
 
 void	ft_parent_process(int *fd, int pid)
@@ -176,11 +159,13 @@ void	ft_pipe()
 	int		fd[2];
 	pid_t	pid;
 	int		fd_in;
-	if (pipe(fd) == -1)
-		ft_putstr_fd("Deu ruim no pipe\n", 2);
+	t_node	*tmp;
 
+	if (pipe(fd) == -1)
+		ft_putstr_fd("Error: Pipe gonna mad!!!\n", 2);
 	fd_in = 0;
-	while(g_data.node)
+	tmp = g_data.node;
+	while(tmp)
 	{
 		pid = fork();
 		if(!pid)
@@ -189,7 +174,7 @@ void	ft_pipe()
 			close(fd_in);
 			if(g_data.pipe_count)
 				dup2(fd[1], STDOUT_FILENO);
-			execve(g_data.node->args[0], g_data.node->args, g_data.envp);
+			execve(tmp->args[0], tmp->args, g_data.envp);
 		}
 		else
 		{
@@ -201,7 +186,7 @@ void	ft_pipe()
 				pipe(fd);
 				g_data.pipe_count--;
 			}
-			g_data.node = g_data.node->next;
+			tmp = tmp->next;
 		}
 	}
 	waitpid(pid, NULL, 0);
@@ -214,21 +199,20 @@ void	ft_pipeline()
 	//pid_t	holder;
 
 	if (pipe(fd) == -1)
-		ft_putstr_fd("Deu ruim no pipe\n", 2);
+		ft_putstr_fd("Error: Pipe gonna mad 2\n", 2);
 	pid = fork();
 	if (pid == -1)
-		ft_putstr_fd("Deu ruim no fork 1\n", 2);
+		ft_putstr_fd("Error: Fork gonna mad\n", 2);
 	if (!pid)
 	{
 		ft_child_process(fd);
 		/* holder = fork();
 		if (holder == -1)
-			ft_putstr_fd("Deu ruim no fork 2\n", 2);
+			ft_putstr_fd("Error: Fork gonna mad 2\n", 2);
 		if (!holder)
 
 		else
 		g_data.node = g_data.node->next; */
-
 	}
 	else
 		ft_parent_process(fd, pid);
