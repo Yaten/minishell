@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 09:38:55 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 09:58:12 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:02:37 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_destroy_hash(t_hash *array)
 {
 	t_hash	*temp;
-	t_hash	*aux;
+	t_hnode	*aux;
 	int		i;
 
 	i = -1;
@@ -26,10 +26,9 @@ void	ft_destroy_hash(t_hash *array)
 		{
 			free(temp[i].head->key);
 			free(temp[i].head->value);
-			aux = temp;
+			aux = temp[i].head;
 			temp[i].head = temp[i].head->next;
-			free(aux[i].head);
-			free(aux[i].tail);
+			free(aux);
 		}
 	}
 	free(array);

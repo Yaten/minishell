@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 18:33:06 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:27:08 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/23 10:46:55 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 
 // comando para compilar o programa
-// gcc alpha_test.c ../../sources/hash_table/*.c ../../ft_printf/libft/*.c -I ../../includes/ && ./a.out
+// gcc main.c ../../sources/hash_table/*.c ../../ft_printf/libft/*.c -I ../../includes/ && ./a.out
 
 void	display(t_hash *array)
 {
