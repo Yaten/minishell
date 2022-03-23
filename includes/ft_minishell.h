@@ -65,6 +65,7 @@ typedef struct s_shell
 	int			pipe_count;
 	char		**operators;
 	char		**envp;
+	int			builtin;
 	t_hash		*array;
 }t_shell;
 

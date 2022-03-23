@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/22 20:17:28 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:30:01 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 int	ft_print_dir(t_prompt *prompt)
 {
 	char	*buf;
+	int		i;
 
 	buf = readline(prompt->result);
 	free(prompt->result);
 	if (!buf)
 	{
 		ft_printf("\n");
-		// ft_destroy_hash(g_data.array);
+		ft_destroy_hash(g_data.array);
+
+		i = -1;
+		while (g_data.operators[++i])
+			free(g_data.operators[i]);
+		free(g_data.operators);
+
 		puts("sai do programa");
 		exit(0);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/22 20:07:32 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:57:31 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_destroy_list();
 
 void	ft_pipe();
 
-static void	*ft_find_path(t_node *node)
+static int	ft_find_path(t_node *node)
 {
 	// char	*path;
 	char	**paths;
@@ -46,7 +46,7 @@ static void	*ft_find_path(t_node *node)
 			free(paths);
 			free(node->args[0]);
 			node->args[0] = path;
-			return (0);
+			return (1);
 		}
 		free(path);
 	}
@@ -74,10 +74,14 @@ void	ft_parse(char *line, char **envp)
 		index++;
 	}
 	ft_create_cmd(line);
+	if (ft_builtin())
 	ft_pipe();
 	(void)envp;
 	ft_destroy_list();
 }
+//1 sucesso na exec da built-in
+//0 existe mas deu falha
+//-1 nao existe	built-in
 
 void	ft_create_cmd(char *line)
 {
@@ -91,8 +95,11 @@ void	ft_create_cmd(char *line)
 	node->next = NULL;
 	node->fd_in = 0;
 	node->fd_out = 0;
-	// search_bin(node->args);
-	ft_find_path(node);
+	if (!ft_find_path(node))
+	{
+		ft_putstr_fd("Command not found, you r wrong\n", 2);
+		return ;
+	}
 	if(last != NULL)
 	{
 		while(last->next)
