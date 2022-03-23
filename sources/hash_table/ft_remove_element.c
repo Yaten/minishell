@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 17:46:06 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:19:33 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/23 13:02:41 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ static void	ft_existing_element(t_hash *array, char *key, int index)
 	temp = (t_hnode *)array[index].head;
 	if (!strcmp(temp->key, key))
 	{
-		array[index].head = temp->next;
+		free(array[index].head->key);
+		free(array[index].head->value);
+		array[index].head->key = NULL;
+		array[index].head->value = NULL;
+		array[index].head->next = NULL;
 		return ;
 	}
 	while (strcmp(temp->next->key, key))

@@ -17,7 +17,7 @@
 # include <string.h>
 
 // comando para compilar o programa
-// gcc alpha_test.c ../../sources/hash_table/*.c ../../ft_printf/libft/*.c -I ../../includes/ && ./a.out
+// gcc main.c ../../sources/hash_table/*.c ../../ft_printf/libft/*.c -I ../../includes/ && ./a.out
 
 void	display(t_hash *array)
 {
