@@ -3,52 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/17 20:05:04 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:20:55 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #ifndef FT_PARSE
-// # define FT_PARSE
-// # include <stdio.h>
+#ifndef FT_PARSE_H
+# define FT_PARSE_H
 
-// #define PARSE_DELIMITER " \t\n\r\a"
-// #define PARSE_BUFFSIZE 64
-// #define SINGLE_QUOTE '\''
-// #define DOUBLE_QUOTE '"'
+typedef struct s_node
+{
+	char			**args;
+	char			*relation;
+	int				fd_in;
+	int				fd_out;
+	struct s_node	*next;
+}					t_node;
 
-// typedef struct s_cmd
-// {
-// 	char				**args;
-// 	char				*relation;
-// 	int					input;
-// 	int					output;
-// 	int					builtin;
-// 	struct simple_cmd	*prev;
-// 	struct simple_cmd	*next;
-// }						t_cmd;
+void	ft_parse(char *line, char **envp);
 
-// typedef struct	s_circular
-// {
-// 	t_cmd	*head;
-// 	t_cmd	*tail;
-// 	size_t	size;
-// }						t_circular;
-
-// void		*ft_cmd_create(t_cmd *new_cmd);
-
-// t_circular	*ft_list_create(void);
-
-// void		ft_list_destroy(t_circular **l_ref);
-
-// void		ft_list_add_first(t_circular *l, char *val);
-
-// int			ft_list_is_empty(t_circular *l);
-
-// void		ft_list_print(const t_circular *l);
-
-// void		ft_list_add_last(t_circular *l, char *val);
-
-// #endif
+#endif

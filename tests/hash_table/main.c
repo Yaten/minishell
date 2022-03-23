@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 18:33:06 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/23 10:46:55 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:31:33 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int argc, char *argv[], char *envp[])
 			scanf("%s", key);
 			tmp = ft_find_value(array, key);
 			printf("%s", tmp);
-			free(tmp);
+			//free(tmp);
 		}
 		else if (choice == 6)
 		{

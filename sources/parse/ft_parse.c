@@ -5,104 +5,219 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 14:20:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/18 01:38:19 by prafael-         ###   ########.fr       */
+/*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/03/22 20:07:32 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
-// t_cmd	*ft_parse_cmd(char *cmd)
-// {
-// 	t_cmd	*new_cmd;
+void	ft_pipeline();
 
-// 	new_cmd = (t_cmd *)ft_calloc(1, sizeof(t_cmd));
-// 	new_cmd->args = ft_split(cmd, ' ');
-// 	return (new_cmd);
-// }
+void	ft_create_cmd(char *line);
 
-// void	*ft_node_create(t_cmd *new_cmd)
-// {
-// 	t_prompt	prompt;
-// 	t_cmd		*first;
+void	ft_print();
 
-// 	first = prompt.cmd;
-// 	while (first->next != NULL)
-// 		first = first->next;
-// 	new_cmd->prev = first;
-// 	first->next = new_cmd;
-// }
+void	ft_destroy_list();
 
-// void	create_cmd(char *cmd, char *relation)
-// {
-// 	t_cmd	*first;
-// 	t_cmd	*new_cmd;
+void	ft_pipe();
 
-// 	new_cmd = parse_cmd(cmd);
-// 	new_cmd->input = NULL;
-// 	new_cmd->output = NULL;
-// 	new_cmd->relation = relation;
-// 	new_cmd->builtin = 0;
-// 	new_cmd->next = NULL;
-// 	new_cmd->prev = NULL;
-// 	if (first == NULL)
-// 		prompt.cmd = new_cmd;
-// 	else
-// 		ft_note_create(new_cmd);
-// }
-
-// int		ft_builtin_check(t_cmd *cmd)
-// {
-// 	//if(!(ft_strcmp(cmd->args[0], "cmd", 3)))
-// 	if(!cmd->args[0])
-// 		return (cmd->builtin = FALSE);
-// 	if(!(ft_strcmp(cmd->args[0], "echo", 4)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "cd", 2)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "pwd", 3)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "export", 6)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "unset", 5)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "env", 3)))
-// 		return (cmd->builtin = TRUE);
-// 	if(!(ft_strcmp(cmd->args[0], "exit", 4)))
-// 		return (cmd->builtin = TRUE);
-// 	return (cmd->builtin = FALSE);
-// }
-
-void	ft_parse(t_prompt *prompt)
+static void	*ft_find_path(t_node *node)
 {
-	char	**split;
+	// char	*path;
+	char	**paths;
+	char	*path;
+	char	*path_slash;
 	int		i;
 
-	//splita pelo space
-	split = ft_split(prompt->input_string, ' ');
-	i = 0;
+	paths = ft_split(ft_find_value(g_data.array, "PATH"), ':');
 
-	//mandar pra struct e
-	//fazer todos os checks
-
-	//ft_check();
-	// if (ft_check == 1)
-	// {
-	// 	printf("check 1\n");
-	// }
-	// if (ft_check >= 2)
-	// {
-	// 	printf("check 2\n");
-	// }
-
-	printf("%s------------------------%s\n", GREEN, RESET);
-	printf("input >> %s%s\n", WHITE, prompt->input_string);
-	printf("%s------------------------%s\n", GREEN, RESET);
-	while (split[i])
+	i = -1;
+	while (paths[++i])
 	{
-		printf("%ssplited >> %s%s\n", CYAN, WHITE, split[i]);
-		printf("%sloop %d\n", RESET, i+1);
-		printf("%s------------------------%s\n", GREEN, RESET);
-		i++;
+		path_slash = ft_strjoin(paths[i], "/");
+		free(paths[i]);
+		path = ft_strjoin(path_slash, node->args[0]);
+		free(path_slash);
+		if (!access(path, F_OK | X_OK))
+		{
+			while (paths[++i])
+				free(paths[i]);
+			free(paths);
+			free(node->args[0]);
+			node->args[0] = path;
+			return (0);
+		}
+		free(path);
 	}
+	free(paths);
+	return (0);
+}
+
+void	ft_parse(char *line, char **envp)
+{
+	int	index;
+
+	index = 0;
+	// init_operators();
+	g_data.pipe_count = 0;
+	while(line[index] != '\0')
+	{
+		if (line[index] == '|')
+		{
+			line[index] = '\0';
+			ft_create_cmd(line);
+			line += index + 1;
+			index = 0;
+			g_data.pipe_count++;
+		}
+		index++;
+	}
+	ft_create_cmd(line);
+	ft_pipe();
+	(void)envp;
+	ft_destroy_list();
+}
+
+void	ft_create_cmd(char *line)
+{
+	t_node *node;
+	t_node *last;
+
+	last = g_data.node;
+	node = (t_node *)malloc(sizeof(t_node));
+	node->args = ft_split(line, ' ');
+	node->relation = g_data.operators[0];
+	node->next = NULL;
+	node->fd_in = 0;
+	node->fd_out = 0;
+	// search_bin(node->args);
+	ft_find_path(node);
+	if(last != NULL)
+	{
+		while(last->next)
+			last = last->next;
+		last->next = node;
+	}
+	else
+		g_data.node = node;
+}
+
+void	ft_print()
+{
+	t_node	*tmp;
+	int		index;
+
+	tmp = g_data.node;
+	while (tmp != NULL)
+	{
+		index = -1;
+		while(tmp->args[++index] != NULL)
+			printf("%s %d\n", tmp->args[index], index);
+		tmp = tmp->next;
+		puts("");
+	}
+}
+
+void	ft_destroy_list()
+{
+	t_node *tmp;
+	int index;
+
+	tmp = g_data.node;
+	while (g_data.node != NULL)
+	{
+		index = -1;
+		while(tmp->args[++index] != NULL)
+			free(tmp->args[index]);
+		free(tmp->args);
+		tmp = g_data.node->next;
+		free(g_data.node);
+		g_data.node = tmp;
+	}
+}
+
+void	ft_child_process(int *fd)
+{
+	close(fd[0]);
+	dup2(fd[1], STDOUT_FILENO);
+	close(fd[1]);
+	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
+	// if (execve(g_data.node->args[0], g_data.node->args, g_data.envp) == -1)
+}
+
+void	ft_parent_process(int *fd, int pid)
+{
+	close(fd[1]);
+	dup2(fd[0], STDIN_FILENO);
+	close(fd[0]);
+	waitpid(pid, NULL, 0);
+}
+
+void	ft_pipe()
+{
+	int		fd[2];
+	pid_t	pid;
+	int		fd_in;
+	t_node	*tmp;
+
+	if (pipe(fd) == -1)
+		ft_putstr_fd("Error: Pipe gonna mad!!!\n", 2);
+	fd_in = 0;
+	tmp = g_data.node;
+	while(tmp)
+	{
+		pid = fork();
+		if(!pid)
+		{
+			dup2(fd_in, STDIN_FILENO);
+			close(fd_in);
+			if(g_data.pipe_count)
+				dup2(fd[1], STDOUT_FILENO);
+			execve(tmp->args[0], tmp->args, g_data.envp);
+		}
+		else
+		{
+			waitpid(pid, NULL, 0);
+			fd_in = dup(fd[0]);
+			if(g_data.pipe_count)
+			{
+				close(fd[1]);
+				pipe(fd);
+				g_data.pipe_count--;
+			}
+			tmp = tmp->next;
+		}
+	}
+	waitpid(pid, NULL, 0);
+}
+
+void	ft_pipeline()
+{
+	int		fd[2];
+	pid_t	pid;
+	//pid_t	holder;
+
+	if (pipe(fd) == -1)
+		ft_putstr_fd("Error: Pipe gonna mad 2\n", 2);
+	pid = fork();
+	if (pid == -1)
+		ft_putstr_fd("Error: Fork gonna mad\n", 2);
+	if (!pid)
+	{
+		ft_child_process(fd);
+		/* holder = fork();
+		if (holder == -1)
+			ft_putstr_fd("Error: Fork gonna mad 2\n", 2);
+		if (!holder)
+
+		else
+		g_data.node = g_data.node->next; */
+	}
+	else
+		ft_parent_process(fd, pid);
+	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
+
+	// g_data.node = g_data.node->next;
+	// execve(g_data.node->args[0], g_data.node->args, g_data.envp);
 }
