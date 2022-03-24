@@ -8,11 +8,21 @@ PRINTF = libftprintf.a
 OBJDIR = ./objects
 SRCDIR_PARSE = ./sources/parse
 SRCDIR_HASH = ./sources/hash_table
+SRCDIR_EXECUTOR = ./sources/executor
+SRCDIR_BUILTIN = ./sources/builtin
 SRCDIR_RUNTIME = ./sources/run_time
 SRCDIR_SLIST = ./sources/simple_linked_list
 SRCDIR_LINKEDLIST = ./sources/doubly_linked_list
 INCLUDE = ./includes
 REMOVE = rm -rf
+
+SRC_EXECUTOR += ft_pipe.c
+OBJEXECUTOR = $(SRC_EXECUTOR:.c=.o)
+OBJECTS_EXECUTOR = $(addprefix $(OBJDIR)/, $(OBJEXECUTOR))
+
+SRC_BUILTIN += ft_pwd.c ft_builtin_check.c ft_builtin.c
+OBJBUILTIN = $(SRC_BUILTIN:.c=.o)
+OBJECTS_BUILTIN = $(addprefix $(OBJDIR)/, $(OBJBUILTIN))
 
 SRC_HASH += ft_find_key.c ft_find_value.c ft_get_element.c ft_hashcode.c
 SRC_HASH += ft_init_array.c ft_insert.c ft_remove_element.c ft_split_env.c
@@ -32,6 +42,7 @@ OBJECTS_SLIST = $(addprefix $(OBJDIR)/, $(OBJSLIST))
 # OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
 SRC_PARSE += ft_expand.c ft_parse.c
+SRC_PARSE += ft_create_cmd.c ft_destroy_list.c ft_find_path.c ft_print.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
@@ -41,10 +52,18 @@ OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
+$(NAME): $(OBJECTS_EXECUTOR) $(OBJECTS_BUILTIN) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
 	$(MAKE) -C $(PRINTF_PATH)
 	@mkdir -p ./bin/
-	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline
+	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_EXECUTOR) $(OBJECTS_BUILTIN) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline
+
+$(OBJDIR)/%.o: $(SRCDIR_EXECUTOR)/%.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -I $(INCLUDE) -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR_BUILTIN)/%.c
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -I $(INCLUDE) -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR_HASH)/%.c
 	@mkdir -p $(OBJDIR)

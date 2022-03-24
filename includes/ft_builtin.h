@@ -1,15 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_builtin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 15:49:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/18 01:21:15 by prafael-         ###   ########.fr       */
+/*   Created: 2022/03/23 17:43:47 by prafael-          #+#    #+#             */
+/*   Updated: 2022/03/23 20:51:28 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#ifndef FT_BUILTIN_H
 
+# define FT_BUILTIN_H
 
+void	ft_builtin();
+
+int		ft_builtin_check();
+
+int		ft_pwd(void);
+
+#endif

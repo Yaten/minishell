@@ -16,6 +16,8 @@
 # include "ft_parse.h"
 # include "ft_hash_table.h"
 # include "ft_parse.h"
+# include "ft_executor.h"
+# include "ft_builtin.h"
 // # include "ft_doubly_linked_list.h"
 # include "ft_simple_linked_list.h"
 # include "../ft_printf/include/ft_printf.h"

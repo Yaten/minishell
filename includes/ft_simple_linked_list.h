@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_simple_linked_list.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:31:25 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:21:09 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:51:32 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
