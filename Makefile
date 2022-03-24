@@ -20,7 +20,8 @@ SRC_EXECUTOR += ft_pipe.c
 OBJEXECUTOR = $(SRC_EXECUTOR:.c=.o)
 OBJECTS_EXECUTOR = $(addprefix $(OBJDIR)/, $(OBJEXECUTOR))
 
-SRC_BUILTIN += ft_pwd.c ft_builtin_check.c ft_builtin.c
+SRC_BUILTIN += ft_pwd.c ft_builtin_check.c ft_builtin.c ft_builtin_path.c
+SRC_BUILTIN += ft_env.c ft_unset.c
 OBJBUILTIN = $(SRC_BUILTIN:.c=.o)
 OBJECTS_BUILTIN = $(addprefix $(OBJDIR)/, $(OBJBUILTIN))
 
