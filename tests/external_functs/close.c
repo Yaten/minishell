@@ -18,7 +18,7 @@ int	main(void)
 	if (close(fd1) < 0)
 	{
 		perror("c1");
-		exit(1);
+		exit();
 	}
 	printf("Closed the fd.\n");
 	return (0);

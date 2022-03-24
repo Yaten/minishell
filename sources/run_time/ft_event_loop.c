@@ -29,6 +29,11 @@ int	ft_print_dir(t_prompt *prompt)
 			free(g_data.operators[i]);
 		free(g_data.operators);
 
+		i = -1;
+		// while (g_data.node->args[++i])
+		// 	free(g_data.node->args[i]);
+		// free(g_data.node->args);
+
 		puts("sai do programa");
 		exit(0);
 	}

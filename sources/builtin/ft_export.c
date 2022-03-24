@@ -12,3 +12,16 @@
 
 # include "ft_minishell.h"
 
+void	ft_export()
+{
+	char	*tmp1;
+	char	*before;
+	char	*last;
+
+	tmp1 = ft_strchr(g_data.node->args[1], '=');
+	before = ft_substr(g_data.node->args[1], 0, tmp1 - g_data.node->args[1]);
+	last = ft_substr(g_data.node->args[1], tmp1 + 1 - g_data.node->args[1], ft_strlen(g_data.node->args[1]));
+	ft_insert(g_data.array, before, last);
+	free (before);
+	free (last);
+}

@@ -19,13 +19,13 @@ void	ft_builtin()
 	if (g_data.builtin == 2)
 		ft_pwd();
 	if (g_data.builtin == 3)
-		puts(GREEN"echo: good job!"RESET);
+		ft_echo();
 	if (g_data.builtin == 4)
 		puts(GREEN"cd: good job!"RESET);
 	if (g_data.builtin == 5)
-		puts(GREEN"exit: good job!"RESET);
+		ft_exit();
 	if (g_data.builtin == 6)
 		ft_unset();
 	if (g_data.builtin == 7)
-		puts(GREEN"export: good job!"RESET);
+		ft_export();
 }

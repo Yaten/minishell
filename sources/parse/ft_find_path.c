@@ -19,7 +19,7 @@ int	ft_find_path(t_node *node)
 	char	*path_slash;
 	int		i;
 
-	paths = ft_split(ft_find_value(g_data.array, "PATH"), ':');
+	paths = ft_split(ft_find_value("PATH"), ':');
 
 	i = -1;
 	while (paths[++i])

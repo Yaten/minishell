@@ -12,3 +12,20 @@
 
 # include "ft_minishell.h"
 
+int	ft_exit()
+{
+	int		i;
+	char	*tmp;
+
+	i = -1;
+	tmp = g_data.node->args[1];
+	while (tmp[++i])
+	{
+		if (!ft_isdigit(tmp[i]))
+		{
+			printf("please dont use char my friend\n");
+			exit (2);
+		}
+	}
+	exit(ft_atoi(g_data.node->args[1]));
+}

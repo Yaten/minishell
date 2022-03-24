@@ -65,7 +65,7 @@ int		ft_find_key(t_hnode *list, char *key);
  * @param key The key to look for
  * @return char* The value of the key if found or NULL if not
  */
-char	*ft_find_value(t_hash *array, char *key);
+char	*ft_find_value(char *key);
 
 /**
  * @brief Searches for an element in a given position in the hash table

@@ -12,20 +12,20 @@
 
 #include "ft_minishell.h"
 
-char	*ft_find_value(t_hash *array, char *key)
+char	*ft_find_value(char *key)
 {
-	t_hash	*temp;
 	int		i;
+	t_hnode	*temp;
 
 	i = -1;
-	temp = array;
 	while (++i < TABLE_SIZE)
 	{
-		while (temp[i].head)
+		temp = g_data.array[i].head;
+		while (temp)
 		{
-			if (!strcmp(temp[i].head->key, key))
-				return (temp[i].head->value);
-			temp[i].head = temp[i].head->next;
+			if (!strcmp(temp->key, key))
+				return (temp->value);
+			temp = temp->next;
 		}
 	}
 	return (NULL);

@@ -50,4 +50,10 @@ void	ft_env(void);
 
 void	ft_unset(void);
 
+void	ft_export(void);
+
+int		ft_exit();
+
+void		ft_echo();
+
 #endif
