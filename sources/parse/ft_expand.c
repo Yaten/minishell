@@ -38,19 +38,22 @@ void	ft_chunk(t_prompt *prompt, char *tmp)
 	// char	*latter;
 	char	*aux;
 
-	first = ft_substr(prompt->input_string, 0, tmp - prompt->input_string - 1);
+	first = ft_substr(prompt->input_string, 0, tmp - prompt->input_string);
 	last = ft_expand_last(tmp + 1);
 	middle = ft_substr(prompt->input_string, tmp + 1 - prompt->input_string, last - tmp - 1);
 	middle = ft_getvalue(middle);
 	last = ft_strdup(last);
 	former = ft_strjoin(first, middle);
 	aux = ft_strjoin(former, last);
-	printf("temporario: %s\n", aux);
+	g_data.aux = ft_strdup(aux);
+	// return (aux);
+	// printf("temporario: %s\n", aux);
 }
 
 void	ft_expand(t_prompt *prompt, int bool_quotes)
 {
 	char	*tmp;
+	//char	*tmp2;
 
 	tmp = prompt->input_string;
 	while (*tmp)
@@ -67,4 +70,12 @@ void	ft_expand(t_prompt *prompt, int bool_quotes)
 		else if (*tmp)
 			++tmp;
 	}
+	if (g_data.aux == NULL)
+		printf("temporario: %s\n", prompt->input_string);
+	else
+		printf("temporario: %s\n", g_data.aux);
+	free (g_data.aux);
+	g_data.aux = NULL;
+	// printf("temporario 2: %s\n", prompt->input_string);
+	// (void)tmp2;
 }

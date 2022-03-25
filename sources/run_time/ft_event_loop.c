@@ -56,6 +56,7 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
-		ft_parse(prompt->input_string, g_data.envp);
+		ft_expand(prompt, 0);
+		// ft_parse(prompt->input_string, g_data.envp);
 	}
 }

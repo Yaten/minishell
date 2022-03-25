@@ -15,7 +15,6 @@
 
 # include "ft_parse.h"
 # include "ft_hash_table.h"
-# include "ft_parse.h"
 # include "ft_executor.h"
 # include "ft_builtin.h"
 // # include "ft_doubly_linked_list.h"
@@ -33,7 +32,6 @@
 
 # define TRUE 1
 # define FALSE 0
-# define MAXINPUT 1024
 # define QUOTES "Quotes not paired\n"
 # define BACKSLASH "Escape character is not allowed\n"
 # define SEMICOLON "Comma is not allowed\n"
@@ -50,16 +48,6 @@
 # define WHITE "\e[37;1m"
 # define RESET "\e[0m"
 
-typedef struct	s_prompt
-{
-	char	*user;
-	char	*hostname;
-	char	*path;
-	char	*result;
-	char	*cmd;
-	char	input_string[MAXINPUT];
-}t_prompt;
-
 typedef struct s_shell
 {
 	t_prompt	prompt;
@@ -69,6 +57,7 @@ typedef struct s_shell
 	char		**envp;
 	int			builtin;
 	t_hash		*array;
+	char		*aux;
 }t_shell;
 
 extern t_shell	g_data;
@@ -96,13 +85,4 @@ void	ft_prompt_concat(t_prompt *prompt);
  */
 int		ft_set_new_line(t_prompt *prompt);
 
-/**
- * @brief
- *
- * @param prompt
- * @param bool_quotes
- */
-void	ft_expand(t_prompt *prompt, int bool_quotes);
-
 # endif
-

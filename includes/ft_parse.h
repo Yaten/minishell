@@ -13,6 +13,8 @@
 #ifndef FT_PARSE_H
 # define FT_PARSE_H
 
+# define MAXINPUT 1024
+
 typedef struct s_node
 {
 	char			**args;
@@ -20,7 +22,17 @@ typedef struct s_node
 	int				fd_in;
 	int				fd_out;
 	struct s_node	*next;
-}					t_node;
+}t_node;
+
+typedef struct	s_prompt
+{
+	char	*user;
+	char	*hostname;
+	char	*path;
+	char	*result;
+	char	*cmd;
+	char	input_string[MAXINPUT];
+}t_prompt;
 
 void	ft_parse(char *line, char **envp);
 
@@ -33,5 +45,7 @@ void	ft_destroy_list();
 int		ft_find_path(t_node *node);
 
 void	ft_pipe(void);
+
+void	ft_expand(t_prompt *prompt, int bool_quotes);
 
 #endif

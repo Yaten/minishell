@@ -95,5 +95,11 @@ fclean: clean
 
 re: fclean all
 
+v: re
+	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp $(NAME)
+
+gdb: re
+	gdb $(NAME)
+
 .PHONY: bonus clean fclean re
 
