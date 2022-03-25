@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 20:51:14 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/24 20:03:33 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_print_dir(t_prompt *prompt)
 			free(g_data.operators[i]);
 		free(g_data.operators);
 
-		i = -1;
+		// i = -1;
 		// while (g_data.node->args[++i])
 		// 	free(g_data.node->args[i]);
 		// free(g_data.node->args);
@@ -50,6 +50,7 @@ int	ft_print_dir(t_prompt *prompt)
 
 void	ft_event_loop(t_prompt *prompt)
 {
+	// ft_prompt_concat(prompt);
 	while (TRUE)
 	{
 		ft_prompt_concat(prompt);

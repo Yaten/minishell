@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:55:03 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 12:39:19 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/24 21:15:07 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_builtin()
 	if (g_data.builtin == 3)
 		ft_echo();
 	if (g_data.builtin == 4)
-		puts(GREEN"cd: good job!"RESET);
+		ft_cd();
 	if (g_data.builtin == 5)
 		ft_exit();
 	if (g_data.builtin == 6)

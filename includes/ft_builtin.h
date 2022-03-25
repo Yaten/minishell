@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:43:47 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 12:31:58 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/24 21:15:02 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	ft_export(void);
 
 int		ft_exit();
 
-void		ft_echo();
+void	ft_echo();
+
+void	ft_cd();
 
 #endif

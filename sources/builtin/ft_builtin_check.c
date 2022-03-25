@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 10:59:34 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/24 20:23:17 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_builtin_check(t_node *node)
 	if(node->args[0] == NULL)
 		return (g_data.builtin = FALSE);
 	if(!(ft_strncmp(node->args[0], "cd", 4)))
-		return (g_data.builtin = 1);
+		return (g_data.builtin = 4);
 	if(!(ft_strncmp(node->args[0], "exit", 5)))
 		return (g_data.builtin = 5);
 	if(!(ft_strncmp(node->args[0], "unset", 6)))
