@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 21:22:16 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:04:49 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		ft_find_path(t_node *node);
 
 void	ft_pipe(void);
 
-void	ft_expand(t_prompt *prompt, int bool_quotes);
+void	ft_expand(char *input_string, int bool_quotes);
+
+void	ft_quoting(t_prompt *prompt, char *input_string, int bool_quotes);
 
 #endif

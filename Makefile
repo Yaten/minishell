@@ -42,7 +42,7 @@ OBJECTS_SLIST = $(addprefix $(OBJDIR)/, $(OBJSLIST))
 # OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
 # OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
-SRC_PARSE += ft_expand.c ft_parse.c
+SRC_PARSE += ft_expand.c ft_parse.c ft_quoting.c
 SRC_PARSE += ft_create_cmd.c ft_destroy_list.c ft_find_path.c ft_print.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))

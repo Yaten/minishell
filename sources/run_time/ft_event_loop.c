@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 20:03:33 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:11:26 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
-		ft_expand(prompt, 0);
+		g_data.aux = prompt->input_string;
+		ft_expand(g_data.aux, 0);
+		printf("temporario: %s\n", g_data.aux);
+		ft_quoting(prompt, g_data.aux, 0);
+		printf("sem as aspas: %s\n", prompt->input_string);
 		// ft_parse(prompt->input_string, g_data.envp);
 	}
 }
