@@ -12,21 +12,21 @@
 
 # include "ft_minishell.h"
 
-void	ft_child_process(int *fd)
-{
-	close(fd[0]);
-	dup2(fd[1], STDOUT_FILENO);
-	close(fd[1]);
-	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
-}
+// void	ft_child_process(int *fd)
+// {
+// 	close(fd[0]);
+// 	dup2(fd[1], STDOUT_FILENO);
+// 	close(fd[1]);
+// 	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
+// }
 
-void	ft_parent_process(int *fd, int pid)
-{
-	close(fd[1]);
-	dup2(fd[0], STDIN_FILENO);
-	close(fd[0]);
-	waitpid(pid, NULL, 0);
-}
+// void	ft_parent_process(int *fd, int pid)
+// {
+// 	close(fd[1]);
+// 	dup2(fd[0], STDIN_FILENO);
+// 	close(fd[0]);
+// 	waitpid(pid, NULL, 0);
+// }
 
 void	ft_pipe()
 {
@@ -38,7 +38,7 @@ void	ft_pipe()
 	if (pipe(fd) == -1)
 		ft_putstr_fd("Error: Pipe gonna mad!!!\n", 2);
 	fd_in = 0;
-	tmp = g_data.node;
+	tmp = g_data.cmd_table->begin;
 	while(tmp)
 	{
 		pid = fork();
@@ -48,7 +48,7 @@ void	ft_pipe()
 			close(fd_in);
 			if(g_data.pipe_count)
 				dup2(fd[1], STDOUT_FILENO);
-			execve(tmp->args[0], tmp->args, g_data.envp);
+			execve(tmp->val[0], tmp->val, g_data.envp);
 		}
 		else
 		{

@@ -16,11 +16,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct	s_doubly_node
+typedef struct	s_node
 {
-	char					*val;
-	struct s_doubly_node	*prev;
-	struct s_doubly_node	*next;
+	int				fd_in;
+	int				fd_out;
+	char			*relation;
+	char			*path;
+	char			**val;
+	struct s_node	*prev;
+	struct s_node	*next;
 }t_node;
 
 typedef struct	s_doubly

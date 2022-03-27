@@ -20,7 +20,7 @@ void	ft_echo()
 
 	i = 1;
 	boll_n = 0;
-	tmp = g_data.node->args;
+	tmp = g_data.cmd_table->begin->val;
 	if (!ft_strncmp(tmp[i], "-n", 2))
 	{
 		boll_n = 1;

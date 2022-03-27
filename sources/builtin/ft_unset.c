@@ -14,5 +14,5 @@
 
 void	ft_unset()
 {
-	ft_remove_element(g_data.array, g_data.node->args[1]);
+	ft_remove_element(g_data.array, g_data.cmd_table->begin->val[1]);
 }

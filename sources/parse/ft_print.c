@@ -12,18 +12,18 @@
 
 #include "ft_minishell.h"
 
-void	ft_print(void)
-{
-	t_node	*tmp;
-	int		index;
+// void	ft_print(void)
+// {
+// 	t_node	*tmp;
+// 	int		index;
 
-	tmp = g_data.node;
-	while (tmp != NULL)
-	{
-		index = -1;
-		while(tmp->args[++index] != NULL)
-			printf("%s %d\n", tmp->args[index], index);
-		tmp = tmp->next;
-		puts("");
-	}
-}
+// 	tmp = g_data.node;
+// 	while (tmp != NULL)
+// 	{
+// 		index = -1;
+// 		while(tmp->args[++index] != NULL)
+// 			printf("%s %d\n", tmp->args[index], index);
+// 		tmp = tmp->next;
+// 		puts("");
+// 	}
+// }

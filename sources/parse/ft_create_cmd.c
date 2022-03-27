@@ -53,35 +53,26 @@
 
 int	ft_create_cmd(char *line)
 {
-	t_node *node;
-	t_node *last;
+	char	*aux;
+	char	*tmp;
 
-	last = g_data.node;
-	node = (t_node *)malloc(sizeof(t_node));
-	node->args = ft_split(line, ' ');
-	node->relation = g_data.operators[0];
-	node->next = NULL;
-	node->fd_in = 0;
-	node->fd_out = 0;
-	g_data.node = node;
-	if (ft_find_path(node))
+	// g_data.cmd_table-> = ft_split(line, ' ');
+	// tmp = ft_strdup(aux[0]);
+	ft_list_add_last(g_data.cmd_table, line);
+	// g_data.cmd_table->begin->path = tmp;
+	// (void)tmp;
+	aux = g_data.cmd_table->end->val[0];
+	tmp = g_data.cmd_table->end->val[0];
+	if (ft_find_path(aux))
 	{
-		if(last != NULL)
-		{
-			while(last->next)
-				last = last->next;
-			last->next = node;
-		}
-		else
-			g_data.node = node;
-		if (ft_builtin_path())
+		if (ft_builtin_path(g_data.cmd_table->begin->path))
 		{
 			ft_builtin();
 			return (0);
 		}
 		return (1);
 	}
-	else if (ft_builtin_check(node))
+	else if (ft_builtin_check(tmp))
 		ft_builtin();
 	else
 		ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);

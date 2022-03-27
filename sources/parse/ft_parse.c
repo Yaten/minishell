@@ -34,5 +34,4 @@ void	ft_parse(char *line, char **envp)
 		return ;
 	ft_pipe();
 	(void)envp;
-	ft_destroy_list();
 }

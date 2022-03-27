@@ -17,7 +17,7 @@
 # include "ft_hash_table.h"
 # include "ft_executor.h"
 # include "ft_builtin.h"
-// # include "ft_doubly_linked_list.h"
+# include "ft_doubly_linked_list.h"
 # include "ft_simple_linked_list.h"
 # include "../ft_printf/include/ft_printf.h"
 # include <stdio.h>
@@ -57,6 +57,7 @@ typedef struct s_shell
 	char		**envp;
 	int			builtin;
 	t_hash		*array;
+	t_doubly	*cmd_table;
 	char		*aux;
 }t_shell;
 

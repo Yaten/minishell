@@ -15,14 +15,14 @@
 
 # define MAXINPUT 1024
 
-typedef struct s_node
-{
-	char			**args;
-	char			*relation;
-	int				fd_in;
-	int				fd_out;
-	struct s_node	*next;
-}t_node;
+// typedef struct s_node
+// {
+// 	char			**args;
+// 	char			*relation;
+// 	int				fd_in;
+// 	int				fd_out;
+// 	struct s_node	*next;
+// }t_node;
 
 typedef struct	s_prompt
 {
@@ -36,13 +36,11 @@ typedef struct	s_prompt
 
 void	ft_parse(char *line, char **envp);
 
-int		ft_find_path(t_node *node);
+int		ft_find_path(char *aux);
 
 int		ft_create_cmd(char *line);
 
 void	ft_destroy_list();
-
-int		ft_find_path(t_node *node);
 
 void	ft_pipe(void);
 

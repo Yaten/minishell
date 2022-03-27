@@ -34,18 +34,18 @@
 // 	return (g_data.builtin = FALSE);
 // }
 
-int		ft_builtin_check(t_node *node)
+int		ft_builtin_check(char *aux)
 {
 	//if(!(ft_strcmp(cmd->args[0], "cmd", 3)))
-	if(node->args[0] == NULL)
+	if(aux == NULL)
 		return (g_data.builtin = FALSE);
-	if(!(ft_strncmp(node->args[0], "cd", 4)))
+	if(!(ft_strncmp(aux, "cd", 4)))
 		return (g_data.builtin = 4);
-	if(!(ft_strncmp(node->args[0], "exit", 5)))
+	if(!(ft_strncmp(aux, "exit", 5)))
 		return (g_data.builtin = 5);
-	if(!(ft_strncmp(node->args[0], "unset", 6)))
+	if(!(ft_strncmp(aux, "unset", 6)))
 		return (g_data.builtin = 6);
-	if(!(ft_strncmp(node->args[0], "export", 7)))
+	if(!(ft_strncmp(aux, "export", 7)))
 		return (g_data.builtin = 7);
 	return (g_data.builtin = FALSE);
 }

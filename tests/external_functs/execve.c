@@ -12,7 +12,7 @@
 
 int	main(int argc, char *argv[])
 {
-	char	*newargv[] = {"ls" , NULL};
+	char	*newargv[] = {"ls" , "NULL"};
 	char	*newenviron[] = {NULL};
 
 	execve("/usr/bin/ls" , newargv, newenviron);

@@ -17,8 +17,10 @@ int	ft_exit()
 	int		i;
 	char	*tmp;
 
+	if (g_data.cmd_table->begin->val[1] == NULL)
+		exit (0);
 	i = -1;
-	tmp = g_data.node->args[1];
+	tmp = g_data.cmd_table->begin->val[1];
 	while (tmp[++i])
 	{
 		if (!ft_isdigit(tmp[i]))
@@ -27,5 +29,5 @@ int	ft_exit()
 			exit (2);
 		}
 	}
-	exit(ft_atoi(g_data.node->args[1]));
+	exit(ft_atoi(g_data.cmd_table->begin->val[1]));
 }

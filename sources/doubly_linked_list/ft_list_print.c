@@ -12,14 +12,14 @@
 
 #include "ft_minishell.h"
 
-void	ft_list_print(const t_doubly *l)
-{
-	t_node	*tmp;
-	tmp = l->begin;
+// void	ft_list_print(const t_doubly *l)
+// {
+// 	t_node	*tmp;
+// 	tmp = l->begin;
 
-	while(tmp != NULL)
-	{
-		printf("%s\n", tmp->val);
-		tmp = tmp->next;
-	}
-}
+// 	while(tmp != NULL)
+// 	{
+// 		printf("%s\n", tmp->val);
+// 		tmp = tmp->next;
+// 	}
+// }

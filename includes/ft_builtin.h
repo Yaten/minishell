@@ -24,7 +24,7 @@ void	ft_builtin();
  *
  * @return int
  */
-int		ft_builtin_path();
+int		ft_builtin_path(char *aux);
 
 /**
  * @brief
@@ -32,7 +32,7 @@ int		ft_builtin_path();
  * @param node
  * @return int
  */
-int		ft_builtin_check(t_node *node);
+int		ft_builtin_check(char *aux);
 
 /**
  * @brief

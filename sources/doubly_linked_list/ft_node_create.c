@@ -19,6 +19,10 @@ t_node	*ft_node_create(char *val)
 	node = (t_node *)ft_calloc(1, sizeof(t_node));
 	node->prev = NULL;
 	node->next = NULL;
-	node->val = val;
+	node->path = NULL;
+	node->fd_in = 0;
+	node->fd_out = 0;
+	node->relation = g_data.operators[0];
+	node->val = ft_split(val, ' ');
 	return (node);
 }

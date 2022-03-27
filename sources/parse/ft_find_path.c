@@ -12,7 +12,7 @@
 
 # include "ft_minishell.h"
 
-int	ft_find_path(t_node *node)
+int	ft_find_path(char *aux)
 {
 	char	**paths;
 	char	*path;
@@ -26,15 +26,16 @@ int	ft_find_path(t_node *node)
 	{
 		path_slash = ft_strjoin(paths[i], "/");
 		free(paths[i]);
-		path = ft_strjoin(path_slash, node->args[0]);
+		path = ft_strjoin(path_slash, aux);
 		free(path_slash);
 		if (!access(path, F_OK | X_OK))
 		{
 			while (paths[++i])
 				free(paths[i]);
 			free(paths);
-			free(node->args[0]);
-			node->args[0] = path;
+			free(aux);
+			aux = path;
+			g_data.cmd_table->end->path = path;
 			return (1);
 		}
 		free(path);

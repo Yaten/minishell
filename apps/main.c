@@ -51,6 +51,7 @@ static void	init_operators(void)
 
 int	main(int argc, char *argv[], char *envp[])
 {
+
 	g_data.array = ft_create_table(envp);
 	ft_init_signals();
 	init_operators();

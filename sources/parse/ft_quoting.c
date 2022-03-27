@@ -14,8 +14,8 @@
 
 void	ft_quoting(t_prompt *prompt, char *input_string, int bool_quotes)
 {
-	char	*tmp;
 	int		i;
+	char	*tmp;
 
 	i = 0;
 	tmp = input_string;
@@ -24,30 +24,19 @@ void	ft_quoting(t_prompt *prompt, char *input_string, int bool_quotes)
 		if (*tmp == '\"')
 		{
 			bool_quotes = !bool_quotes;
-			tmp++;
-			while (*tmp != '\"')
-			{
+			while (*++tmp != '\"')
 				prompt->input_string[i++] = *tmp;
-				tmp++;
-			}
-			tmp++;
+			++tmp;
 			bool_quotes = !bool_quotes;
 		}
 		else if (*tmp == '\'' && !bool_quotes)
 		{
-			tmp++;
-			while (*tmp != '\'')
-			{
+			while (*++tmp != '\'')
 				prompt->input_string[i++] = *tmp;
-				tmp++;
-			}
-			tmp++;
+			++tmp;
 		}
 		if (*tmp)
-		{
-			prompt->input_string[i++] = *tmp;
-			tmp++;
-		}
+			prompt->input_string[i++] = *tmp++;
 	}
 	prompt->input_string[i] = '\0';
 }

@@ -36,11 +36,11 @@ SRC_SLINKDLIST += ft_slist_is_empty.c ft_slist_print.c ft_snode_create.c
 OBJSLIST = $(SRC_SLINKDLIST:.c=.o)
 OBJECTS_SLIST = $(addprefix $(OBJDIR)/, $(OBJSLIST))
 
-# SRC_LINKEDLIST += ft_list_add_first.c ft_list_create.c ft_list_destroy.c
-# SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c ft_list_print.c
-# SRC_LINKEDLIST += ft_list_add_last.c
-# OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
-# OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
+SRC_LINKEDLIST += ft_list_add_first.c ft_list_create.c ft_list_destroy.c
+SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c ft_list_print.c
+SRC_LINKEDLIST += ft_list_add_last.c
+OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
+OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
 SRC_PARSE += ft_expand.c ft_parse.c ft_quoting.c
 SRC_PARSE += ft_create_cmd.c ft_destroy_list.c ft_find_path.c ft_print.c
@@ -53,7 +53,7 @@ OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS_EXECUTOR) $(OBJECTS_BUILTIN) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
+$(NAME): $(OBJECTS_EXECUTOR) $(OBJECTS_BUILTIN) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME)
 	$(MAKE) -C $(PRINTF_PATH)
 	@mkdir -p ./bin/
 	$(CC) $(APP)/main.c -o $(NAME) $(OBJECTS_EXECUTOR) $(OBJECTS_BUILTIN) $(OBJECTS_HASH) $(OBJECTS_SLIST) $(OBJECTS_LINKEDLIST) $(OBJECTS_PARSE) $(OBJECTS_RUNTIME) $(PRINTF_PATH)/$(PRINTF) -lreadline

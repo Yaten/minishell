@@ -17,7 +17,7 @@ void	ft_cd()
 	int	i;
 
 	i = -1;
-	while (g_data.node->args[++i])
+	while (g_data.cmd_table->begin->val[++i])
 		;
 	if (i <= 2)
 	{
@@ -28,7 +28,7 @@ void	ft_cd()
 		}
 		else if (i == 2)
 		{
-			if (chdir(g_data.node->args[1]) == -1)
+			if (chdir(g_data.cmd_table->begin->val[1]) == -1)
 				perror("");
 		}
 	}

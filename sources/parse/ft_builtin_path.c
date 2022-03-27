@@ -12,12 +12,12 @@
 
 #include "ft_minishell.h"
 
-int	ft_builtin_path()
+int	ft_builtin_path(char *aux)
 {
 	char	*tmp;
 
-	tmp = ft_strrchr(g_data.node->args[0], '/');
-	if(g_data.node->args[0] == NULL)
+	tmp = ft_strrchr(aux, '/');
+	if(aux == NULL)
 		return (g_data.builtin = FALSE);
 	if(!(ft_strncmp(tmp + 1, "env", 3)))
 		return (g_data.builtin = 1);
