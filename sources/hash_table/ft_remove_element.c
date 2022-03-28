@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 17:46:06 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/24 12:38:58 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:52:44 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_remove_element(t_hash *array, char *key)
 	int		find_index;
 
 	index = ft_hashcode(key);
+	if (!ft_strncmp(key, "PATH", 4))
+		g_data.boll_paths = 0;
 	if (array[index].head == NULL)
 		return ;
 	else
