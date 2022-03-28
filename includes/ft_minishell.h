@@ -14,21 +14,22 @@
 # define MINISHELL_H
 
 # include "ft_parse.h"
-# include "ft_hash_table.h"
-# include "ft_executor.h"
 # include "ft_builtin.h"
+# include "ft_executor.h"
+# include "ft_hash_table.h"
 # include "ft_doubly_linked_list.h"
 # include "ft_simple_linked_list.h"
 # include "../ft_printf/include/ft_printf.h"
+
 # include <stdio.h>
 # include <signal.h>
 # include <stdlib.h>
 # include <string.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/types.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -50,15 +51,16 @@
 
 typedef struct s_shell
 {
-	t_prompt	prompt;
-	t_node		*node;
-	int			pipe_count;
-	char		**operators;
+	char		*aux;
 	char		**envp;
+	char		**operators;
+	int			boll_paths;
 	int			builtin;
+	int			pipe_count;
+	t_node		*node;
+	t_prompt	prompt;
 	t_hash		*array;
 	t_doubly	*cmd_table;
-	char		*aux;
 }t_shell;
 
 extern t_shell	g_data;
