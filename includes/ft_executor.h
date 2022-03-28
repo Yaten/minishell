@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executor.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 21:08:15 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 21:35:01 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:38:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_EXECUTE_H
 # define FT_EXECUTE_H
 
-
+void	ft_pipe(void);
 
 #endif
