@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 10:38:09 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:26:46 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	ft_create_cmd(char *line)
 	ft_list_add_last(g_data.cmd_table, line);
 	// g_data.cmd_table->begin->path = tmp;
 	// (void)tmp;
-	aux = g_data.cmd_table->end->val[0];
-	tmp = g_data.cmd_table->end->val[0];
+	aux = ft_strdup(g_data.cmd_table->end->val[0]);
+	tmp = ft_strdup(g_data.cmd_table->end->val[0]);
 	if (ft_find_path(aux))
 	{
 		if (ft_builtin_path(g_data.cmd_table->begin->path))
