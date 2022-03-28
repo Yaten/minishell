@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 21:29:29 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/27 20:33:16 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 // void	ft_child_process(int *fd)
 // {
@@ -19,7 +19,6 @@
 // 	close(fd[1]);
 // 	execve(g_data.node->args[0], g_data.node->args, g_data.envp);
 // }
-
 // void	ft_parent_process(int *fd, int pid)
 // {
 // 	close(fd[1]);
@@ -48,7 +47,11 @@ void	ft_pipe()
 			close(fd_in);
 			if(g_data.pipe_count)
 				dup2(fd[1], STDOUT_FILENO);
-			execve(tmp->val[0], tmp->val, g_data.envp);
+			if (execve(tmp->path, tmp->val, g_data.envp) == -1)
+			{
+				ft_putstr_fd("deu ruim no execve\n", 2);
+				exit (666);
+			}
 		}
 		else
 		{
