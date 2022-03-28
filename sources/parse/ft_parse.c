@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/23 21:20:59 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:48:31 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	ft_parse(char *line, char **envp)
 	}
 	if (!ft_create_cmd(line))
 		return ;
-	ft_pipe();
+	if (g_data.boll_paths)
+		ft_pipe();
+	else
+		ft_putstr_fd("commando not found\n", 2);
 	(void)envp;
 }
