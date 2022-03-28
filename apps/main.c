@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 20:57:33 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:47:17 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void	init_operators(void)
 
 int	main(int argc, char *argv[], char *envp[])
 {
-
+	g_data.boll_paths = 1;
+	g_data.envp = envp;
 	g_data.array = ft_create_table(envp);
 	ft_init_signals();
 	init_operators();
