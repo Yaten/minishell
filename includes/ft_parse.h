@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/26 16:04:49 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:38:18 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int		ft_find_path(char *aux);
 int		ft_create_cmd(char *line);
 
 void	ft_destroy_list();
-
-void	ft_pipe(void);
 
 void	ft_expand(char *input_string, int bool_quotes);
 
