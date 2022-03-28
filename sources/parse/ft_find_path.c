@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 20:57:24 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:37:07 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_find_path(char *aux)
 	char	*path_slash;
 	int		i;
 
-	paths = ft_split(ft_find_value("PATH"), ':');
-
+	// paths = ft_split(ft_find_value("PATH"), ':');
 	i = -1;
+	paths = ft_split(getenv("PATH"), ':');
 	while (paths[++i])
 	{
 		path_slash = ft_strjoin(paths[i], "/");
