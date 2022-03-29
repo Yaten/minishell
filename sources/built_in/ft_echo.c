@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:49:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 18:20:30 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/29 12:26:15 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_echo()
 	int		boll_n;
 	char	**tmp;
 
+	if (g_data.cmd_table->begin->val[1] == NULL)
+	{
+		ft_putstr_fd("\n", 1);
+		return ;
+	}
 	i = 1;
 	boll_n = 0;
 	tmp = g_data.cmd_table->begin->val;
