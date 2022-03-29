@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_slist_add_last.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:39:39 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/17 19:49:26 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:10:38 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-void	ft_slist_add_last(t_slist *l, int val)
+void	ft_slist_add_last(t_slist *l, char *val)
 {
 	t_snode	*new;
 

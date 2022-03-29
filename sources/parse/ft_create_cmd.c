@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/29 12:28:53 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/29 16:09:54 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,37 @@
 
 int	ft_create_cmd(char *line)
 {
-	char	*aux;
-	char	*tmp;
+	//char	*aux;
+	// char	*tmp;
 
-	// g_data.cmd_table-> = ft_split(line, ' ');
-	// tmp = ft_strdup(aux[0]);
-	ft_list_add_last(g_data.cmd_table, line);
-	// g_data.cmd_table->begin->path = tmp;
-	// (void)tmp;
-	aux = ft_strdup(g_data.cmd_table->end->val[0]);
-	tmp = ft_strdup(g_data.cmd_table->end->val[0]);
-	if (ft_find_path(aux))
+
+	// ls > yaten
+	if (ft_strchr(line, '>'))
 	{
-		if (ft_builtin_path(g_data.cmd_table->begin->path))
-		{
-			ft_builtin();
-			return (0);
-		}
-		return (1);
+		char	**split;
+
+		split = ft_split(line, '>');
+		ft_list_add_last(g_data.cmd_table, split[0]);
+		g_data.cmd_table->begin->list = ft_slinkedlist_create();
+		ft_slist_add_last(g_data.cmd_table->begin->list, split[1]);
 	}
-	else if (ft_builtin_check(tmp))
-		ft_builtin();
-	else
-		ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
+	ft_redir();
 	return (0);
+	// ft_list_add_last(g_data.cmd_table, line);
+	// aux = ft_strdup(g_data.cmd_table->end->val[0]);
+	// tmp = ft_strdup(g_data.cmd_table->end->val[0]);
+	// if (ft_find_path(aux))
+	// {
+	// 	if (ft_builtin_path(g_data.cmd_table->begin->path))
+	// 	{
+	// 		ft_builtin();
+	// 		return (0);
+	// 	}
+	// 	return (1);
+	// }
+	// else if (ft_builtin_check(tmp))
+	// 	ft_builtin();
+	// else
+	// 	ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
+	// return (0);
 }

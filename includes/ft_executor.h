@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executor.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 21:08:15 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/27 19:38:12 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/29 16:00:42 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define FT_EXECUTE_H
 
 void	ft_pipe(void);
+void	ft_redir(void);
 
 #endif

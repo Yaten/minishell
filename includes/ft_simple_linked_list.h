@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:31:25 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/23 20:51:32 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:10:27 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct s_snode
 {
-	int				val;
+	char			*val;
 	struct s_snode	*next;
 }t_snode;
 
@@ -46,7 +46,7 @@ t_slist	*ft_slinkedlist_create(void);
  * @param l
  * @param val
  */
-void	ft_slist_add_last(t_slist *l, int val);
+void	ft_slist_add_last(t_slist *l, char *val);
 
 /**
  * @brief
@@ -69,6 +69,6 @@ void	ft_slist_print(const t_slist *l);
  * @param value
  * @return t_snode*
  */
-t_snode	*ft_snode_create(int value);
+t_snode	*ft_snode_create(char *value);
 
 #endif

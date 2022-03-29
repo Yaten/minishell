@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include "ft_simple_linked_list.h"
 
 typedef struct	s_node
 {
@@ -23,6 +24,7 @@ typedef struct	s_node
 	char			*relation;
 	char			*path;
 	char			**val;
+	t_slist			*list;
 	struct s_node	*prev;
 	struct s_node	*next;
 }t_node;

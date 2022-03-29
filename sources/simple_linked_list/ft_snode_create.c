@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_snode_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:40:07 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/17 19:49:42 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/29 15:11:10 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-t_snode	*ft_snode_create(int value)
+t_snode	*ft_snode_create(char *value)
 {
 	t_snode	*new;
 
