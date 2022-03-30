@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_create_pipe.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/30 14:09:30 by prafael-         ###   ########.fr       */
+/*   Created: 2022/03/30 14:16:20 by prafael-          #+#    #+#             */
+/*   Updated: 2022/03/30 14:17:55 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_parse(char *line, char **envp)
+int	ft_create_pipe(char *line)
 {
-	int	index;
+	char	*aux;
+	char	*tmp;
 
-	index = 0;
-	g_data.pipe_count = 0;
-	while(line[index] != '\0')
+	ft_list_add_last(g_data.cmd_table, line);
+	aux = ft_strdup(g_data.cmd_table->end->val[0]);
+	tmp = ft_strdup(g_data.cmd_table->end->val[0]);
+	if (ft_find_path(aux))
 	{
-		if (line[index] == '|')
+		if (ft_builtin_path(g_data.cmd_table->begin->path))
 		{
-			line[index] = '\0';
-			ft_create_cmd(line);
-			line += index + 1;
-			index = 0;
-			g_data.pipe_count++;
+			ft_builtin();
+			return (0);
 		}
-		index++;
+		return (1);
 	}
-	if (!ft_create_cmd(line))
-		return ;
-	if (g_data.boll_paths)
-		ft_exec();
+	else if (ft_builtin_check(tmp))
+		ft_builtin();
 	else
-		ft_putstr_fd("commando not found\n", 2);
-	(void)envp;
+		ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
+	return (0);
 }

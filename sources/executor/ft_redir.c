@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/29 16:41:16 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:48:09 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,29 @@
 // 	waitpid(pid, NULL, 0);
 // }
 
+// static void	ft_child_process(t_node	*tmp)
+// {
+
+// }
+
+// static void	ft_parent_process(int *fd, int pid)
+// {
+
+// }
+
 void	ft_redir()
 {
-	int		fd[2];
 	pid_t	pid;
-	int		fd_in;
 	t_node	*tmp;
-	int		infile;
 
-	if (pipe(fd) == -1)
-		ft_putstr_fd("Error: Pipe gonna mad!!!\n", 2);
-	fd_in = 0;
-	tmp = g_data.cmd_table->begin;
+	tmp = g_data.cmd_table->end;
 	while(tmp)
 	{
 		pid = fork();
 		if(!pid)
 		{
-			infile = open(tmp->list->begin->val, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			dup2(fd_in, STDIN_FILENO);
-			close(fd_in);
-			dup2(infile, STDOUT_FILENO);
-			close(infile);
-			// if(g_data.pipe_count)
-			// 	dup2(fd[1], STDOUT_FILENO);
+			dup2(tmp->fd_out, STDOUT_FILENO);
+			close(tmp->fd_out);
 			if (execve("/usr/bin/ls", tmp->val, g_data.envp) == -1)
 			{
 				ft_putstr_fd("deu ruim no execve\n", 2);
@@ -59,7 +58,7 @@ void	ft_redir()
 		}
 		else
 			waitpid(pid, NULL, 0);
-	tmp = tmp->next;
+		tmp = tmp->next;
 	}
 
 	// while(tmp)
