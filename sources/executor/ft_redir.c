@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/30 13:48:09 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/03/30 15:33:19 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_redir()
 		pid = fork();
 		if(!pid)
 		{
-			dup2(tmp->fd_out, STDOUT_FILENO);
+			dup2(tmp->fd_out, STDOUT_FILENO); // ls > lkdjf > lsjf
 			close(tmp->fd_out);
 			if (execve("/usr/bin/ls", tmp->val, g_data.envp) == -1)
 			{

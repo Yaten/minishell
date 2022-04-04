@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_redir_output.c                           :+:      :+:    :+:   */
+/*   ft_create_append.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 14:20:36 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/03 10:03:11 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/04/04 08:34:52 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/04/04 09:42:18 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_create_redir_output(char *line)
+void	ft_create_append(char *line)
 {
 	int		i;
 	char	**split;
@@ -28,10 +28,10 @@ void	ft_create_redir_output(char *line)
 	while (aux)
 	{
 		if (aux->next == NULL)
-			g_data.cmd_table->end->fd_out = open(aux->val, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+			g_data.cmd_table->end->fd_out = open(aux->val, O_WRONLY | O_CREAT | O_APPEND, 0777);
 		else
-			open(aux->val, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+			open(aux->val, O_WRONLY | O_CREAT | O_APPEND, 0777);
 		aux = aux->next;
 	}
-	g_data.cmd_table->end->relation = ft_strdup(">");
+	g_data.cmd_table->end->relation = ft_strdup(">>");
 }

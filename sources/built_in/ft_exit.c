@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:51:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/23 20:51:35 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:54:45 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 int	ft_exit()
 {
@@ -18,7 +18,7 @@ int	ft_exit()
 	char	*tmp;
 
 	if (g_data.cmd_table->begin->val[1] == NULL)
-		exit (0);
+		exit (EXIT_SUCCESS);
 	i = -1;
 	tmp = g_data.cmd_table->begin->val[1];
 	while (tmp[++i])

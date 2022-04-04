@@ -16,7 +16,7 @@ SRCDIR_LINKEDLIST = ./sources/doubly_linked_list
 INCLUDE = ./includes
 REMOVE = rm -rf
 
-SRC_EXECUTOR += ft_executor.c ft_redir.c
+SRC_EXECUTOR += ft_executor.c ft_redir.c ft_exec_sys.c
 OBJEXECUTOR = $(SRC_EXECUTOR:.c=.o)
 OBJECTS_EXECUTOR = $(addprefix $(OBJDIR)/, $(OBJEXECUTOR))
 
@@ -44,7 +44,7 @@ OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
 SRC_PARSE += ft_expand.c ft_parse.c ft_quoting.c ft_create_pipe.c
 SRC_PARSE += ft_create_cmd.c ft_destroy_list.c ft_find_path.c ft_print.c
-SRC_PARSE += ft_create_redir_output.c
+SRC_PARSE += ft_create_redir_output.c ft_create_redir_input.c ft_create_append.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
@@ -97,7 +97,7 @@ fclean: clean
 re: fclean all
 
 v: re
-	valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp $(NAME)
+	valgrind --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes --leak-check=full --suppressions=readline.supp $(NAME)
 
 gdb: re
 	gdb $(NAME)
