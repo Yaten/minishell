@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 11:50:46 by user              #+#    #+#             */
-/*   Updated: 2021/08/07 17:30:01 by user             ###   ########.fr       */
+/*   Updated: 2022/04/04 14:12:52 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+# ifndef FD_SIZE
+#  define FD_SIZE 1024
+# endif
 
 typedef struct s_list
 {
@@ -482,5 +490,7 @@ char	**ft_split(char const *s, char c);
  * allocate fails.
  */
 char	*ft_itoa(int n);
+
+char	*get_next_line(int fd);
 
 #endif

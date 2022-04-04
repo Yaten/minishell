@@ -62,6 +62,7 @@ typedef struct s_shell
 	t_prompt	prompt;
 	t_hash		*array;
 	t_doubly	*cmd_table;
+	char		*here_doc;
 }t_shell;
 
 extern t_shell	g_data;
