@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/04/05 10:12:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/05 10:45:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_dup_out(t_node *tmp, int *fd)
+static void	ft_dup_out(t_node *tmp, int *fd)
 {
 	if (!ft_strncmp(tmp->relation, ">>", 1))
 		dup2(tmp->fd_out, STDOUT_FILENO);
