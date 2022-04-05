@@ -3,47 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/04 14:34:16 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/05 10:10:30 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-// char	*ft_symbol(char *line)
-// {
-// 	char	*tmp;
-// 	char	*aux;
-
-// 	tmp = line;
-// 	while (*tmp != '\0')
-// 	{
-// 		if (*tmp == '>')
-// 		{
-// 			aux = ft_strdup("REDIR_OUTPUT");
-// 			tmp++;
-// 			if (*tmp == '>')
-// 				aux = ft_strdup("APPEND_OUTPUT");
-// 		}
-// 		if (*tmp == '<')
-// 		{
-// 			aux = ft_strdup("REDIR_INPUT");
-// 			tmp++;
-// 			if (*tmp == '<')
-// 				aux = ft_strdup("HERE_DOC");
-// 		}
-// 		tmp++;
-// 	}
-// }
+void	ft_symbol(char *aux, char *line)
+{
+	if (!ft_strncmp(aux, "REDIR_OUTPUT", 12))
+		ft_create_redir_output(line);
+	else if (!ft_strncmp(aux, "APPEND_OUTPUT", 13))
+		ft_create_append(line);
+	else if (!ft_strncmp(aux, "REDIR_INPUT", 11))
+		ft_create_redir_input(line);
+	else if (!ft_strncmp(aux, "HERE_DOC", 8))
+		ft_create_heredoc(line);
+	else
+	{
+		ft_list_add_last(g_data.cmd_table, line);
+		g_data.cmd_table->end->fd_in = STDIN_FILENO;
+		g_data.cmd_table->end->fd_out = STDOUT_FILENO;
+	}
+}
 
 void	ft_check_operators(char *line)
 {
 	char	*tmp;
 	char	*aux;
 
-	// aux = ft_symbol(line);
 	tmp = line;
 	while (*tmp != '\0')
 	{
@@ -63,22 +54,7 @@ void	ft_check_operators(char *line)
 		}
 		tmp++;
 	}
-	g_data.here_doc = ft_strdup(aux);
-	if (!ft_strncmp(aux, "REDIR_OUTPUT", 12))
-		ft_create_redir_output(line);
-	else if (!ft_strncmp(aux, "APPEND_OUTPUT", 13))
-		ft_create_append(line);
-	else if (!ft_strncmp(aux, "REDIR_INPUT", 11))
-		ft_create_redir_input(line);
-	else if (!ft_strncmp(g_data.here_doc, "HERE_DOC", 8))
-		ft_create_heredoc(line);
-	else
-	{
-		ft_list_add_last(g_data.cmd_table, line);
-		g_data.cmd_table->end->fd_in = STDIN_FILENO;
-		g_data.cmd_table->end->fd_out = STDOUT_FILENO;
-	}
-	// free(aux);
+	ft_symbol(aux, line);
 }
 
 int	ft_create_cmd(char *line)
@@ -87,10 +63,6 @@ int	ft_create_cmd(char *line)
 	char	*tmp;
 
 	ft_check_operators(line);
-	// ft_list_add_last(g_data.cmd_table, line);
-
-	// g_data.cmd_table->end->fd_in = STDIN_FILENO;
-	// g_data.cmd_table->end->fd_out = STDOUT_FILENO;
 	aux = ft_strdup(g_data.cmd_table->end->val[0]);
 	tmp = ft_strdup(g_data.cmd_table->end->val[0]);
 	if (ft_find_path(aux))

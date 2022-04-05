@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/04 15:17:40 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/04 23:06:48 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	ft_exececutor()
 {
 	t_node	*tmp;
 	int		fd_aux;
-	int		fd;
+	// int		fd;
 
 	fd_aux = STDIN_FILENO;
+	// fd_aux = g_data.cmd_table->end->fd_in;
 	tmp = g_data.cmd_table->begin;
 	while(tmp)
 	{
@@ -74,12 +75,12 @@ void	ft_exececutor()
 		// }
 		tmp = tmp->next;
 	}
-	fd = open("fd_tmp.txt", O_CREAT);
-	while (fd > 2)
-	{
-		close(fd);
-		fd--;
-	}
-	close(fd_aux);
+	// fd = open("fd_tmp.txt", O_CREAT);
+	// while (fd > 2)
+	// {
+	// 	close(fd);
+	// 	fd--;
+	// }
+	// close(fd_aux);
 	// waitpid(pid, NULL, 0);
 }
