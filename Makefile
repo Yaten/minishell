@@ -16,7 +16,7 @@ SRCDIR_LINKEDLIST = ./sources/doubly_linked_list
 INCLUDE = ./includes
 REMOVE = rm -rf
 
-SRC_EXECUTOR += ft_executor.c ft_redir.c ft_exec_sys.c ft_create_heredoc.c
+SRC_EXECUTOR += ft_executor.c ft_exec_sys.c ft_create_heredoc.c
 OBJEXECUTOR = $(SRC_EXECUTOR:.c=.o)
 OBJECTS_EXECUTOR = $(addprefix $(OBJDIR)/, $(OBJEXECUTOR))
 
