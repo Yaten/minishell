@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:57 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/29 12:25:50 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:15:31 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ void	ft_declare_x()
 	}
 }
 
-void	ft_export()
+void	ft_export(t_node *tmp)
 {
 	char	*tmp1;
 	char	*before;
 	char	*last;
 
-	if (g_data.cmd_table->end->val[1] == NULL)
+	if (tmp->val[1] == NULL)
 	{
 		ft_declare_x();
 		return ;
 	}
-	tmp1 = ft_strchr(g_data.cmd_table->end->val[1], '=');
-	before = ft_substr(g_data.cmd_table->end->val[1], 0, tmp1 - g_data.cmd_table->end->val[1]);
-	last = ft_substr(g_data.cmd_table->end->val[1], tmp1 + 1 - g_data.cmd_table->end->val[1], ft_strlen(g_data.cmd_table->end->val[1]));
+	tmp1 = ft_strchr(tmp->val[1], '=');
+	before = ft_substr(tmp->val[1], 0, tmp1 - tmp->val[1]);
+	last = ft_substr(tmp->val[1], tmp1 + 1 - tmp->val[1], ft_strlen(tmp->val[1]));
 	ft_insert(g_data.array, before, last);
 	free (before);
 	free (last);

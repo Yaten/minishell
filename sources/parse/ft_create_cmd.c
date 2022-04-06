@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/05 10:10:30 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:11:04 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_symbol(char *aux, char *line)
 	else
 	{
 		ft_list_add_last(g_data.cmd_table, line);
-		g_data.cmd_table->end->fd_in = STDIN_FILENO;
-		g_data.cmd_table->end->fd_out = STDOUT_FILENO;
+		g_data.cmd_table->end->fd_in = dup(STDIN_FILENO);
+		g_data.cmd_table->end->fd_out = dup(STDOUT_FILENO);
 	}
 }
 
@@ -41,23 +41,22 @@ void	ft_check_operators(char *line)
 		if (*tmp == '>')
 		{
 			aux = ft_strdup("REDIR_OUTPUT");
-			tmp++;
-			if (*tmp == '>')
+			if (*++tmp == '>')
 				aux = ft_strdup("APPEND_OUTPUT");
 		}
 		if (*tmp == '<')
 		{
 			aux = ft_strdup("REDIR_INPUT");
-			tmp++;
-			if (*tmp == '<')
+			if (*++tmp == '<')
 				aux = ft_strdup("HERE_DOC");
 		}
-		tmp++;
+		if (*tmp != '\0')
+			++tmp;
 	}
 	ft_symbol(aux, line);
 }
 
-int	ft_create_cmd(char *line)
+int	ft_create_cmd(char *line) // echo oi
 {
 	char	*aux;
 	char	*tmp;
@@ -67,15 +66,20 @@ int	ft_create_cmd(char *line)
 	tmp = ft_strdup(g_data.cmd_table->end->val[0]);
 	if (ft_find_path(aux))
 	{
-		if (ft_builtin_path(g_data.cmd_table->begin->path))
-		{
-			ft_builtin();
-			return (0);
-		}
+		ft_builtin_path(g_data.cmd_table->end->path);
+		// if (ft_builtin_path(g_data.cmd_table->end->path))
+		// 	return (1);
+		// 	// g_data.cmd_table->end->is_buildin = 1;
+		// else
+		// 	return (1);
+		// 	// g_data.cmd_table->end->is_buildin = 0;
 		return (1);
 	}
 	else if (ft_builtin_check(tmp))
-		ft_builtin();
+	{
+		// g_data.cmd_table->end->is_buildin = 1;
+		return (1);
+	}
 	else
 		ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
 	return (0);

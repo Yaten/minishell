@@ -21,6 +21,7 @@ typedef struct	s_node
 {
 	int				fd_in;
 	int				fd_out;
+	int				is_buildin;
 	char			*relation;
 	char			*path;
 	char			**val;

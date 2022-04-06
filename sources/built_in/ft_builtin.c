@@ -6,26 +6,26 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:55:03 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 21:15:07 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:24:36 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-void	ft_builtin()
+void	ft_builtin(t_node *tmp)
 {
-	if (g_data.builtin == 1)
+	if (tmp->is_buildin == 1)
 		ft_env();
-	if (g_data.builtin == 2)
+	if (tmp->is_buildin == 2)
 		ft_pwd();
-	if (g_data.builtin == 3)
-		ft_echo();
-	if (g_data.builtin == 4)
+	if (tmp->is_buildin == 3)
+		ft_echo(tmp);
+	if (tmp->is_buildin == 4)
 		ft_cd();
-	if (g_data.builtin == 5)
+	if (tmp->is_buildin == 5)
 		ft_exit();
-	if (g_data.builtin == 6)
+	if (tmp->is_buildin == 6)
 		ft_unset();
-	if (g_data.builtin == 7)
-		ft_export();
+	if (tmp->is_buildin == 7)
+		ft_export(tmp);
 }

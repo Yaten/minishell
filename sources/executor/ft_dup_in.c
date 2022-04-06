@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_dup_in.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 15:49:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 11:23:35 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/04/06 11:31:48 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/04/06 11:34:46 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
-void	ft_echo(t_node *tmp)
+void	ft_dup_in(t_node *tmp, int *fd, int *fd_aux)
 {
-	int		i;
-	int		boll_n;
-	char	**aux;
-
-	if (tmp->val[1] == NULL)
-	{
-		ft_putstr_fd("\n", 1);
-		return ;
-	}
-	i = 1;
-	boll_n = 0;
-	aux = tmp->val;
-	if (!ft_strncmp(aux[i], "-n", 2))
-	{
-		boll_n = 1;
-		++i;
-	}
-	while (aux[i])
-	{
-		ft_putstr_fd(aux[i], 1);
-		if (aux[i + 1] != NULL)
-			ft_putstr_fd(" ", 1);
-		i++;
-	}
-	if (!boll_n)
-		ft_putstr_fd("\n", 1);
+	if (!ft_strncmp(tmp->relation, "<<", 1))
+		dup2(tmp->fd_in, STDIN_FILENO);
+	else
+		dup2(fd_aux[0], STDIN_FILENO);
+	(void)fd;
+	(void)tmp;
 }

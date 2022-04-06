@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/24 20:23:17 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:27:36 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int		ft_builtin_check(char *aux)
 {
 	//if(!(ft_strcmp(cmd->args[0], "cmd", 3)))
 	if(aux == NULL)
-		return (g_data.builtin = FALSE);
-	if(!(ft_strncmp(aux, "cd", 4)))
-		return (g_data.builtin = 4);
-	if(!(ft_strncmp(aux, "exit", 5)))
-		return (g_data.builtin = 5);
-	if(!(ft_strncmp(aux, "unset", 6)))
-		return (g_data.builtin = 6);
-	if(!(ft_strncmp(aux, "export", 7)))
-		return (g_data.builtin = 7);
-	return (g_data.builtin = FALSE);
+		return (g_data.cmd_table->end->is_buildin = FALSE);
+	if(!(ft_strncmp(aux, "cd", 2)))
+		return (g_data.cmd_table->end->is_buildin = 4);
+	if(!(ft_strncmp(aux, "exit", 4)))
+		return (g_data.cmd_table->end->is_buildin = 5);
+	if(!(ft_strncmp(aux, "unset", 5)))
+		return (g_data.cmd_table->end->is_buildin = 6);
+	if(!(ft_strncmp(aux, "export", 6)))
+		return (g_data.cmd_table->end->is_buildin = 7);
+	return (g_data.cmd_table->end->is_buildin = FALSE);
 }
