@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:51:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/05 11:14:22 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:35:51 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_create_heredoc(char *line)
 		;
 	ft_list_add_last(g_data.cmd_table, ft_strtrim(tmp[0], " "));
 	g_data.cmd_table->end->fd_in = open("here_doc.txt", O_WRONLY | O_CREAT , 0777);
+	signal(SIGINT, here_doc_signal);
 	while (1)
 	{
 		ft_putstr_fd("heredoc> ", 1);

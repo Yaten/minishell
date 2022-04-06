@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/27 21:47:17 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 17:08:32 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@ t_prompt prompt;
 t_shell	g_data;
 
 // static void	init_operators(void);
-
-/* Ctrl C */
-void sigint_handler(int sig)
-{
-	(void)sig;
-	ft_printf("\n%s", prompt.result);
-}
-
-void ft_set_signal(void (*function)(int) , int sig)
-{
-	void	*function_pointer;
-
-	function_pointer = function;
-	signal(sig, function_pointer);
-}
-
-void ft_init_signals(void)
-{
-	ft_set_signal(sigint_handler, SIGINT);
-}
 
 static void	init_operators(void)
 {

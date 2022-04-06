@@ -49,7 +49,7 @@ SRC_PARSE += ft_create_redir_output.c ft_create_redir_input.c ft_create_append.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
-SRC_RUNTIME += ft_event_loop.c ft_prompt_concat.c ft_set_new_line.c
+SRC_RUNTIME += ft_event_loop.c ft_prompt_concat.c ft_set_new_line.c ft_signals.c
 OBJRUNTIME = $(SRC_RUNTIME:.c=.o)
 OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 

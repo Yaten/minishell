@@ -90,4 +90,7 @@ void	ft_prompt_concat(t_prompt *prompt);
  */
 int		ft_set_new_line(t_prompt *prompt);
 
+void	here_doc_signal(int sig);
+void	ft_init_signals(void);
+
 # endif
