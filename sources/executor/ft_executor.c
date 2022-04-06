@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_executor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 11:41:59 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 12:07:42 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_exececutor()
 	tmp = g_data.cmd_table->begin;
 	while(tmp)
 	{
-		if (tmp->is_buildin)
+		if (tmp->is_builtin)
 		{
 			ft_exec_builtin(tmp, &fd_aux);
 			// dup2(backup[0], STDIN_FILENO);

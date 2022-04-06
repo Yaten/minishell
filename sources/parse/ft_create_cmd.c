@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 11:11:04 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/06 12:07:42 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ int	ft_create_cmd(char *line) // echo oi
 		ft_builtin_path(g_data.cmd_table->end->path);
 		// if (ft_builtin_path(g_data.cmd_table->end->path))
 		// 	return (1);
-		// 	// g_data.cmd_table->end->is_buildin = 1;
+		// 	// g_data.cmd_table->end->is_builtin = 1;
 		// else
 		// 	return (1);
-		// 	// g_data.cmd_table->end->is_buildin = 0;
+		// 	// g_data.cmd_table->end->is_builtin = 0;
 		return (1);
 	}
 	else if (ft_builtin_check(tmp))
 	{
-		// g_data.cmd_table->end->is_buildin = 1;
+		// g_data.cmd_table->end->is_builtin = 1;
 		return (1);
 	}
 	else
