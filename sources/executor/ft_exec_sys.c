@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/04/06 11:34:57 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:01:30 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,56 @@
 // 	(void)tmp;
 // }
 
+int	*ft_handler_error(t_node *tmp)
+{
+	perror(tmp->val[0]);
+	exit(-1);
+}
+
 static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 {
+	int	result;
+
 	ft_dup_in(tmp, fd, fd_aux);
 	ft_dup_out(tmp, fd);
 	close(fd[1]);
 	close(fd[0]);
 	// close(fd_aux[0]);
-	if (execve(tmp->path, tmp->val, g_data.envp) == -1)
-		perror("execve ");
+	result = execve(tmp->path, tmp->val, g_data.envp);
+	if (result != 0)
+	{
+		if (!ft_find_path(tmp->val[0]))
+		{
+			ft_putstr_fd(tmp->val[0], 2);
+			ft_putstr_fd(": command not found\n", 2);
+			exit(127);
+		}
+		else
+		{
+			perror(tmp->val[0]);
+			exit(result);
+		}
+	}
+	// if (execve(tmp->path, tmp->val, g_data.envp) == -1)
+	// {
+	// 	// perror("execve ");
+	// 	status = ft_handler_error(tmp);
+	// 	// exit(-1);
+	// }
 }
 
 static void	ft_parent_process(t_node *tmp, int *fd, pid_t pid, int *fd_aux)
 {
-	waitpid(pid, NULL, 0);
+	int	status;
+
+	status = 0;
+	wait(&status);
+	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
+	// waitpid(pid, status, WUNTRACED);
+	// if (WIFEXITED(*status))
+	// 	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(*status)));
+	//  ft_itoa(WEXITSTATUS(status));
+	// ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(*status)));
 	*fd_aux = fd[0];
 	close(fd[1]);
 	(void)tmp;

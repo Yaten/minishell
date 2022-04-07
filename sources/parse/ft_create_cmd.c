@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 12:07:42 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/07 09:26:26 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_create_cmd(char *line) // echo oi
 		// g_data.cmd_table->end->is_builtin = 1;
 		return (1);
 	}
-	else
-		ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
-	return (0);
+	// else
+	// 	ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
+	return (1);
 }

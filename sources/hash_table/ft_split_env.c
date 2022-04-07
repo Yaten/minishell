@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 17:44:51 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/20 18:57:56 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/07 12:05:08 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	ft_split_env(t_hash *array, char *envp[])
 		free (before);
 		free (last);
 	}
+	ft_insert(array, "?", "0");
 	return (0);
 }
