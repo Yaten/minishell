@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_redir_output.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:20:36 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/03 10:03:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:19:39 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	ft_create_redir_output(char *line)
 			open(aux->val, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		aux = aux->next;
 	}
-	g_data.cmd_table->end->relation = ft_strdup(">");
+	g_data.cmd_table->end->operators = ft_strdup(">");
 }

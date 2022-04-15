@@ -22,7 +22,7 @@ typedef struct	s_node
 	int				fd_in;
 	int				fd_out;
 	int				is_builtin;
-	char			*relation;
+	char			*operators;
 	char			*path;
 	char			**val;
 	t_slist			*list;
@@ -48,6 +48,7 @@ void		ft_list_add_first(t_doubly *l, char *val);
 int			ft_list_is_empty(t_doubly *l);
 
 void		ft_list_print(const t_doubly *l);
+void		ft_list_print2(const t_doubly *l);
 
 void		ft_list_add_last(t_doubly *l, char *val);
 

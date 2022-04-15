@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/04 11:17:30 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/14 22:04:05 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // typedef struct s_node
 // {
 // 	char			**args;
-// 	char			*relation;
+// 	char			*operators;
 // 	int				fd_in;
 // 	int				fd_out;
 // 	struct s_node	*next;
@@ -53,5 +53,7 @@ void	ft_create_redir_output(char *line);
 void	ft_create_redir_input(char *line);
 
 void	ft_create_append(char *line);
+
+void	ft_tokenize(t_prompt *prompt);
 
 #endif

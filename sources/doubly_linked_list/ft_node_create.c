@@ -22,7 +22,7 @@ t_node	*ft_node_create(char *val)
 	node->path = NULL;
 	node->fd_in = 0;
 	node->fd_out = 0;
-	node->relation = g_data.operators[0];
+	node->operators = g_data.operators[0];
 	node->val = ft_split(val, ' ');
 	return (node);
 }

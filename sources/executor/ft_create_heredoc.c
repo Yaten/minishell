@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_heredoc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:51:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/08 09:05:21 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:19:39 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	ft_create_heredoc(char *line)
 		{
 			close(g_data.cmd_table->end->fd_in);
 			g_data.cmd_table->end->fd_in = open("here_doc.txt", O_RDONLY | O_CREAT, 0777);
-			g_data.cmd_table->end->relation = ft_strdup("<<");
+			g_data.cmd_table->end->operators = ft_strdup("<<");
 		}
 		// close(close(g_data.cmd_table->end->fd_in);
 		// g_data.cmd_table->end->fd_in = open("here_doc.txt", O_RDONLY | O_CREAT, 0777);
-		// g_data.cmd_table->end->relation = ft_strdup("<<");
+		// g_data.cmd_table->end->operators = ft_strdup("<<");
 	}
 }

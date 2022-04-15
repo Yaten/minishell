@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_append.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 08:34:52 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/04/04 09:42:18 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:19:39 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	ft_create_append(char *line)
 			open(aux->val, O_WRONLY | O_CREAT | O_APPEND, 0777);
 		aux = aux->next;
 	}
-	g_data.cmd_table->end->relation = ft_strdup(">>");
+	g_data.cmd_table->end->operators = ft_strdup(">>");
 }
