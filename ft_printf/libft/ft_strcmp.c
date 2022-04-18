@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_print.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 19:05:28 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 16:50:36 by prafael-         ###   ########.fr       */
+/*   Created: 2022/04/18 15:21:24 by prafael-          #+#    #+#             */
+/*   Updated: 2022/04/18 16:24:23 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+#include "libft.h"
 
-void	ft_list_print(const t_doubly *l)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_node	*tmp;
-	tmp = l->begin;
-	while(tmp != NULL)
+	if (s1 == NULL)
+		return (1);
+	while (*s1 && *s1 == *s2)
 	{
-		printf("%s\n", tmp->val[0]);
-		tmp = tmp->next;
+		s1++;
+		s2++;
 	}
-}
-
-void	ft_list_print2(const t_doubly *l)
-{
-	t_node	*tmp;
-	tmp = l->begin;
-	while(tmp != NULL)
-	{
-		if (tmp->operators == NULL)
-		{
-			printf("operator NULL\n");
-			break ;
-		}
-		printf("%s\n", tmp->operators);
-		tmp = tmp->next;
-	}
+	return ((int)(unsigned char)(*s1) - (int)(unsigned char)(*s2));
 }

@@ -6,52 +6,66 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/14 22:04:13 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:00:31 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-// void	ft_syntax(t_doubly *token)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = token->begin;
-// 	while (tmp)
-// 	{
-// 		if (!ft_strncmp(tmp->operators, "pipe", 4))
-// 		{
-// 			if (ft_strncmp(tmp->prev->operators, "word", 4) ||
-// 			ft_strncmp(tmp->next->operators, "word", 4))
-// 			{
-// 				ft_putstr_fd("Syntax er")
-// 			}
-// 		}
-// 	}
-// }
-
-void	ft_define_token(t_doubly *token)
+int	ft_syntax(t_doubly *token)
 {
 	t_node	*tmp;
 
 	tmp = token->begin;
 	while (tmp)
 	{
-		if (!ft_strncmp(tmp->val[0], "|", 1))
+		if (!ft_strcmp(tmp->operators, "pipe"))
+		{
+			if (tmp->prev == NULL || tmp->next == NULL || \
+			tmp->next->operators == NULL)
+			{
+				ft_putendl_fd("Syntax error", 2);
+				return (0);
+			}
+		}
+		else if (!ft_strcmp(tmp->operators, "redir_output") || !ft_strcmp(tmp->operators, "redir_append") || !ft_strcmp(tmp->operators, "redir_input"))
+		{
+			if (tmp->next == NULL || ft_strcmp(tmp->next->operators, "word"))
+			{
+				ft_putendl_fd("Syntax error2", 2);
+				return (0);
+			}
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+int	ft_define_token(t_doubly *token)
+{
+	t_node	*tmp;
+
+	tmp = token->begin;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->val[0], "|"))
 			tmp->operators = "pipe";
-		else if (!ft_strncmp(tmp->val[0], "<", 1))
+		else if (!ft_strcmp(tmp->val[0], "<"))
 			tmp->operators = "redir_input";
-		else if (!ft_strncmp(tmp->val[0], "<<", 2))
+		else if (!ft_strcmp(tmp->val[0], "<<"))
 			tmp->operators = "here_doc";
-		else if (!ft_strncmp(tmp->val[0], ">", 1))
+		else if (!ft_strcmp(tmp->val[0], ">"))
 			tmp->operators = "redir_output";
-		else if (!ft_strncmp(tmp->val[0], ">>", 2))
+		else if (!ft_strcmp(tmp->val[0], ">>"))
 			tmp->operators = "redir_append";
+		else if (tmp->val[0] == NULL)
+			tmp->operators = NULL;
 		else
 			tmp->operators = "word";
 		tmp = tmp->next;
 	}
-	ft_list_print2(token);
+	// ft_list_print2(token);
+	return (ft_syntax(token));
 }
 
 int	ft_is_space(int c)
@@ -60,7 +74,7 @@ int	ft_is_space(int c)
 	c == '\v' || c == '\f');
 }
 
-void	ft_tokenize(t_prompt *prompt)
+int	ft_tokenize(t_prompt *prompt)
 {
 	char		*begin;
 	char		*end;
@@ -79,7 +93,7 @@ void	ft_tokenize(t_prompt *prompt)
 				break ;
 			end++;
 		}
-		if (ft_strchr("><|", *begin))
+		if (ft_strchr("><|", *begin) && *begin)
 		{
 			if (*begin == *(begin + 1))
 				end = end + 2;
@@ -90,6 +104,6 @@ void	ft_tokenize(t_prompt *prompt)
 		begin - prompt->input_string, end - begin + 1));
 		begin = end;
 	}
-	ft_define_token(token);
+	return (ft_define_token(token));
 	// ft_list_print(token);
 }

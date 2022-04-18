@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/14 22:04:05 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:26:02 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	ft_quoting(t_prompt *prompt, char *input_string, int bool_quotes);
 
 int		ft_create_pipe(char *line);
 
-void	ft_create_redir_output(char *line);
+int		ft_create_redir_output(char *line);
 
 void	ft_create_redir_input(char *line);
 
 void	ft_create_append(char *line);
 
-void	ft_tokenize(t_prompt *prompt);
+int		ft_tokenize(t_prompt *prompt);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 11:50:46 by user              #+#    #+#             */
-/*   Updated: 2022/04/04 14:12:52 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:25:51 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
  *
  * @param s1 Pointer to the area of memory of the first string.
  * @param s2 Pointer to the area of memory of the second string
+ * @return int Return value < 0: then it indicates s1 is less than s2.
+ * Return value > 0: then it indicates s2 is less than s1.
+ * Return value == 0: then it indicates s1 is equal to s2.
+ */
+int		ft_strcmp(const char *s1, const char *s2);
+
+/**
+ * @brief Function only compare the first (at most) n bytes of
+ * strings s1 and s2.
+ *
+ * @param s1 Pointer to the area of memory of the first string.
+ * @param s2 Pointer to the area of memory of the second string
  * @param n Buffer size in bytes to compare both strings.
  * @return int Return value < 0: then it indicates s1 is less than s2.
  * Return value > 0: then it indicates s2 is less than s1.
@@ -252,7 +264,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *nptr);
 
 /**
- * @brief Returns a pointer to the first occurence of the 'c'
+ * @brief Returns a pointer to the first occurrence of the 'c'
  * in the string s.
  *
  * @param s Pointer to the string memory area.
