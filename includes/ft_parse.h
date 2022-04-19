@@ -6,12 +6,14 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 17:26:02 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/19 16:14:13 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PARSE_H
 # define FT_PARSE_H
+
+#include "ft_doubly_linked_list.h"
 
 # define MAXINPUT 1024
 
@@ -55,5 +57,7 @@ void	ft_create_redir_input(char *line);
 void	ft_create_append(char *line);
 
 int		ft_tokenize(t_prompt *prompt);
+
+int		ft_syntax(t_doubly *token);
 
 #endif

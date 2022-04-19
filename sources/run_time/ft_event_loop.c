@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 17:01:08 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:27:56 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_quoting(prompt, g_data.aux, 0);
 		if (!ft_tokenize(prompt))
 			continue ;
-		//printf("without quotes: %s\n", prompt->input_string);
+		// //printf("without quotes: %s\n", prompt->input_string);
 		g_data.cmd_table = ft_list_create();
 		ft_parse(prompt->input_string, g_data.envp);
 		ft_list_destroy(&g_data.cmd_table);

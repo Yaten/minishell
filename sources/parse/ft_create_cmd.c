@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 17:25:43 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:32:09 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_check_operators(char *line)
 	return (ft_symbol(aux, line));
 }
 
-int	ft_create_cmd(char *line) // echo oi
+int	ft_create_cmd(char *line)
 {
 	char	*aux;
 	char	*tmp;
@@ -69,20 +69,17 @@ int	ft_create_cmd(char *line) // echo oi
 	if (ft_find_path(aux))
 	{
 		ft_builtin_path(g_data.cmd_table->end->path);
-		// if (ft_builtin_path(g_data.cmd_table->end->path))
-		// 	return (1);
-		// 	// g_data.cmd_table->end->is_builtin = 1;
-		// else
-		// 	return (1);
-		// 	// g_data.cmd_table->end->is_builtin = 0;
+		free(aux);
+		free(tmp);
 		return (1);
 	}
 	else if (ft_builtin_check(tmp))
 	{
-		// g_data.cmd_table->end->is_builtin = 1;
+		free(aux);
+		free(tmp);
 		return (1);
 	}
-	// else
-	// 	ft_putstr_fd("Command not found fella, you r wrong >(\n", 2);
+	free(aux);
+	free(tmp);
 	return (1);
 }

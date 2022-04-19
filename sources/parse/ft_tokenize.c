@@ -6,40 +6,11 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 17:00:31 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:03:09 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
-
-int	ft_syntax(t_doubly *token)
-{
-	t_node	*tmp;
-
-	tmp = token->begin;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->operators, "pipe"))
-		{
-			if (tmp->prev == NULL || tmp->next == NULL || \
-			tmp->next->operators == NULL)
-			{
-				ft_putendl_fd("Syntax error", 2);
-				return (0);
-			}
-		}
-		else if (!ft_strcmp(tmp->operators, "redir_output") || !ft_strcmp(tmp->operators, "redir_append") || !ft_strcmp(tmp->operators, "redir_input"))
-		{
-			if (tmp->next == NULL || ft_strcmp(tmp->next->operators, "word"))
-			{
-				ft_putendl_fd("Syntax error2", 2);
-				return (0);
-			}
-		}
-		tmp = tmp->next;
-	}
-	return (1);
-}
+#include "ft_minishell.h"
 
 int	ft_define_token(t_doubly *token)
 {
@@ -64,7 +35,6 @@ int	ft_define_token(t_doubly *token)
 			tmp->operators = "word";
 		tmp = tmp->next;
 	}
-	// ft_list_print2(token);
 	return (ft_syntax(token));
 }
 
@@ -72,6 +42,17 @@ int	ft_is_space(int c)
 {
 	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || \
 	c == '\v' || c == '\f');
+}
+
+static char	*ft_verify_token(char *end)
+{
+	while (!ft_strchr(" ><|", *end))
+	{
+		if (ft_strchr(" ><|", *end + 1))
+			break ;
+		end++;
+	}
+	return (end);
 }
 
 int	ft_tokenize(t_prompt *prompt)
@@ -87,12 +68,7 @@ int	ft_tokenize(t_prompt *prompt)
 		while (ft_is_space(*begin))
 			begin++;
 		end = begin;
-		while (!ft_strchr(" ><|", *end))
-		{
-			if (ft_strchr(" ><|", *end + 1))
-				break ;
-			end++;
-		}
+		end = ft_verify_token(end);
 		if (ft_strchr("><|", *begin) && *begin)
 		{
 			if (*begin == *(begin + 1))
@@ -105,5 +81,4 @@ int	ft_tokenize(t_prompt *prompt)
 		begin = end;
 	}
 	return (ft_define_token(token));
-	// ft_list_print(token);
 }
