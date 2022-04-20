@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 16:03:34 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:08:32 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_parse(char *line, char **envp)
 	}
 	if (!ft_create_cmd(line))
 		return ;
-	if (g_data.boll_paths)
-		ft_exececutor();
+	//if (g_data.boll_paths)
+	//	ft_exececutor();
 	else
 		ft_putstr_fd("command not found\n", 2);
 	(void)envp;

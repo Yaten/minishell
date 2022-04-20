@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 17:32:09 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:30:51 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_symbol(char *aux, char *line)
 {
-	if (!ft_strncmp(aux, "REDIR_OUTPUT", 12))
+	if (!ft_strcmp(aux, REDIR_OUTPUT))
 		return (ft_create_redir_output(line));
-	else if (!ft_strncmp(aux, "APPEND_OUTPUT", 13))
+	else if (!ft_strcmp(aux, APPEND_OUTPUT))
 		ft_create_append(line);
-	else if (!ft_strncmp(aux, "REDIR_INPUT", 11))
+	else if (!ft_strcmp(aux, REDIR_INPUT))
 		ft_create_redir_input(line);
-	else if (!ft_strncmp(aux, "HERE_DOC", 8))
+	else if (!ft_strcmp(aux, HERE_DOC))
 		ft_create_heredoc(line);
 	else
 	{
@@ -36,6 +36,7 @@ int	ft_check_operators(char *line)
 	char	*tmp;
 	char	*aux;
 
+	aux = NULL;
 	tmp = line;
 	while (*tmp != '\0')
 	{

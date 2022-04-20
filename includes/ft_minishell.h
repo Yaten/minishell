@@ -38,6 +38,11 @@
 # define BACKSLASH "Escape character is not allowed\n"
 # define SEMICOLON "Comma is not allowed\n"
 
+# define REDIR_OUTPUT "REDIR_OUTPUT"
+# define APPEND_OUTPUT "APPEND_OUTPUT"
+# define REDIR_INPUT "REDIR_INPUT"
+# define HERE_DOC "HERE_DOC"
+
 # define SEPARATORS " ><\'\"|?$"
 
 # define BLACK "\e[30;1m"

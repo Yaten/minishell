@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/27 21:37:07 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/04/20 14:41:42 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int	ft_find_path(char *aux)
 			while (paths[++i])
 				free(paths[i]);
 			free(paths);
-			free(aux);
+			// free(aux);
 			aux = path;
 			g_data.cmd_table->end->path = path;
 			return (1);
 		}
 		free(path);
 	}
+	// free(aux);
 	free(paths);
 	return (0);
 }

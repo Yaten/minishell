@@ -18,7 +18,7 @@ OBJECTS_BONUS	= 	$(SOURCES_BONUS:.c=.o)
 
 NAME			=	libft.a
 
-CC				=	cc
+CC				=	cc -g
 AR				=	ar
 RM				=	rm -f
 

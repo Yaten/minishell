@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 18:03:09 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:16:04 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ int	ft_tokenize(t_prompt *prompt)
 			else
 				end++;
 		}
-		ft_list_add_last(token, ft_substr(prompt->input_string, \
-		begin - prompt->input_string, end - begin + 1));
+		ft_list_add_last(token, ft_substr(prompt->input_string, begin - prompt->input_string, end - begin));
 		begin = end;
 	}
 	return (ft_define_token(token));

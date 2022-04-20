@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:26:39 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 17:43:38 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/20 15:06:40 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	ft_list_destroy(t_doubly **l_ref)
 		while (aux->val[++i])
 			free(aux->val[i]);
 		free(aux->val);
-		free (aux);
 		free(aux->path);
+		// free (aux->operators);
+		free (aux);
 	}
 	free(l);
 	*l_ref = NULL;

@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 16:14:13 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/20 14:43:40 by prafael-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct	s_prompt
 	char	*path;
 	char	*result;
 	char	*cmd;
-	char	input_string[MAXINPUT];
+	// char	input_string[MAXINPUT];
+	char	*input_string;
 }t_prompt;
 
 void	ft_parse(char *line, char **envp);
