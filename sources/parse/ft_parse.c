@@ -32,8 +32,8 @@ void	ft_parse(char *line, char **envp)
 	}
 	if (!ft_create_cmd(line))
 		return ;
-	//if (g_data.boll_paths)
-	//	ft_exececutor();
+	if (g_data.boll_paths)
+		ft_exececutor();
 	else
 		ft_putstr_fd("command not found\n", 2);
 	(void)envp;

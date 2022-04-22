@@ -41,8 +41,8 @@ static t_hnode	*ft_new_item(char *key, char *value)
 	t_hnode	*new;
 
 	new = (t_hnode *)malloc(sizeof(t_hnode));
-	new->key = ft_strdup(key);
-	new->value = ft_strdup(value);
+	new->key = key;
+	new->value = value;
 	new->next = NULL;
 	return (new);
 }
@@ -59,9 +59,11 @@ void	ft_insert(t_hash *array, char *key, char *value)
 	list = (t_hnode *)array[index].head;
 	if (ft_find_key(list, key) != -1)
 	{
-		array[index].head->value = ft_strdup(value);
+        if (array[index].head->value != NULL)
+            free (array[index].head->value);
+		array[index].head->value = value;
 		return ;
-	}
+    }
 	item = ft_new_item(key, value);
 	if (array[index].head == NULL)
 	{

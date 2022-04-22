@@ -35,7 +35,8 @@ int	concat_and_clean(t_prompt *prompt)
 	prompt->hostname, prompt->path);
 	if (!(pointer))
 		exit(1);
-	prompt->result = pointer;
+	prompt->result = ft_strdup(pointer);
+    free(pointer);
 	return (0);
 }
 

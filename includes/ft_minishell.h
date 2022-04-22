@@ -72,6 +72,7 @@ typedef struct s_shell
 }t_shell;
 
 extern t_shell	g_data;
+extern t_prompt prompt;
 
 /**
  * @brief

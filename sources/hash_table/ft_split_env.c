@@ -29,6 +29,6 @@ int	ft_split_env(t_hash *array, char *envp[])
 		free (before);
 		free (last);
 	}
-	ft_insert(array,"?","0");
+	ft_insert(array, "?", ft_strdup("0"));
 	return (0);
 }

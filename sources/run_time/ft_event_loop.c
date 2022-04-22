@@ -24,11 +24,6 @@ static int	ft_clean_program(t_prompt *prompt)
 	free(g_data.operators);
 	free(prompt->input_string);
 	prompt->input_string = NULL;
-	// i = -1;
-	// while (g_data.node->args[++i])
-	// 	free(g_data.node->args[i]);
-	// free(g_data.node->args);
-	(void)prompt;
 	exit(0);
 }
 
@@ -43,9 +38,13 @@ int	ft_print_dir(t_prompt *prompt)
 	if (ft_strlen(buf) != 0)
 	{
 		add_history(buf);
-		prompt->input_string = (char *)malloc(sizeof(char) * ft_strlen(buf));
-		ft_strlcpy(prompt->input_string, buf, ft_strlen(buf) + 1);
+        // prompt->input_string = NULL;
+        free (prompt->input_string);
+		//prompt->input_string = (char *)malloc(sizeof(char) * ft_strlen(buf) + 1);
+		//ft_strlcpy(prompt->input_string, buf, ft_strlen(buf));
+        prompt->input_string = ft_strdup(buf);
 		free(buf);
+        buf = NULL;
 		return (0);
 	}
 	else
@@ -66,8 +65,8 @@ void	ft_event_loop(t_prompt *prompt)
 		ft_expand(g_data.aux, 0);
 		// printf("temp: %s\n", g_data.aux);
 		ft_quoting(prompt, g_data.aux, 0);
-		if (!ft_tokenize(prompt))
-			continue ;
+		// if (!ft_tokenize(prompt))
+		//	continue ;
 		// // //printf("without quotes: %s\n", prompt->input_string);
 		g_data.cmd_table = ft_list_create();
 		ft_parse(prompt->input_string, g_data.envp);

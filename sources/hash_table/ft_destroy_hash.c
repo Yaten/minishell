@@ -17,15 +17,21 @@ void	ft_destroy_hash(t_hash *array)
 	t_hash	*temp;
 	t_hnode	*aux;
 	int		i;
+    int     index;
 
 	i = -1;
 	temp = array;
+	index = ft_hashcode("?");
+	if (ft_find_key((t_hnode *)array[index].head, "?") != -1)
+	{
+        free (array[index].head->value);
+    }
 	while (++i < TABLE_SIZE)
 	{
 		while (temp[i].head)
 		{
-			free(temp[i].head->key);
-			free(temp[i].head->value);
+//			free(temp[i].head->key);
+	//		free(temp[i].head->value);
 			aux = temp[i].head;
 			temp[i].head = temp[i].head->next;
 			free(aux);

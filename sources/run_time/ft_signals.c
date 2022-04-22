@@ -12,7 +12,7 @@
 
 # include "ft_minishell.h"
 
-t_prompt prompt;
+//prompt prompt;
 extern t_shell g_data;
 
 /* Ctrl C */
