@@ -12,10 +12,8 @@
 
 # include "ft_minishell.h"
 
-//prompt prompt;
 extern t_shell g_data;
 
-/* Ctrl C */
 void sigint_handler(int sig)
 {
 	(void)sig;
@@ -23,19 +21,11 @@ void sigint_handler(int sig)
 	ft_insert(g_data.array, "?", "130");
 }
 
-//heredoc signal
 void here_doc_signal(int sig)
 {
 	(void)sig;
-	// write(1, "\n", 1);
 	ft_insert(g_data.array, "?", "130");
-	// puts("");
 	exit (130);
-	// g_data.here_bol = 0;
-	// ft_putstr_fd("\n", 0);
-	// close(0);
-	// puts("");
-	//exit(130);
 }
 
 void ft_set_signal(void (*function)(int) , int sig)
