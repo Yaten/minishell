@@ -33,8 +33,8 @@ typedef struct	s_prompt
 	char	*path;
 	char	*result;
 	char	*cmd;
-	// char	input_string[MAXINPUT];
-	char	*input_string;
+    char	input_string[MAXINPUT];
+//	char	*input_string;
 }t_prompt;
 
 void	ft_parse(char *line, char **envp);

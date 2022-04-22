@@ -60,6 +60,7 @@ int	ft_tokenize(t_prompt *prompt)
 	char		*begin;
 	char		*end;
 	t_doubly	*token;
+    char        *tmp;
 
 	token = ft_list_create();
 	begin = prompt->input_string;
@@ -76,8 +77,9 @@ int	ft_tokenize(t_prompt *prompt)
 			else
 				end++;
 		}
-		ft_list_add_last(token, ft_substr(prompt->input_string, \
-        begin - prompt->input_string, end - begin));
+        tmp =  ft_substr(prompt->input_string, begin - prompt->input_string, end - begin);
+		ft_list_add_last(token,tmp);
+        free(tmp);
 		begin = end;
 	}
 	return (ft_define_token(token));

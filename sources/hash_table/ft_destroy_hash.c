@@ -30,8 +30,12 @@ void	ft_destroy_hash(t_hash *array)
 	{
 		while (temp[i].head)
 		{
-//			free(temp[i].head->key);
-	//		free(temp[i].head->value);
+            if (temp[i].head->key != NULL)
+            {
+                if (ft_strcmp(temp[i].head->key, "?"))
+        			free(temp[i].head->value);
+	    		free(temp[i].head->key);
+            }
 			aux = temp[i].head;
 			temp[i].head = temp[i].head->next;
 			free(aux);

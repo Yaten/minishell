@@ -41,8 +41,8 @@ static t_hnode	*ft_new_item(char *key, char *value)
 	t_hnode	*new;
 
 	new = (t_hnode *)malloc(sizeof(t_hnode));
-	new->key = key;
-	new->value = value;
+	new->key = ft_strdup(key);
+	new->value = ft_strdup(value);
 	new->next = NULL;
 	return (new);
 }
