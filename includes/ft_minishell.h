@@ -59,7 +59,6 @@ typedef struct s_shell
 {
 	char		*aux;
 	char		**envp;
-	char		**operators;
 	int			boll_paths;
 	int			builtin;
 	int			pipe_count;
@@ -72,7 +71,7 @@ typedef struct s_shell
 }t_shell;
 
 extern t_shell	g_data;
-extern t_prompt prompt;
+extern t_prompt	prompt;
 
 /**
  * @brief
