@@ -6,18 +6,37 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/09 16:42:20 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:22:33 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_open_files(t_node *begin, t_node *node)
+static t_node	*ft_open_files(t_node *begin, t_node *node)
 {
-	
+	if (!ft_strcmp(begin->operators, "redir_input"))
+	{
+		close (node->fd_in);
+		node->fd_in = open(begin->next->val[0], O_RDONLY , 0777);
+		node->operator_input = 1;
+	}
+	else if (!ft_strcmp(begin->operators, "redir_output"))
+	{
+		close (node->fd_out);
+		node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		node->operator_output = 1;
+	}
+	else if (!ft_strcmp(begin->operators, "redir_append"))
+	{
+		close (node->fd_out);
+		node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		node->operator_output = 1;
+	}
+	begin = begin->next;
+	return (begin);
 }
 
-t_node	*ft_add_command(t_node *begin, t_node *node)
+static t_node	*ft_add_command(t_node *begin, t_node *node)
 {
 	int	i;
 
@@ -25,34 +44,11 @@ t_node	*ft_add_command(t_node *begin, t_node *node)
 	while (begin)
 	{
 		if (!ft_strcmp(begin->operators, "word"))
-		{
-			node->operators = "|";
 			node->val[i++] = ft_strdup(begin->val[0]);
-		}
-		else if (!ft_strcmp(begin->operators, "redir_input"))
-		{
-			close (node->fd_in);
-			node->fd_in = open(begin->next->val[0], O_RDONLY , 0777);
-			node->operators = "redir_input";
-			node->operator_input = 1;
-			begin = begin->next;
-		}
-		else if (!ft_strcmp(begin->operators, "redir_output"))
-		{
-			close (node->fd_out);
-			node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-			node->operators = "redir_output";
-			node->operator_output = 1;
-			begin = begin->next;
-		}
-		else if (!ft_strcmp(begin->operators, "redir_append"))
-		{
-			close (node->fd_out);
-			node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_APPEND, 0777);
-			node->operators = "redir_append";
-			node->operator_output = 1;
-			begin = begin->next;
-		}
+		else if (!ft_strcmp(begin->operators, "redir_input") || \
+		!ft_strcmp(begin->operators, "redir_output") || \
+		!ft_strcmp(begin->operators, "redir_append"))
+			begin = ft_open_files(begin, node);
 		else
 			break ;
 		begin = begin->next;
@@ -94,7 +90,7 @@ t_node	*ft_new_node_table(t_node *begin)
 	int		count_word;
 
 	count_word = ft_count_word(begin);
-	node = (t_node *)ft_calloc(1, sizeof(t_node));
+	node = (t_node *)malloc(sizeof(t_node) * 1);
 	node->prev = NULL;
 	node->next = NULL;
 	node->path = NULL;
@@ -102,7 +98,7 @@ t_node	*ft_new_node_table(t_node *begin)
 	node->operator_output = 0;
 	node->fd_in = dup(STDIN_FILENO);
 	node->fd_out = dup(STDOUT_FILENO);
-	node->val = (char **)malloc(sizeof(char) * count_word);
+	node->val = (char **)ft_calloc(sizeof(char) , count_word + 1);
 	return (ft_add_command(begin, node));
 }
 
