@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/07 10:53:02 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:09:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,6 @@ static void	ft_close_fds(int *fd_aux)
 	}
 	close(fd_aux[0]);
 }
-
-// void	ft_set_exit_code(int code)
-// {
-// 	ft_insert(g_data.array, "?", ft_itoa(code));
-// }
-
-// void	ft_algo(t_node *tmp, int *fd_aux)
-// {
-// 	int	code;
-
-// 	code = ft_exec_sys(tmp, fd_aux);
-// 	ft_set_exit_code(code);
-// }
 
 void	ft_exececutor()
 {
