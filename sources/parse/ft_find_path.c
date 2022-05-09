@@ -3,44 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/20 14:41:42 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:20:18 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_minishell.h"
 
-int	ft_find_path(char *aux)
+int	ft_find_path()
+/* int	ft_find_path(char *g_data.cmd_table->end->val[0]) */
 {
-	char	**paths;
+    int		i;
+    char    *tmp;
 	char	*path;
+	char	**paths;
 	char	*path_slash;
-	int		i;
 
-	// paths = ft_split(ft_find_value("PATH"), ':');
 	i = -1;
-	paths = ft_split(getenv("PATH"), ':');
+    tmp = getenv(ft_strdup("PATH"));
+	paths = ft_split(tmp, ':');
 	while (paths[++i])
 	{
 		path_slash = ft_strjoin(paths[i], "/");
 		free(paths[i]);
-		path = ft_strjoin(path_slash, aux);
-		free(path_slash);
-		if (!access(path, F_OK | X_OK))
+		path = ft_strjoin(path_slash, g_data.cmd_table->end->val[0]);
+        free(path_slash);
+        if (!access(path, F_OK | X_OK))
 		{
-			while (paths[++i])
-				free(paths[i]);
-			free(paths);
-			// free(aux);
-			aux = path;
+            while (paths[++i])
+                free(paths[i]);
+            free(paths);
 			g_data.cmd_table->end->path = path;
 			return (1);
 		}
 		free(path);
 	}
-	// free(aux);
-	free(paths);
 	return (0);
+	free(paths);
 }

@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_sys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/04/14 21:19:39 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:01:28 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
-
-// static void	ft_dup_out(t_node *tmp, int *fd)
-// {
-// 	if (!ft_strncmp(tmp->operators, ">>", 1))
-// 		dup2(tmp->fd_out, STDOUT_FILENO);
-// 	else if (g_data.pipe_count)
-// 		dup2(fd[1], STDOUT_FILENO);
-// 	(void)fd;
-// 	(void)tmp;
-// }
-
-// static void	ft_dup_in(t_node *tmp, int *fd, int *fd_aux)
-// {
-// 	if (!ft_strncmp(tmp->operators, "<<", 1))
-// 		dup2(tmp->fd_in, STDIN_FILENO);
-// 	else
-// 		dup2(fd_aux[0], STDIN_FILENO);
-// 	(void)fd;
-// 	(void)tmp;
-// }
-
-int	*ft_handler_error(t_node *tmp)
-{
-	perror(tmp->val[0]);
-	exit(-1);
-}
 
 static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 {
@@ -62,12 +36,6 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 			exit(result);
 		}
 	}
-	// if (execve(tmp->path, tmp->val, g_data.envp) == -1)
-	// {
-	// 	// perror("execve ");
-	// 	status = ft_handler_error(tmp);
-	// 	// exit(-1);
-	// }
 }
 
 static void	ft_parent_process(t_node *tmp, int *fd, pid_t pid, int *fd_aux)
@@ -77,11 +45,6 @@ static void	ft_parent_process(t_node *tmp, int *fd, pid_t pid, int *fd_aux)
 	status = 0;
 	wait(&status);
 	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
-	// waitpid(pid, status, WUNTRACED);
-	// if (WIFEXITED(*status))
-	// 	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(*status)));
-	//  ft_itoa(WEXITSTATUS(status));
-	// ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(*status)));
 	*fd_aux = fd[0];
 	close(fd[1]);
 	(void)tmp;

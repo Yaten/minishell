@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_event_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/20 16:31:33 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:34:30 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_clean_program(t_prompt *prompt)
 	while (g_data.operators[++i])
 		free(g_data.operators[i]);
 	free(g_data.operators);
-    (void)prompt;
+	(void)prompt;
 	exit(0);
 }
 
@@ -39,30 +39,42 @@ int	ft_print_dir(t_prompt *prompt)
 		add_history(buf);
 		ft_strlcpy(prompt->input_string, buf, MAXINPUT);
 		free(buf);
-        buf = NULL;
+		buf = NULL;
 		return (0);
 	}
 	else
-    {
-        free(buf);
+	{
+		free(buf);
 		return (1);
-    }
+	}
 }
 
 void	ft_event_loop(t_prompt *prompt)
 {
+	t_doubly	*token;
+
+	/* token = ft_list_create(); */
 	while (TRUE)
 	{
+		/*
+		 * t_doubly	*token;
+		*/
 		ft_prompt_concat(prompt);
 		if (ft_print_dir(prompt) || ft_set_new_line(prompt))
 			continue ;
 		g_data.aux = prompt->input_string;
 		ft_expand(g_data.aux, 0);
 		ft_quoting(prompt, g_data.aux, 0);
-		if (!ft_tokenize(prompt))
+        token = ft_list_create();
+		if (!ft_tokenize(prompt, token))
     		continue ;
 		g_data.cmd_table = ft_list_create();
-		ft_parse(prompt->input_string, g_data.envp);
-		ft_list_destroy(&g_data.cmd_table);
+		ft_parse(token);
+		/* ft_list_destroy(&g_data.cmd_table); */
+		/* ft_list_destroy(&token); */
+		/*
+			* free(token);
+			* token = NULL;
+			*/
 	}
 }

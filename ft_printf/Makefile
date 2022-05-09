@@ -6,13 +6,13 @@
 #    By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/11 05:54:15 by rogeriorslf       #+#    #+#              #
-#    Updated: 2022/04/20 15:54:16 by prafael-         ###   ########.fr        #
+#    Updated: 2022/04/26 17:34:10 by willian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 LIBPATH = ./libft
-CC = gcc
+CC = gcc -g
 CFLAGS =
 AR = ar rcs
 RM = rm -f

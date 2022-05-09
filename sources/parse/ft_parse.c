@@ -3,38 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/20 15:08:32 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:00:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_parse(char *line, char **envp)
+void	ft_parse(t_doubly *token)
 {
-	int	index;
+	t_node	*end;
+	t_node	*begin;
 
-	index = 0;
+	end = token->begin;
+	begin = token->begin;
 	g_data.pipe_count = 0;
-	while(line[index] != '\0')
+	while(end != NULL)
 	{
-		if (line[index] == '|')
+		if (!ft_strcmp(end->val[0], "|"))
 		{
-			line[index] = '\0';
-			ft_create_cmd(line);
-			line += index + 1;
-			index = 0;
+			ft_create_cmd(begin, end);
+			begin = end->next;
 			g_data.pipe_count++;
 		}
-		index++;
+		end = end->next;
 	}
-	if (!ft_create_cmd(line))
-		return ;
+	ft_create_cmd(begin, end);
 	if (g_data.boll_paths)
 		ft_exececutor();
 	else
 		ft_putstr_fd("command not found\n", 2);
-	(void)envp;
 }

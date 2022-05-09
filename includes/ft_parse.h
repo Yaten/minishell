@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/20 14:43:40 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:20:59 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,17 @@ typedef struct	s_prompt
 //	char	*input_string;
 }t_prompt;
 
-void	ft_parse(char *line, char **envp);
+void	ft_parse(t_doubly *token);
+/*
+ * void	ft_parse(char *line, char **envp);
+ */
+int		ft_find_path();
+// int		ft_find_path(char *aux);
 
-int		ft_find_path(char *aux);
 
-int		ft_create_cmd(char *line);
+void     ft_create_cmd(t_node *begin, t_node *end);
+// int     ft_create_cmd(t_node *begin, t_node *end);
+/* int		ft_create_cmd(char *line); */
 
 void	ft_destroy_list();
 
@@ -57,7 +63,8 @@ void	ft_create_redir_input(char *line);
 
 void	ft_create_append(char *line);
 
-int		ft_tokenize(t_prompt *prompt);
+int 	ft_tokenize(t_prompt *prompt, t_doubly *token);
+/* int		ft_tokenize(t_prompt *prompt); */
 
 int		ft_syntax(t_doubly *token);
 

@@ -17,13 +17,13 @@ int	ft_builtin_path(char *aux)
 	char	*tmp;
 
 	tmp = ft_strrchr(aux, '/');
-	if(aux == NULL)
+	if (aux == NULL)
 		return (g_data.cmd_table->end->is_builtin = FALSE);
-	if(!(ft_strncmp(tmp + 1, "env", 3)))
+	if (!(ft_strncmp(tmp + 1, "env", 3)))
 		return (g_data.cmd_table->end->is_builtin = 1);
-	if(!(ft_strncmp(tmp + 1, "pwd", 3)))
+	if (!(ft_strncmp(tmp + 1, "pwd", 3)))
 		return (g_data.cmd_table->end->is_builtin = 2);
-	if(!(ft_strncmp(tmp + 1, "echo", 4)))
+	if (!(ft_strncmp(tmp + 1, "echo", 4)))
 		return (g_data.cmd_table->end->is_builtin = 3);
 	return (g_data.cmd_table->end->is_builtin = FALSE);
 }

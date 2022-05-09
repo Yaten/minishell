@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 09:29:45 by user              #+#    #+#             */
-/*   Updated: 2021/08/07 11:30:14 by user             ###   ########.fr       */
+/*   Updated: 2022/04/26 18:10:57 by willian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	ret = (char **)ft_calloc(sizeof(char *), (count_word(s, c) + 1));
+	ret = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1));
+	/* ret = (char **)ft_calloc(sizeof(char *), (count_word(s, c) + 1)); */
 	if (!ret)
 		return (NULL);
 	i = 0;

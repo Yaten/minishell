@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_syntax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 16:48:18 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:18:05 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	ft_syntax(t_doubly *token)
 		}
 		tmp = tmp->next;
 	}
-	ft_list_destroy(&token);
+   /*  ft_list_destroy(&token); */
 	return (1);
 }

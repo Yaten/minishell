@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_circular_linked_list.h                            :+:      :+:    :+:   */
+/*   ft_doubly_linked_list.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:43:35 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/17 14:42:08 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:28:17 by willian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ typedef struct	s_node
 	int				fd_in;
 	int				fd_out;
 	int				is_builtin;
-	char			*operators;
+    char			*operators;
+    int             operator_input;
+    int             operator_output;
 	char			*path;
 	char			**val;
 	t_slist			*list;

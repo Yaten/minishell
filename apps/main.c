@@ -14,10 +14,7 @@
 # include <errno.h>
 
 t_prompt prompt;
-
 t_shell	g_data;
-
-// static void	init_operators(void);
 
 static void	init_operators(void)
 {

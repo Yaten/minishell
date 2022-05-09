@@ -6,7 +6,7 @@
 /*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:26:39 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/20 15:06:40 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/04/26 16:40:29 by willian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_list_destroy(t_doubly **l_ref)
 	t_doubly	*l;
 	t_node		*p;
 	t_node		*aux;
-	int			i;
+    int			i;
 
 	l = *l_ref;
 	p = l->begin;
@@ -34,6 +34,7 @@ void	ft_list_destroy(t_doubly **l_ref)
 		free(aux->path);
 		// free (aux->operators);
 		free (aux);
+
 	}
 	free(l);
 	*l_ref = NULL;
