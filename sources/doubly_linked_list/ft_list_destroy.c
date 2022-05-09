@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:26:39 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/26 16:40:29 by willian          ###   ########.fr       */
+/*   Updated: 2022/05/09 17:36:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_list_destroy(t_doubly **l_ref)
 	t_doubly	*l;
 	t_node		*p;
 	t_node		*aux;
-    int			i;
+	int			i;
 
 	l = *l_ref;
 	p = l->begin;
@@ -27,9 +27,9 @@ void	ft_list_destroy(t_doubly **l_ref)
 		p = p->next;
 		if (aux->list != NULL)
 			ft_slist_destroy(&aux->list);
-		i = -1;
-		while (aux->val[++i])
-			free(aux->val[i]);
+		i = 0;
+		while (aux->val[i] != NULL)
+			free(aux->val[i++]);
 		free(aux->val);
 		free(aux->path);
 		// free (aux->operators);
