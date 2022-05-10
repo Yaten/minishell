@@ -17,11 +17,11 @@ t_node	*ft_node_create(char *val)
 	t_node	*node;
 
 	node = (t_node *)ft_calloc(1, sizeof(t_node));
+	node->fd_in = 0;
+	node->fd_out = 0;
 	node->prev = NULL;
 	node->next = NULL;
 	node->path = NULL;
-	node->fd_in = 0;
-	node->fd_out = 0;
 	node->operators = NULL;
 	node->val = ft_split(val, ' ');
 	return (node);
