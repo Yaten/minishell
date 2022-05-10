@@ -6,11 +6,11 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:35:53 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 10:37:40 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:43:10 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 t_hash	*ft_create_table(char *envp[])
 {

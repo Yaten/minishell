@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 17:48:52 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/27 21:57:32 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:44:40 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	ft_insert(t_hash *array, char *key, char *value)
 	list = (t_hnode *)array[index].head;
 	if (ft_find_key(list, key) != -1)
 	{
-        if (array[index].head->value != NULL)
-            free (array[index].head->value);
+		if (array[index].head->value != NULL)
+			free (array[index].head->value);
 		array[index].head->value = value;
 		return ;
-    }
+	}
 	item = ft_new_item(key, value);
 	if (array[index].head == NULL)
 	{

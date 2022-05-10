@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:11 by prafael-          #+#    #+#             */
-/*   Updated: 2022/03/28 08:57:09 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:31:26 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
-void	ft_cd()
+void	ft_cd(void)
 {
 	int	i;
 
@@ -28,8 +28,6 @@ void	ft_cd()
 		}
 		else if (i == 2)
 		{
-			// if (!ft_strncmp(g_data.cmd_table->begin->val[1], "..", 2))
-
 			if (chdir(g_data.cmd_table->begin->val[1]) == -1)
 				perror("");
 		}

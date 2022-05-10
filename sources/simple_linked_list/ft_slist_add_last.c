@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_slist_add_last.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:39:39 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/29 15:10:38 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:39:32 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 void	ft_slist_add_last(t_slist *l, char *val)
 {

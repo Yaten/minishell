@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:54:09 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/21 12:14:55 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:36:34 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-int		ft_list_is_empty(t_doubly *l)
+int	ft_list_is_empty(t_doubly *l)
 {
-	return(l->size == 0);
+	return (l->size == 0);
 }

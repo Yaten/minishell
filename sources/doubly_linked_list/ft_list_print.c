@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:05:28 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/18 16:50:36 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:37:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	ft_list_print(const t_doubly *l)
 {
 	t_node	*tmp;
+
 	tmp = l->begin;
-	while(tmp != NULL)
+	while (tmp != NULL)
 	{
 		printf("%s\n", tmp->val[0]);
 		tmp = tmp->next;
@@ -26,8 +27,9 @@ void	ft_list_print(const t_doubly *l)
 void	ft_list_print2(const t_doubly *l)
 {
 	t_node	*tmp;
+
 	tmp = l->begin;
-	while(tmp != NULL)
+	while (tmp != NULL)
 	{
 		if (tmp->operators == NULL)
 		{

@@ -6,11 +6,11 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:40:52 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/17 19:49:34 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:40:11 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 int	ft_slist_is_empty(t_slist *l)
 {

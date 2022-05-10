@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:57 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 11:15:31 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:33:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
-void	ft_declare_x()
+void	ft_declare_x(void)
 {
 	int		i;
 	t_hnode	*temp;
@@ -48,7 +48,8 @@ void	ft_export(t_node *tmp)
 	}
 	tmp1 = ft_strchr(tmp->val[1], '=');
 	before = ft_substr(tmp->val[1], 0, tmp1 - tmp->val[1]);
-	last = ft_substr(tmp->val[1], tmp1 + 1 - tmp->val[1], ft_strlen(tmp->val[1]));
+	last = ft_substr(tmp->val[1], tmp1 + 1 - tmp->val[1], \
+	ft_strlen(tmp->val[1]));
 	ft_insert(g_data.array, before, last);
 	free (before);
 	free (last);
