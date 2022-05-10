@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prompt_concat.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 23:12:41 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/19 17:15:23 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:49:23 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
-void color_string(t_prompt *prompt)
+void	color_string(t_prompt *prompt)
 {
 	char	**strings;
 	char	*test;
@@ -29,14 +29,14 @@ void color_string(t_prompt *prompt)
 
 int	concat_and_clean(t_prompt *prompt)
 {
-	char *pointer;
+	char	*pointer;
 
 	pointer = ft_sprintf("%s@%s:%s", prompt->user, \
 	prompt->hostname, prompt->path);
 	if (!(pointer))
 		exit(1);
 	prompt->result = ft_strdup(pointer);
-    free(pointer);
+	free(pointer);
 	return (0);
 }
 

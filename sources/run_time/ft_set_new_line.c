@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_new_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:04:17 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/07 18:19:06 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:49:54 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 void	ft_error_handler(t_prompt *prompt, char *message)
 {
