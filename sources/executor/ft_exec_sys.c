@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/04 19:01:28 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:49:13 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 	ft_dup_out(tmp, fd);
 	close(fd[1]);
 	close(fd[0]);
-	// close(fd_aux[0]);
 	result = execve(tmp->path, tmp->val, g_data.envp);
 	if (result != 0)
 	{
@@ -62,7 +61,7 @@ void	ft_exec_sys(t_node *tmp, int *fd_aux)
 	pid = fork();
 	if (pid == -1)
 		perror("fork ");
-	if(!pid)
+	if (!pid)
 		ft_child_process(tmp, fd, fd_aux);
 	else
 		ft_parent_process(tmp, fd, pid, fd_aux);
