@@ -6,14 +6,14 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:43:47 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/06 11:22:42 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/09 22:33:53 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_BUILTIN_H
 # define FT_BUILTIN_H
 
-#include "ft_doubly_linked_list.h"
+# include "ft_doubly_linked_list.h"
 
 /**
  * @brief
@@ -55,10 +55,10 @@ void	ft_unset(void);
 
 void	ft_export(t_node *tmp);
 
-int		ft_exit();
+int		ft_exit(void);
 
 void	ft_echo(t_node *tmp);
 
-void	ft_cd();
+void	ft_cd(void);
 
 #endif
