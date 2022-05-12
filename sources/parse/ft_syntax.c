@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/04 18:18:05 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:01:17 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static int	ft_verify_operator(t_node *tmp)
 	return (1);
 }
 
-int	ft_syntax(t_doubly *token)
+int	ft_syntax()
 {
 	t_node	*tmp;
 
-	tmp = token->begin;
+	tmp = g_data.token->begin;
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->operators, "pipe"))
@@ -59,6 +59,5 @@ int	ft_syntax(t_doubly *token)
 		}
 		tmp = tmp->next;
 	}
-   /*  ft_list_destroy(&token); */
 	return (1);
 }
