@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/10 15:49:13 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:35:45 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 	{
 		if (!ft_find_path(tmp->val[0]))
 		{
-			ft_putstr_fd(tmp->val[0], 2);
+			ft_putstr_fd(tmp->val[0], STDERR_FILENO);
 			ft_putstr_fd(": command not found\n", 2);
 			exit(127);
 		}
