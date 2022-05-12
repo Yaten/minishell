@@ -6,35 +6,11 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/09 20:22:33 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:11:11 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
-
-static t_node	*ft_open_files(t_node *begin, t_node *node)
-{
-	if (!ft_strcmp(begin->operators, "redir_input"))
-	{
-		close (node->fd_in);
-		node->fd_in = open(begin->next->val[0], O_RDONLY , 0777);
-		node->operator_input = 1;
-	}
-	else if (!ft_strcmp(begin->operators, "redir_output"))
-	{
-		close (node->fd_out);
-		node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-		node->operator_output = 1;
-	}
-	else if (!ft_strcmp(begin->operators, "redir_append"))
-	{
-		close (node->fd_out);
-		node->fd_out = open(begin->next->val[0], O_WRONLY | O_CREAT | O_APPEND, 0777);
-		node->operator_output = 1;
-	}
-	begin = begin->next;
-	return (begin);
-}
 
 static t_node	*ft_add_command(t_node *begin, t_node *node)
 {
@@ -55,7 +31,7 @@ static t_node	*ft_add_command(t_node *begin, t_node *node)
 	}
 	node->val[i] = NULL;
 	node->prev = g_data.cmd_table->end;
-	if(ft_list_is_empty(g_data.cmd_table))
+	if (ft_list_is_empty(g_data.cmd_table))
 		g_data.cmd_table->begin = node;
 	else
 		g_data.cmd_table->end->next = node;
@@ -98,7 +74,7 @@ t_node	*ft_new_node_table(t_node *begin)
 	node->operator_output = 0;
 	node->fd_in = dup(STDIN_FILENO);
 	node->fd_out = dup(STDOUT_FILENO);
-	node->val = (char **)ft_calloc(sizeof(char) , count_word + 1);
+	node->val = (char **)ft_calloc(sizeof(char), count_word + 1);
 	return (ft_add_command(begin, node));
 }
 
