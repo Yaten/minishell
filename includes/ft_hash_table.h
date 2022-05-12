@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hash_table.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:20:42 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/03/23 20:51:30 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:12:51 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_hnode
 
 typedef struct s_hash
 {
+	int		size;
 	t_hnode	*head;
 	t_hnode	*tail;
-	int		size;
 }t_hash;
 
 /**
