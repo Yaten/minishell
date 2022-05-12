@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:47:58 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/09 22:51:13 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:51:26 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ extern t_shell	g_data;
 void	sigint_handler(int sig)
 {
 	(void)sig;
-	ft_printf("\n%s", prompt.result);
+	ft_putstr_fd("\nMINISHEL> ", STDOUT_FILENO);
 	ft_insert(g_data.array, "?", "130");
 }
 
