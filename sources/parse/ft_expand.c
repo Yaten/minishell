@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prafael- <prafael-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 07:25:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/04/07 18:34:50 by prafael-         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:25:34 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_minishell.h"
+#include "ft_minishell.h"
 
 char	*ft_expand_last(char *tmp)
 {
@@ -21,7 +21,7 @@ char	*ft_expand_last(char *tmp)
 
 char	*ft_getvalue(char *value)
 {
-	char *content;
+	char	*content;
 
 	content = getenv((value));
 	if (!content)
@@ -43,7 +43,8 @@ void	ft_chunk(char *input_string, char *tmp)
 		middle = ft_find_value(last);
 	else
 	{
-		middle = ft_substr(input_string, tmp + 1 - input_string, last - tmp - 1);
+		middle = ft_substr(input_string, tmp + 1 - input_string, \
+		last - tmp - 1);
 		middle = ft_getvalue(middle);
 	}
 	last = ft_strdup(last);
@@ -55,7 +56,6 @@ void	ft_chunk(char *input_string, char *tmp)
 		aux = ft_strjoin(former, last);
 		g_data.aux = ft_strdup(aux);
 	}
-	// if (ft_strncmp(last, "?", 1))
 }
 
 void	ft_expand(char *input_string, int bool_quotes)
