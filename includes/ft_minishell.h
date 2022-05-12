@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef FT_MINISHELL_H
+# define FT_MINISHELL_H
 
 # include "ft_parse.h"
 # include "ft_builtin.h"
 # include "ft_executor.h"
 # include "ft_hash_table.h"
 # include "ft_doubly_linked_list.h"
-# include "ft_simple_linked_list.h"
-# include "../ft_printf/include/ft_printf.h"
+# include "../libft/libft.h"
 
 # include <fcntl.h>
 # include <signal.h>
@@ -55,48 +54,35 @@
 # define WHITE "\e[37;1m"
 # define RESET "\e[0m"
 
+# define MAXINPUT 1024
+
 typedef struct s_shell
 {
 	char		*aux;
+	char		*tmp;
 	char		**envp;
+	char		*here_doc;
+	char		input_string[MAXINPUT];
 	int			boll_paths;
 	int			builtin;
 	int			pipe_count;
+	int			here_bol;
 	t_node		*node;
-	t_prompt	prompt;
 	t_hash		*array;
 	t_doubly	*cmd_table;
-	char		*here_doc;
-	int			here_bol;
+	t_doubly	*token;
 }t_shell;
 
 extern t_shell	g_data;
-extern t_prompt	prompt;
 
-/**
- * @brief
- *
- * @param input
- * @param prompt
- */
-void	ft_event_loop(t_prompt *prompt);
+void	ft_event_loop(void);
 
-/**
- * @brief
- *
- * @param prompt
- */
-void	ft_prompt_concat(t_prompt *prompt);
+void	ft_prompt_concat(void);
 
-/**
- * @brief
- *
- * @param prompt
- * @return int
- */
-int		ft_set_new_line(t_prompt *prompt);
+int		ft_set_new_line(void);
 
 void	here_doc_signal(int sig);
+
 void	ft_init_signals(void);
 
-# endif
+#endif
