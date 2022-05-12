@@ -6,21 +6,21 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/04 19:00:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:04:24 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_parse(t_doubly *token)
+void	ft_parse()
 {
 	t_node	*end;
 	t_node	*begin;
 
-	end = token->begin;
-	begin = token->begin;
+	end = g_data.token->begin;
+	begin = g_data.token->begin;
 	g_data.pipe_count = 0;
-	while(end != NULL)
+	while (end != NULL)
 	{
 		if (!ft_strcmp(end->val[0], "|"))
 		{
@@ -34,5 +34,5 @@ void	ft_parse(t_doubly *token)
 	if (g_data.boll_paths)
 		ft_exececutor();
 	else
-		ft_putstr_fd("command not found\n", 2);
+		ft_putstr_fd("command not found\n", STDERR_FILENO);
 }
