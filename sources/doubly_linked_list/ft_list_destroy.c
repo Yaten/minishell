@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:26:39 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/10 15:36:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:18:12 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_list_destroy(t_doubly **l_ref)
 	{
 		aux = p;
 		p = p->next;
-		if (aux->list != NULL)
-			ft_slist_destroy(&aux->list);
 		i = 0;
 		while (aux->val[i] != NULL)
 			free(aux->val[i++]);
