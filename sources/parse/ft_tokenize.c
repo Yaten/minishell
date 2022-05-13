@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 19:01:39 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:22:02 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	ft_tokenize()
 	tmp = NULL;
 	input_string_size = 0;
 	begin = g_data.input_string;
+	g_data.token = ft_list_create();
 	input_string_size = ft_strlen(g_data.input_string);
 	while (*begin)
 	{
@@ -87,7 +88,7 @@ int	ft_tokenize()
 		tmp = ft_substr(g_data.input_string, begin - g_data.input_string, \
 		end - begin);
 		if (input_string_size == amount_blanks)
-			return (0);
+			return (FALSE);
 		ft_list_add_last(g_data.token, tmp);
 		if (!ft_strcmp(g_data.token->end->val[0], "\0"))
 			g_data.token->end->val[0] = "space";
