@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:43:47 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 22:19:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:53:52 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 # include "ft_doubly_linked_list.h"
 
-void	ft_builtin(t_node *tmp);
-int		ft_builtin_path(char *aux);
-int		ft_builtin_check(char *aux);
+void	ft_cd(void);
 int		ft_pwd(void);
 void	ft_env(void);
-void	ft_unset(void);
-void	ft_export(t_node *tmp);
 int		ft_exit(void);
+void	ft_unset(void);
 void	ft_echo(t_node *tmp);
-void	ft_cd(void);
+void	ft_export(t_node *tmp);
+int		ft_builtin_check(void);
+void	ft_builtin(t_node *tmp);
 
 #endif
