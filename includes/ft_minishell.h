@@ -21,26 +21,26 @@
 # include "../libft/libft.h"
 
 # include <fcntl.h>
-# include <signal.h>
 # include <stdio.h>
+# include <signal.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <sys/types.h>
 # include <sys/wait.h>
+# include <sys/types.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 
 # define TRUE 1
 # define FALSE 0
 # define QUOTES "Quotes not paired\n"
-# define BACKSLASH "Escape character is not allowed\n"
 # define SEMICOLON "Comma is not allowed\n"
+# define BACKSLASH "Escape character is not allowed\n"
 
+# define HERE_DOC "HERE_DOC"
+# define REDIR_INPUT "REDIR_INPUT"
 # define REDIR_OUTPUT "REDIR_OUTPUT"
 # define APPEND_OUTPUT "APPEND_OUTPUT"
-# define REDIR_INPUT "REDIR_INPUT"
-# define HERE_DOC "HERE_DOC"
 
 # define SEPARATORS " ><\'\"|?$"
 
@@ -63,26 +63,20 @@ typedef struct s_shell
 	char		**envp;
 	char		*here_doc;
 	char		input_string[MAXINPUT];
-	int			boll_paths;
-	int			builtin;
-	int			pipe_count;
 	int			here_bol;
+	int			pipe_count;
 	t_node		*node;
 	t_hash		*array;
-	t_doubly	*cmd_table;
 	t_doubly	*token;
+	t_doubly	*cmd_table;
 }t_shell;
 
 extern t_shell	g_data;
 
 void	ft_event_loop(void);
-
-void	ft_prompt_concat(void);
-
 int		ft_set_new_line(void);
-
-void	here_doc_signal(int sig);
-
 void	ft_init_signals(void);
+void	ft_prompt_concat(void);
+void	here_doc_signal(int sig);
 
 #endif
