@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/09 20:09:12 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:45:07 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ static void	ft_close_fds(int *fd_aux)
 
 	fd = open("fd_tmp.txt", O_CREAT);
 	while (fd > 2)
-	{
-		close(fd);
-		fd--;
-	}
+		close(fd--);
 	close(fd_aux[0]);
+	unlink("fd_tmp.txt");
 }
 
 void	ft_exececutor()
 {
-	int		fd_aux;
 	t_node	*tmp;
+	int		fd_aux;
 
 	fd_aux = dup(STDIN_FILENO);
 	tmp = g_data.cmd_table->begin;
@@ -56,9 +54,11 @@ void	ft_exececutor()
 			ft_exec_builtin(tmp, &fd_aux);
 		else
 			ft_exec_sys(tmp, &fd_aux);
-		g_data.pipe_count--;
 		tmp = tmp->next;
+		g_data.pipe_count--;
 	}
 	ft_close_fds(&fd_aux);
 	// waitpid(pid, NULL, 0);
+	ft_list_destroy(&g_data.token);
+	ft_list_destroy(&g_data.cmd_table);
 }
