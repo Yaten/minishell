@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 21:11:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:40:57 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ void	ft_create_cmd(t_node *begin, t_node *end)
 {
 	ft_fill_table(begin, end);
 	ft_find_path(g_data.cmd_table->end->val[0]);
-	ft_builtin_path(g_data.cmd_table->end->path);
-	ft_builtin_check(g_data.cmd_table->end->path);
+	ft_builtin_check();
 }
