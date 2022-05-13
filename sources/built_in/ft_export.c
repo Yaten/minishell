@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:57 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/10 15:33:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:25:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_declare_x(void)
 void	ft_export(t_node *tmp)
 {
 	char	*tmp1;
-	char	*before;
 	char	*last;
+	char	*before;
 
 	if (tmp->val[1] == NULL)
 	{
