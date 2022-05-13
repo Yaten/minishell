@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 19:01:17 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:29:25 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_verify_pipe(t_node *tmp)
 	if (tmp->prev == NULL || tmp->next == NULL || \
 	tmp->next->operators == NULL)
 	{
-		ft_putendl_fd("Syntax error", 2);
+		ft_putendl_fd("Syntax error", STDERR_FILENO);
 		return (0);
 	}
 	return (1);
@@ -27,7 +27,7 @@ static int	ft_verify_operator(t_node *tmp)
 {
 	if (tmp->next == NULL || ft_strcmp(tmp->next->operators, "word"))
 	{
-		ft_putendl_fd("Syntax error", 2);
+		ft_putendl_fd("Syntax error", STDERR_FILENO);
 		return (0);
 	}
 	return (1);
