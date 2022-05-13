@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/11 20:35:45 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:59:42 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 {
 	int	result;
 
-	ft_dup_in(tmp, fd, fd_aux);
+	ft_dup_in(tmp, fd_aux);
 	ft_dup_out(tmp, fd);
 	close(fd[1]);
 	close(fd[0]);
@@ -37,7 +37,7 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 	}
 }
 
-static void	ft_parent_process(t_node *tmp, int *fd, pid_t pid, int *fd_aux)
+static void	ft_parent_process(int *fd, int *fd_aux)
 {
 	int	status;
 
@@ -46,9 +46,6 @@ static void	ft_parent_process(t_node *tmp, int *fd, pid_t pid, int *fd_aux)
 	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
 	*fd_aux = fd[0];
 	close(fd[1]);
-	(void)tmp;
-	(void)pid;
-	(void)fd_aux;
 }
 
 void	ft_exec_sys(t_node *tmp, int *fd_aux)
@@ -56,7 +53,7 @@ void	ft_exec_sys(t_node *tmp, int *fd_aux)
 	int		fd[2];
 	pid_t	pid;
 
-	if (g_data.pipe_count > 0 && pipe(fd) == -1)
+	if (pipe(fd) == -1)
 		perror("pipe ");
 	pid = fork();
 	if (pid == -1)
@@ -64,5 +61,5 @@ void	ft_exec_sys(t_node *tmp, int *fd_aux)
 	if (!pid)
 		ft_child_process(tmp, fd, fd_aux);
 	else
-		ft_parent_process(tmp, fd, pid, fd_aux);
+		ft_parent_process(fd, fd_aux);
 }
