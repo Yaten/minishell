@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 21:04:24 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:35:51 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	ft_parse()
 	t_node	*end;
 	t_node	*begin;
 
+	g_data.pipe_count = 0;
 	end = g_data.token->begin;
 	begin = g_data.token->begin;
-	g_data.pipe_count = 0;
+	g_data.cmd_table = ft_list_create();
 	while (end != NULL)
 	{
-		if (!ft_strcmp(end->val[0], "|"))
+		if (!ft_strcmp(end->operators, "pipe"))
 		{
 			ft_create_cmd(begin, end);
 			begin = end->next;
@@ -31,8 +32,4 @@ void	ft_parse()
 		end = end->next;
 	}
 	ft_create_cmd(begin, end);
-	if (g_data.boll_paths)
-		ft_exececutor();
-	else
-		ft_putstr_fd("command not found\n", STDERR_FILENO);
 }
