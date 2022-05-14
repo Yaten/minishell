@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 15:29:25 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:42:18 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_verify_operator(t_node *tmp)
 	return (1);
 }
 
-int	ft_syntax()
+int	ft_syntax(void)
 {
 	t_node	*tmp;
 
