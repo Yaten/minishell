@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 17:35:51 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:42:01 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_parse()
+void	ft_parse(void)
 {
 	t_node	*end;
 	t_node	*begin;
