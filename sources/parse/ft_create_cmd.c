@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 20:40:57 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:17:04 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_node	*ft_new_node_table(t_node *begin)
 	node->operator_output = 0;
 	node->fd_in = dup(STDIN_FILENO);
 	node->fd_out = dup(STDOUT_FILENO);
-	node->val = (char **)ft_calloc(sizeof(char), count_word + 1);
+	node->val = (char **)ft_calloc(sizeof(char *), count_word + 1);
 	return (ft_add_command(begin, node));
 }
 
