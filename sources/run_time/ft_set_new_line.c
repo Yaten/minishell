@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:04:17 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/10 18:38:12 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:43:51 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_error_handler(char *message)
 		ft_putstr_fd(SEMICOLON, STDERR_FILENO);
 }
 
-int	ft_quotes()
+int	ft_quotes(void)
 {
 	char	*tmp;
 
@@ -50,7 +50,7 @@ int	ft_quotes()
 	return (TRUE);
 }
 
-int	ft_backslash_semicolon()
+int	ft_backslash_semicolon(void)
 {
 	char	*tmp;
 
@@ -72,7 +72,7 @@ int	ft_backslash_semicolon()
 	return (TRUE);
 }
 
-int	ft_set_new_line()
+int	ft_set_new_line(void)
 {
 	if (!ft_quotes() || !ft_backslash_semicolon())
 		return (TRUE);
