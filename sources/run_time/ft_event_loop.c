@@ -6,20 +6,20 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 17:37:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:43:24 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-static int	ft_clean_program()
+static int	ft_clean_program(void)
 {
 	ft_putstr_fd("\n", STDOUT_FILENO);
 	ft_destroy_hash(g_data.array);
 	exit(FALSE);
 }
 
-int	ft_print_dir()
+int	ft_print_dir(void)
 {
 	char	*buf;
 
@@ -41,7 +41,7 @@ int	ft_print_dir()
 	}
 }
 
-void	ft_event_loop()
+void	ft_event_loop(void)
 {
 	while (TRUE)
 	{
