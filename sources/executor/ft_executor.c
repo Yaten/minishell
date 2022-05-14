@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 20:45:07 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:40:59 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static void	ft_close_fds(int *fd_aux)
 	unlink("fd_tmp.txt");
 }
 
-void	ft_exececutor()
+void	ft_exececutor(void)
 {
 	t_node	*tmp;
 	int		fd_aux;
 
 	fd_aux = dup(STDIN_FILENO);
 	tmp = g_data.cmd_table->begin;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->is_builtin)
 			ft_exec_builtin(tmp, &fd_aux);
