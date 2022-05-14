@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 09:29:45 by user              #+#    #+#             */
-/*   Updated: 2022/05/11 21:45:31 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:06:51 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static size_t	count_word(const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	*break_point;
-	char	**ret;
 	size_t	i;
 	size_t	len;
+	char	**ret;
+	char	*break_point;
 
 	if (!s)
 		return (NULL);
