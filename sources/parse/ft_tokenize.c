@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 16:22:02 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:42:44 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-int	ft_define_token()
+int	ft_define_token(void)
 {
 	t_node	*tmp;
 
@@ -55,7 +55,7 @@ static char	*ft_verify_token(char *end)
 	return (end);
 }
 
-int	ft_tokenize()
+int	ft_tokenize(void)
 {
 	char	*end;
 	char	*tmp;
