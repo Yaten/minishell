@@ -6,13 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 20:41:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:39:02 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-int	ft_builtin_check()
+int	ft_builtin_check(void)
 {
 	if (!(ft_strcmp(g_data.cmd_table->end->val[0], "env")))
 		return (g_data.cmd_table->end->is_builtin = 1);
