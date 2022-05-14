@@ -6,14 +6,13 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 22:06:54 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:50:13 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
 int	ft_find_path(char *aux)
-/* int	ft_find_path(char *g_data.cmd_table->end->val[0]) */
 {
 	int		i;
 	char	*tmp;
@@ -22,9 +21,9 @@ int	ft_find_path(char *aux)
 	char	*path_slash;
 
 	i = -1;
-	tmp = getenv("PATH");
+	tmp = ft_find_value("PATH");
 	paths = ft_split(tmp, ':');
-	while (paths[++i])
+	while (paths != NULL && paths[++i])
 	{
 		path_slash = ft_strjoin(paths[i], "/");
 		free(paths[i]);
@@ -40,6 +39,6 @@ int	ft_find_path(char *aux)
 		}
 		free(path);
 	}
-	return (0);
 	free(paths);
+	return (0);
 }
