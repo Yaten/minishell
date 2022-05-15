@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:02:08 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/11 18:44:52 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:12:21 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_quoting(int bool_quotes)
 	char	*tmp;
 
 	i = 0;
-	tmp = g_data.input_string;
+	tmp = g_data.aux;
 	while (*tmp)
 	{
 		if (*tmp == '\"')
