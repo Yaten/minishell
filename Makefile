@@ -37,12 +37,12 @@ SRC_LINKEDLIST += ft_list_add_last.c
 OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
 OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))
 
-SRC_PARSE += ft_expand.c ft_parse.c ft_quoting.c ft_find_path.c ft_print.c
-SRC_PARSE += ft_create_cmd.c ft_tokenize.c ft_syntax.c ft_open_files.c
+SRC_PARSE += ft_expand.c ft_parse.c ft_quoting.c ft_find_path.c ft_open_files.c
+SRC_PARSE += ft_create_cmd.c ft_tokenize.c ft_syntax.c
 OBJPARSE = $(SRC_PARSE:.c=.o)
 OBJECTS_PARSE = $(addprefix $(OBJDIR)/, $(OBJPARSE))
 
-SRC_RUNTIME += ft_event_loop.c ft_set_new_line.c ft_signals.c
+SRC_RUNTIME += ft_event_loop.c ft_set_new_line.c ft_init_signals.c
 OBJRUNTIME = $(SRC_RUNTIME:.c=.o)
 OBJECTS_RUNTIME = $(addprefix $(OBJDIR)/, $(OBJRUNTIME))
 
