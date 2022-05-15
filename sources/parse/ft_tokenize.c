@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 21:42:44 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 14:52:50 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,35 @@ int	ft_is_space(int c)
 	c == '\v' || c == '\f');
 }
 
-static char	*ft_verify_token(char *end)
+static char	*ft_verify_token(char *end, char *begin)
 {
+	end = begin;
 	while (!ft_strchr(" ><|", *end))
 	{
 		if (ft_strchr(" ><|", *end + 1))
 			break ;
-		end++;
+		++end;
+	}
+	if (ft_strchr(" ><|", *begin) && *begin)
+	{
+		if (*begin == *(begin + 1))
+			end = end + 2;
+		else
+			end++;
 	}
 	return (end);
+}
+
+static char	*ft_add_token_list(char *end, char *begin, char *tmp)
+{
+	ft_list_add_last(g_data.token, tmp);
+	if (!ft_strcmp(g_data.token->end->val[0], "\0"))
+		g_data.token->end->val[0] = "space";
+	free(tmp);
+	begin = end;
+	while (ft_is_space(*begin))
+		++begin;
+	return (begin);
 }
 
 int	ft_tokenize(void)
@@ -63,8 +83,6 @@ int	ft_tokenize(void)
 	int		amount_blanks;
 	int		input_string_size;
 
-	tmp = NULL;
-	input_string_size = 0;
 	begin = g_data.input_string;
 	g_data.token = ft_list_create();
 	input_string_size = ft_strlen(g_data.input_string);
@@ -74,28 +92,14 @@ int	ft_tokenize(void)
 		while (ft_is_space(*begin))
 		{
 			++amount_blanks;
-			begin++;
+			++begin;
 		}
-		end = begin;
-		end = ft_verify_token(end);
-		if (ft_strchr(" ><|", *begin) && *begin)
-		{
-			if (*begin == *(begin + 1))
-				end = end + 2;
-			else
-				end++;
-		}
+		end = ft_verify_token(end, begin);
 		tmp = ft_substr(g_data.input_string, begin - g_data.input_string, \
 		end - begin);
 		if (input_string_size == amount_blanks)
 			return (FALSE);
-		ft_list_add_last(g_data.token, tmp);
-		if (!ft_strcmp(g_data.token->end->val[0], "\0"))
-			g_data.token->end->val[0] = "space";
-		free(tmp);
-		begin = end;
-		while (ft_is_space(*begin))
-			begin++;
+		begin = ft_add_token_list(end, begin, tmp);
 	}
 	return (ft_define_token());
 }
