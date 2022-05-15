@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 21:43:24 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:26:04 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_clean_program(void)
 	exit(FALSE);
 }
 
-int	ft_print_dir(void)
+static int	ft_print_dir(void)
 {
 	char	*buf;
 
