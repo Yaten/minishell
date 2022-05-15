@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/14 14:47:00 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 09:43:25 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,23 @@ static t_node	*ft_add_command(t_node *begin, t_node *node)
 	return (begin);
 }
 
-int	ft_count_word(t_node *begin)
+static int	ft_count_word(t_node *begin)
 {
-	int		count_word;
 	t_node	*tmp;
+	int		count_word;
 
 	tmp = begin;
 	count_word = 0;
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->operators, "word"))
-		{
-			tmp = tmp->next;
 			count_word++;
-		}
-		else
-			break ;
+		tmp = tmp->next;
 	}
 	return (count_word);
 }
 
-t_node	*ft_new_node_table(t_node *begin)
+static t_node	*ft_new_node_table(t_node *begin)
 {
 	t_node	*node;
 	int		count_word;
@@ -78,7 +74,7 @@ t_node	*ft_new_node_table(t_node *begin)
 	return (ft_add_command(begin, node));
 }
 
-void	ft_fill_table(t_node *begin, t_node *end)
+static void	ft_fill_table(t_node *begin, t_node *end)
 {
 	while (begin != end)
 	{
