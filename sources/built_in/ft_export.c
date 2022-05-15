@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:57 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 20:25:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 10:35:14 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	ft_declare_x(void)
 		temp = g_data.array[i].head;
 		while (temp)
 		{
-			ft_putstr_fd("declare -x ", 1);
-			ft_putstr_fd(temp->key, 1);
-			ft_putstr_fd("=", 1);
-			ft_putstr_fd("\"", 1);
-			ft_putstr_fd(temp->value, 1);
-			ft_putstr_fd("\"", 1);
-			ft_putstr_fd("\n", 1);
+			ft_putstr_fd("declare -x ", STDOUT_FILENO);
+			ft_putstr_fd(temp->key, STDOUT_FILENO);
+			ft_putstr_fd("=", STDOUT_FILENO);
+			ft_putstr_fd("\"", STDOUT_FILENO);
+			ft_putstr_fd(temp->value, STDOUT_FILENO);
+			ft_putstr_fd("\"", STDOUT_FILENO);
+			ft_putstr_fd("\n", STDOUT_FILENO);
 			temp = temp->next;
 		}
 	}
