@@ -20,6 +20,7 @@
 # include "ft_doubly_linked_list.h"
 # include "../libft/libft.h"
 
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <signal.h>
