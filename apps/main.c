@@ -6,12 +6,11 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:25:08 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 20:20:34 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:25:10 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_minishell.h"
-#include <errno.h>
 
 t_shell	g_data;
 
