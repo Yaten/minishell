@@ -76,7 +76,6 @@ extern t_shell	g_data;
 void	ft_event_loop(void);
 int		ft_set_new_line(void);
 void	ft_init_signals(void);
-void	ft_prompt_concat(void);
 void	here_doc_signal(int sig);
 
 #endif
