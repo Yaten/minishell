@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 15:22:25 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:30:43 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	ft_find_path(char *aux)
 		if (!access(path, F_OK | X_OK))
 		{
 			ft_clearing_remaining_paths(paths, path, i);
-			return (1);
+			return (TRUE);
 		}
 		free(path);
 	}
 	free(paths);
-	return (0);
+	return (FALSE);
 }
