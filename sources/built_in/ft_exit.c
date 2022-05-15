@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:51:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/10 15:32:37 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 10:34:42 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	ft_exit(void)
 	int		i;
 	char	*tmp;
 
-	if (g_data.cmd_table->begin->val[1] == NULL)
-		exit (EXIT_SUCCESS);
 	i = -1;
 	tmp = g_data.cmd_table->begin->val[1];
+	if (g_data.cmd_table->begin->val[1] == NULL)
+		exit (EXIT_SUCCESS);
 	while (tmp[++i])
 	{
 		if (!ft_isdigit(tmp[i]))
