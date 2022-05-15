@@ -6,11 +6,19 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/14 14:50:13 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:22:25 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
+
+static void	ft_clearing_remaining_paths(char **paths, char *path, int i)
+{
+	while (paths[++i])
+		free(paths[i]);
+	free(paths);
+	g_data.cmd_table->end->path = path;
+}
 
 int	ft_find_path(char *aux)
 {
@@ -31,10 +39,7 @@ int	ft_find_path(char *aux)
 		free(path_slash);
 		if (!access(path, F_OK | X_OK))
 		{
-			while (paths[++i])
-				free(paths[i]);
-			free(paths);
-			g_data.cmd_table->end->path = path;
+			ft_clearing_remaining_paths(paths, path, i);
 			return (1);
 		}
 		free(path);
