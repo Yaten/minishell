@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 21:42:18 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:31:52 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static int	ft_verify_pipe(t_node *tmp)
 	tmp->next->operators == NULL)
 	{
 		ft_putendl_fd("Syntax error", STDERR_FILENO);
-		return (0);
+		return (FALSE);
 	}
-	return (1);
+	return (TRUE);
 }
 
 static int	ft_verify_operator(t_node *tmp)
@@ -28,9 +28,9 @@ static int	ft_verify_operator(t_node *tmp)
 	if (tmp->next == NULL || ft_strcmp(tmp->next->operators, "word"))
 	{
 		ft_putendl_fd("Syntax error", STDERR_FILENO);
-		return (0);
+		return (FALSE);
 	}
-	return (1);
+	return (TRUE);
 }
 
 int	ft_syntax(void)
@@ -43,21 +43,21 @@ int	ft_syntax(void)
 		if (!ft_strcmp(tmp->operators, "pipe"))
 		{
 			if (!ft_verify_pipe(tmp))
-				return (0);
+				return (FALSE);
 		}
 		else if (!ft_strcmp(tmp->operators, "redir_output") || !ft_strcmp \
 		(tmp->operators, "redir_append") || !ft_strcmp(tmp->operators, \
 		"redir_input"))
 		{
 			if (!ft_verify_operator(tmp))
-				return (0);
+				return (FALSE);
 		}
 		else if (tmp->operators == NULL)
 		{
 			if (tmp->next == NULL || tmp->prev == NULL)
-				return (0);
+				return (FALSE);
 		}
 		tmp = tmp->next;
 	}
-	return (1);
+	return (TRUE);
 }
