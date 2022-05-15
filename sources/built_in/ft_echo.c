@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:49:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 10:30:16 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:27:25 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_echo(t_node *tmp)
 	boll_n = FALSE;
 	if (tmp->val[1] == NULL)
 	{
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		return ;
 	}
 	if (!ft_strcmp(tmp->val[i], "-n"))
