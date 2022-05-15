@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:35 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/10 15:33:28 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/05/15 10:36:02 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_pwd(void)
 	pwd = getcwd(NULL, 0);
 	if (pwd == NULL)
 		return (FALSE);
-	ft_putstr_fd(pwd, 1);
-	ft_putchar_fd('\n', 1);
+	ft_putstr_fd(pwd, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 	free(pwd);
 	return (TRUE);
 }
