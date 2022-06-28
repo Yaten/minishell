@@ -18,7 +18,6 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	g_data.array = ft_create_table(envp);
 	g_data.envp = envp;
-	ft_init_signals();
 	ft_event_loop();
 	return (0);
 }

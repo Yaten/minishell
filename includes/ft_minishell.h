@@ -66,6 +66,7 @@ typedef struct s_shell
 	char		input_string[MAXINPUT];
 	int			here_bol;
 	int			pipe_count;
+	int			pid;
 	t_node		*node;
 	t_hash		*array;
 	t_doubly	*token;

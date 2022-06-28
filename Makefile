@@ -32,7 +32,7 @@ OBJHASH = $(SRC_HASH:.c=.o)
 OBJECTS_HASH = $(addprefix $(OBJDIR)/, $(OBJHASH))
 
 SRC_LINKEDLIST += ft_list_add_first.c ft_list_create.c ft_list_destroy.c
-SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c ft_list_print.c
+SRC_LINKEDLIST += ft_list_is_empty.c ft_node_create.c
 SRC_LINKEDLIST += ft_list_add_last.c
 OBJLINKEDLIST = $(SRC_LINKEDLIST:.c=.o)
 OBJECTS_LINKEDLIST = $(addprefix $(OBJDIR)/, $(OBJLINKEDLIST))

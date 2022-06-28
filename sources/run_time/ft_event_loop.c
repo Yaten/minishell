@@ -45,6 +45,7 @@ void	ft_event_loop(void)
 {
 	while (TRUE)
 	{
+		ft_init_signals();
 		if (ft_print_dir() || ft_set_new_line())
 			continue ;
 		g_data.aux = g_data.input_string;

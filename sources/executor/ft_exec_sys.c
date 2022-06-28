@@ -58,6 +58,7 @@ void	ft_exec_sys(t_node *tmp, int *fd_aux)
 	pid = fork();
 	if (pid == -1)
 		perror("fork ");
+	g_data.pid = pid;
 	if (!pid)
 		ft_child_process(tmp, fd, fd_aux);
 	else
