@@ -20,7 +20,10 @@ int	ft_exit(void)
 	i = -1;
 	tmp = g_data.cmd_table->begin->val[1];
 	if (g_data.cmd_table->begin->val[1] == NULL)
+	{
+		ft_clean_program();
 		exit (EXIT_SUCCESS);
+	}
 	while (tmp[++i])
 	{
 		if (!ft_isdigit(tmp[i]))
@@ -29,5 +32,6 @@ int	ft_exit(void)
 			exit (2);
 		}
 	}
+	ft_clean_program();
 	exit(ft_atoi(g_data.cmd_table->begin->val[1]));
 }

@@ -12,13 +12,6 @@
 
 #include "ft_minishell.h"
 
-static int	ft_clean_program(void)
-{
-	ft_putstr_fd("\n", STDOUT_FILENO);
-	ft_destroy_hash(g_data.array);
-	exit(FALSE);
-}
-
 static int	ft_print_dir(void)
 {
 	char	*buf;
@@ -39,6 +32,13 @@ static int	ft_print_dir(void)
 		free(buf);
 		return (TRUE);
 	}
+}
+
+int	ft_clean_program(void)
+{
+	ft_putstr_fd("\n", STDOUT_FILENO);
+	ft_destroy_hash(g_data.array);
+	exit(FALSE);
 }
 
 void	ft_event_loop(void)
