@@ -37,7 +37,6 @@ void	ft_declare_x(void)
 
 void	ft_export(t_node *tmp)
 {
-	char	*tmp1;
 	char	*last;
 	char	*before;
 
@@ -46,11 +45,7 @@ void	ft_export(t_node *tmp)
 		ft_declare_x();
 		return ;
 	}
-	tmp1 = ft_strchr(tmp->val[1], '=');
-	before = ft_substr(tmp->val[1], 0, tmp1 - tmp->val[1]);
-	last = ft_substr(tmp->val[1], tmp1 + 1 - tmp->val[1], \
-	ft_strlen(tmp->val[1]));
-	ft_insert(g_data.array, before, last);
-	free (before);
-	free (last);
+	before = tmp->val[1];
+	last = tmp->val[3];
+	ft_insert(g_data.array, before, ft_strdup(last));
 }

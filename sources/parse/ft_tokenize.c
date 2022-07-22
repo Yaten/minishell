@@ -47,6 +47,11 @@ int	ft_is_space(int c)
 static char	*ft_verify_token(char *end, char *begin)
 {
 	end = begin;
+	if (ft_strchr("=", *end))
+	{
+		++end;
+		return (end);
+	}
 	while (!ft_strchr(" ><|", *end))
 	{
 		if (ft_strchr(" ><|", *end + 1))

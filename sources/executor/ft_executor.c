@@ -55,7 +55,6 @@ void	ft_exececutor(void)
 			ft_exec_builtin(tmp, &fd_aux);
 		else
 			ft_exec_sys(tmp, &fd_aux);
-		//printf("cmd: %s\n", *tmp->val);
 		tmp = tmp->next;
 		g_data.pipe_count--;
 	}

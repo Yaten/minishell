@@ -55,7 +55,10 @@ void	ft_event_loop(void)
 		ft_expand(g_data.aux, FALSE);
 		ft_quoting(FALSE);
 		if (!ft_tokenize())
+		{
+			free(aux);
 			continue ;
+		}
 		ft_parse();
 		ft_exececutor();
 		free(aux);
