@@ -48,6 +48,7 @@ void	ft_exececutor(void)
 
 	fd_aux = dup(STDIN_FILENO);
 	tmp = g_data.cmd_table->begin;
+	ft_insert(g_data.array, "?", ft_strdup("0"));
 	while (tmp)
 	{
 		if (tmp->is_builtin)

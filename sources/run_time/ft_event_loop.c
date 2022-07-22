@@ -58,8 +58,6 @@ void	ft_event_loop(void)
 			continue ;
 		ft_parse();
 		ft_exececutor();
-		if (ft_strchr(aux, '?'))
-			ft_insert(g_data.array, "?", ft_strdup("0"));
 		free(aux);
 	}
 }
