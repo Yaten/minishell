@@ -12,18 +12,27 @@
 
 #include "ft_minishell.h"
 
+static void	clean_exit(void)
+{
+	ft_putstr_fd("\n", STDOUT_FILENO);
+	ft_destroy_hash(g_data.array);
+	return ;
+}
+
 int	ft_exit(void)
 {
 	int		i;
+	int		aux;
 	char	*tmp;
 
 	i = -1;
 	tmp = g_data.cmd_table->begin->val[1];
-	if (g_data.cmd_table->begin->val[1] == NULL)
+	if (tmp == NULL)
 	{
-		ft_clean_program();
+		clean_exit();
 		exit (EXIT_SUCCESS);
 	}
+	aux = ft_atoi(tmp);
 	while (tmp[++i])
 	{
 		if (!ft_isdigit(tmp[i]))
@@ -32,6 +41,6 @@ int	ft_exit(void)
 			exit (2);
 		}
 	}
-	ft_clean_program();
-	exit(ft_atoi(g_data.cmd_table->begin->val[1]));
+	clean_exit();
+	exit (aux);
 }

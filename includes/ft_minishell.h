@@ -67,6 +67,7 @@ typedef struct s_shell
 	int			here_bol;
 	int			pipe_count;
 	int			pid;
+	int			signal;
 	t_node		*node;
 	t_hash		*array;
 	t_doubly	*token;

@@ -43,7 +43,8 @@ static void	ft_parent_process(int *fd, int *fd_aux)
 
 	status = 0;
 	wait(&status);
-	ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
+	if (!g_data.signal)
+		ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
 	*fd_aux = fd[0];
 	close(fd[1]);
 }

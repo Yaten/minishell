@@ -43,11 +43,14 @@ int	ft_clean_program(void)
 
 void	ft_event_loop(void)
 {
+	char *aux;
+
 	while (TRUE)
 	{
 		ft_init_signals();
 		if (ft_print_dir() || ft_set_new_line())
 			continue ;
+		aux = ft_strdup(g_data.input_string);
 		g_data.aux = g_data.input_string;
 		ft_expand(g_data.aux, FALSE);
 		ft_quoting(FALSE);
@@ -55,5 +58,8 @@ void	ft_event_loop(void)
 			continue ;
 		ft_parse();
 		ft_exececutor();
+		if (ft_strchr(aux, '?'))
+			ft_insert(g_data.array, "?", ft_strdup("0"));
+		free(aux);
 	}
 }
