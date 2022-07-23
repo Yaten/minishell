@@ -34,6 +34,11 @@ t_node	*ft_open_files(t_node *begin, t_node *node)
 		O_APPEND, 0777);
 		node->operator_output = 1;
 	}
+	else if (!ft_strcmp(begin->operators, "here_doc"))
+	{
+		//g_data.here_doc = ft_strdup(begin->val[0]);
+		node->operator_output = 0;
+	}
 	begin = begin->next;
 	return (begin);
 }
