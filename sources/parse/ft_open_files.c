@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 22:01:19 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/09 22:03:19 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:59:40 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_node	*ft_open_files(t_node *begin, t_node *node)
 	}
 	else if (!ft_strcmp(begin->operators, "here_doc"))
 	{
-		//g_data.here_doc = ft_strdup(begin->val[0]);
+		g_data.here_doc = ft_strdup(begin->next->val[0]);
 		node->operator_output = 0;
 	}
 	begin = begin->next;

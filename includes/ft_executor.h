@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 21:08:15 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 22:09:09 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:33:00 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "ft_doubly_linked_list.h"
 
 void	ft_exececutor(void);
-void	ft_create_heredoc(char *line);
+void	ft_create_heredoc(void);
 void	ft_dup_out(t_node *tmp, int *fd);
 void	ft_dup_in(t_node *tmp, int *fd_aux);
 void	ft_exec_sys(t_node *tmp, int *fd_aux);

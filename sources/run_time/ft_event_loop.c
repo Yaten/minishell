@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/14 15:26:04 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:01:40 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_event_loop(void)
 		}
 		ft_parse();
 		if (g_data.heredoc_bool)
-			ft_create_heredoc(g_data.aux);
+			ft_create_heredoc();
 		ft_exececutor();
 		free(aux);
 	}
