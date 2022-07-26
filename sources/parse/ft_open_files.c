@@ -37,7 +37,8 @@ t_node	*ft_open_files(t_node *begin, t_node *node)
 	else if (!ft_strcmp(begin->operators, "here_doc"))
 	{
 		g_data.here_doc = ft_strdup(begin->next->val[0]);
-		node->operator_output = 0;
+		node->operator_input = 1;
+		node->heredoc_bool = 1;
 	}
 	begin = begin->next;
 	return (begin);

@@ -48,7 +48,6 @@ void	ft_event_loop(void)
 	while (TRUE)
 	{
 		ft_init_signals();
-		g_data.heredoc_bool = 0;
 		if (ft_print_dir() || ft_set_new_line())
 			continue ;
 		aux = ft_strdup(g_data.input_string);
@@ -61,8 +60,6 @@ void	ft_event_loop(void)
 			continue ;
 		}
 		ft_parse();
-		if (g_data.heredoc_bool)
-			ft_create_heredoc();
 		ft_exececutor();
 		free(aux);
 	}

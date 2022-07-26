@@ -12,14 +12,13 @@
 
 #include "ft_minishell.h"
 
-void	ft_create_heredoc()
+void	ft_create_heredoc(t_node *tmp)
 {
 	char	*s;
 
 	unlink("here_doc.txt");
-	g_data.cmd_table->end->fd_in = open("here_doc.txt", O_WRONLY | \
+	tmp->fd_in = open("here_doc.txt", O_WRONLY | \
 	O_CREAT , 0777);
-	signal(SIGINT, here_doc_signal);
 	while (1)
 	{
 		ft_putstr_fd("heredoc> ", STDOUT_FILENO);
@@ -27,13 +26,12 @@ void	ft_create_heredoc()
 		if (!ft_strncmp(s, g_data.here_doc, ft_strlen(s) - 1))
 		{
 			free(s);
-			close(g_data.cmd_table->end->fd_in);
+			close(tmp->fd_in);
+			tmp->fd_in = open("here_doc.txt", O_RDONLY | \
+			O_CREAT, 0777);
 			break ;
 		}
-		ft_putstr_fd(s, g_data.cmd_table->end->fd_in);
+		ft_putstr_fd(s, tmp->fd_in);
 		free(s);
 	}
-	g_data.cmd_table->end->fd_in = open("here_doc.txt", O_RDONLY | \
-	O_CREAT, 0777);
-	g_data.cmd_table->end->operator_input = 1;
 }

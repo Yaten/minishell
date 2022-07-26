@@ -41,13 +41,29 @@ static void	ft_close_fds(int *fd_aux)
 	unlink("fd_tmp.txt");
 }
 
+static t_node	*ft_verify_heredoc()
+{
+	t_node	*tmp;
+
+	tmp = g_data.cmd_table->begin;
+	while (tmp)
+	{
+		if (tmp->heredoc_bool)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (g_data.cmd_table->begin);
+}
+
 void	ft_exececutor(void)
 {
 	t_node	*tmp;
 	int		fd_aux;
 
 	fd_aux = dup(STDIN_FILENO);
-	tmp = g_data.cmd_table->begin;
+	tmp = ft_verify_heredoc();
+	if (tmp->heredoc_bool)
+		ft_create_heredoc(tmp);
 	ft_insert(g_data.array, "?", ft_strdup("0"));
 	while (tmp)
 	{

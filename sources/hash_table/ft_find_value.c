@@ -23,7 +23,7 @@ char	*ft_find_value(char *key)
 		temp = g_data.array[i].head;
 		while (temp)
 		{
-			if (!strcmp(temp->key, key))
+			if (!ft_strcmp(temp->key, key))
 				return (temp->value);
 			temp = temp->next;
 		}

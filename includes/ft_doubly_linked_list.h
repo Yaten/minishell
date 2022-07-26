@@ -20,6 +20,7 @@ typedef struct s_node
 	int				fd_in;
 	int				fd_out;
 	int				is_builtin;
+	int				heredoc_bool;
 	char			*operators;
 	int				operator_input;
 	int				operator_output;

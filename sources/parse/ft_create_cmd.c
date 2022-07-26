@@ -26,10 +26,7 @@ static t_node	*ft_add_command(t_node *begin, t_node *node)
 		!ft_strcmp(begin->operators, "redir_append"))
 			begin = ft_open_files(begin, node);
 		else if (!ft_strcmp(begin->operators, "here_doc"))
-		{
 			begin = ft_open_files(begin, node);
-			g_data.heredoc_bool = 1;
-		}
 		else
 			break ;
 		begin = begin->next;

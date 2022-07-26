@@ -64,7 +64,6 @@ typedef struct s_shell
 	char		**envp;
 	char		*here_doc;
 	char		input_string[MAXINPUT];
-	int			heredoc_bool;
 	int			pipe_count;
 	int			pid;
 	int			signal;
