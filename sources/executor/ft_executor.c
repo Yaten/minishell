@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/12 21:40:59 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:26:11 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	ft_exec_builtin(t_node *tmp, int *fd_aux)
 {
-	int		fd[2];
-	int		backup[2];
+	int	fd[2];
+	int	backup[2];
 
 	backup[0] = dup(STDIN_FILENO);
 	backup[1] = dup(STDOUT_FILENO);
@@ -49,7 +49,13 @@ static t_node	*ft_verify_heredoc()
 	while (tmp)
 	{
 		if (tmp->heredoc_bool)
+		{
+			if (tmp->next != NULL)
+				tmp->operator_output = 0;
+			if (tmp->next != NULL && tmp->prev != NULL)
+				g_data.pipe_count--;
 			return (tmp);
+		}
 		tmp = tmp->next;
 	}
 	return (g_data.cmd_table->begin);
