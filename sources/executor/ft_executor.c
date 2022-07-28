@@ -69,7 +69,7 @@ void	ft_exececutor(void)
 	fd_aux = dup(STDIN_FILENO);
 	tmp = ft_verify_heredoc();
 	if (tmp->heredoc_bool)
-		ft_create_heredoc(tmp);
+		ft_create_heredoc(&tmp);
 	ft_insert(g_data.array, "?", ft_strdup("0"));
 	while (tmp)
 	{

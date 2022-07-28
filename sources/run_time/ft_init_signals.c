@@ -17,7 +17,9 @@ extern t_shell	g_data;
 void	sigint_handler(int sig)
 {
 	g_data.signal = 1;
-	if (g_data.pid == 0)
+	g_data.signal_heredoc = 0;
+	close(g_data.fd_heredoc);
+	if (g_data.pid == 0 && g_data.signal_heredoc)
 	{
 		(void)(sig);
 		ft_putstr_fd("\n", STDERR_FILENO);
@@ -65,6 +67,7 @@ void	ft_init_signals(void)
 {
 	g_data.pid = 0;
 	g_data.signal = 0;
+	g_data.fd_heredoc = dup(STDIN_FILENO);
 	ft_set_signal(sigint_handler, SIGINT);
 	ft_set_signal(sigquit_handler, SIGQUIT);
 }

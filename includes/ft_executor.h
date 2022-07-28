@@ -16,7 +16,7 @@
 # include "ft_doubly_linked_list.h"
 
 void	ft_exececutor(void);
-void	ft_create_heredoc(t_node *tmp);
+void	ft_create_heredoc(t_node **tmp);
 void	ft_dup_out(t_node *tmp, int *fd);
 void	ft_dup_in(t_node *tmp, int *fd_aux);
 void	ft_exec_sys(t_node *tmp, int *fd_aux);

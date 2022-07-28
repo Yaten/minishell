@@ -67,6 +67,8 @@ typedef struct s_shell
 	int			pipe_count;
 	int			pid;
 	int			signal;
+	int			signal_heredoc;
+	int			fd_heredoc;
 	t_node		*node;
 	t_hash		*array;
 	t_doubly	*token;
