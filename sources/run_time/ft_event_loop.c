@@ -43,7 +43,7 @@ int	ft_clean_program(void)
 
 void	ft_event_loop(void)
 {
-	char *aux;
+	char	*aux;
 
 	while (TRUE)
 	{

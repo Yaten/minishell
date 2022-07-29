@@ -19,7 +19,7 @@ void	ft_create_heredoc(t_node **tmp)
 
 	unlink("here_doc.txt");
 	(*tmp)->fd_in = open("here_doc.txt", O_WRONLY | \
-	O_CREAT , 0777);
+	O_CREAT, 0777);
 	g_data.signal_heredoc = 1;
 	while (g_data.signal_heredoc)
 	{
@@ -32,11 +32,13 @@ void	ft_create_heredoc(t_node **tmp)
 				close((*tmp)->fd_in);
 				(*tmp)->fd_in = open("here_doc.txt", O_RDONLY | \
 				O_CREAT, 0777);
-				ft_putstr_fd("bash: warning: here-document ", STDOUT_FILENO);
-				ft_putstr_fd("delimited by end-of-file (wanted `", STDOUT_FILENO);
+				ft_putstr_fd(YELLOW"bash: warning: here-document ", \
+					STDOUT_FILENO);
+				ft_putstr_fd("delimited by ", STDOUT_FILENO);
+				ft_putstr_fd("end-of-file (wanted `", STDOUT_FILENO);
 				ft_putstr_fd(g_data.here_doc, STDOUT_FILENO);
 				ft_putstr_fd("')", STDOUT_FILENO);
-				ft_putstr_fd("\n", STDOUT_FILENO);
+				ft_putstr_fd("\n"RESET, STDOUT_FILENO);
 				free(s);
 				break ;
 			}

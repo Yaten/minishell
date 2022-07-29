@@ -41,7 +41,7 @@ static void	ft_close_fds(int *fd_aux)
 	unlink("fd_tmp.txt");
 }
 
-static t_node	*ft_verify_heredoc()
+static t_node	*ft_verify_heredoc(void)
 {
 	t_node	*tmp;
 
@@ -81,7 +81,6 @@ void	ft_exececutor(void)
 		g_data.pipe_count--;
 	}
 	ft_close_fds(&fd_aux);
-	// waitpid(pid, NULL, 0);
 	ft_list_destroy(&g_data.token);
 	ft_list_destroy(&g_data.cmd_table);
 }
