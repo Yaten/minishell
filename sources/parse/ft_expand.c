@@ -25,6 +25,7 @@ char	*ft_getvalue(char *value)
 	int		i;
 	t_hnode	*temp;
 
+	content = NULL;
 	i = -1;
 	while (++i < TABLE_SIZE)
 	{
@@ -39,7 +40,6 @@ char	*ft_getvalue(char *value)
 			temp = temp->next;
 		}
 	}
-	//content = getenv(value);
 	if (!content)
 		return ("");
 	return (content);
