@@ -22,8 +22,24 @@ char	*ft_expand_last(char *tmp)
 char	*ft_getvalue(char *value)
 {
 	char	*content;
+	int		i;
+	t_hnode	*temp;
 
-	content = getenv((value));
+	i = -1;
+	while (++i < TABLE_SIZE)
+	{
+		temp = g_data.array[i].head;
+		while (temp)
+		{
+			if (!ft_strcmp(temp->key, value))
+			{
+				content = temp->value;
+				break ;
+			}
+			temp = temp->next;
+		}
+	}
+	//content = getenv(value);
 	if (!content)
 		return ("");
 	return (content);
