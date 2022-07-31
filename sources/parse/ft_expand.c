@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 07:25:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 15:14:44 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:48:01 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_expand(char *input_string, int bool_quotes)
 		return ;
 	while (*tmp)
 	{
-		if (*tmp == '\'' && !ft_front_slash(tmp, &bool_quotes))
+		if (!ft_front_slash(tmp, &bool_quotes) && *tmp == '\'')
 		{
 			tmp = ft_strchr(tmp + 1, '\'');
 			if (ft_strchr(tmp + 1, '$') == NULL)
