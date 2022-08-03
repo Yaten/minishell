@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/07/26 20:26:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:11:16 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_exececutor(void)
 	if (tmp->heredoc_bool)
 		ft_create_heredoc(&tmp);
 	ft_insert(g_data.array, "?", ft_strdup("0"));
+	if (tmp->val[0] == NULL)
+		return ;
 	while (tmp)
 	{
 		if (tmp->is_builtin)

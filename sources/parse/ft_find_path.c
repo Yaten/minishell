@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 16:30:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:53:34 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	handle_path(char *aux, t_var_path *vars)
 
 	command = NULL;
 	vars->check_bin_path = 0;
+	if (aux == NULL)
+		return ;
 	command = ft_strrchr(aux, '/');
 	if (!command)
 		return ;

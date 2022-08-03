@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 14:52:50 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/02 19:38:28 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,33 +44,15 @@ int	ft_is_space(int c)
 	c == '\v' || c == '\f');
 }
 
-static char	*ft_verify_token(char *end, char *begin)
-{
-	end = begin;
-	if (ft_strchr("=", *end))
-	{
-		++end;
-		return (end);
-	}
-	while (!ft_strchr(" ><|", *end))
-	{
-		if (ft_strchr(" ><|", *end + 1))
-			break ;
-		++end;
-	}
-	if (ft_strchr(" ><|", *begin) && *begin)
-	{
-		if (*begin == *(begin + 1))
-			end = end + 2;
-		else
-			end++;
-	}
-	return (end);
-}
-
 static char	*ft_add_token_list(char *end, char *begin, char *tmp)
 {
-	ft_list_add_last(g_data.token, tmp);
+	if (*tmp == '\"' || *tmp == '\'')
+	{
+		tmp[ft_strlen(tmp) - 1] = '\0';
+		ft_list_add_last(g_data.token, tmp + 1);
+	}
+	else
+		ft_list_add_last(g_data.token, tmp);
 	if (!ft_strcmp(g_data.token->end->val[0], "\0"))
 		g_data.token->end->val[0] = "space";
 	free(tmp);
@@ -88,9 +70,9 @@ int	ft_tokenize(void)
 	int		amount_blanks;
 	int		input_string_size;
 
-	begin = g_data.input_string;
+	begin = g_data.aux;
 	g_data.token = ft_list_create();
-	input_string_size = ft_strlen(g_data.input_string);
+	input_string_size = ft_strlen(g_data.aux);
 	while (*begin)
 	{
 		amount_blanks = 0;
@@ -100,7 +82,7 @@ int	ft_tokenize(void)
 			++begin;
 		}
 		end = ft_verify_token(end, begin);
-		tmp = ft_substr(g_data.input_string, begin - g_data.input_string, \
+		tmp = ft_substr(g_data.aux, begin - g_data.aux, \
 		end - begin);
 		if (input_string_size == amount_blanks)
 			return (FALSE);
