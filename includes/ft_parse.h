@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/11 23:42:50 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/02 19:49:01 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	ft_quoting(int bool_quotes);
 void	ft_create_cmd(t_node *begin, t_node *end);
 t_node	*ft_open_files(t_node *begin, t_node *node);
 void	ft_expand(char *input_string, int bool_quotes);
+char	*ft_verify_token(char *end, char *begin);
+void	ft_chunk(char *input_string, char *tmp);
 
 #endif

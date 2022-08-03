@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/07/26 19:57:58 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:00:04 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static t_node	*ft_add_command(t_node *begin, t_node *node)
 	else
 		g_data.cmd_table->end->next = node;
 	g_data.cmd_table->end = node;
-	g_data.cmd_table->size++;
 	return (begin);
 }
 
@@ -86,6 +85,7 @@ static void	ft_fill_table(t_node *begin, t_node *end)
 			begin = ft_new_node_table(begin);
 		else
 			begin = ft_new_node_table(begin);
+		g_data.cmd_table->size++;
 	}
 }
 
