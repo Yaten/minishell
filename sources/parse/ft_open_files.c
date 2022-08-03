@@ -12,6 +12,15 @@
 
 #include "ft_minishell.h"
 
+static void	handle_heredoc_operations(t_node **node, t_node *begin)
+{
+	g_data.here_doc = ft_strdup(begin->next->val[0]);
+	(*node)->operator_input = 1;
+	(*node)->operator_output = 1;
+	(*node)->heredoc_bool = 1;
+	return ;
+}
+
 t_node	*ft_open_files(t_node *begin, t_node *node)
 {
 	if (!ft_strcmp(begin->operators, "redir_input"))
@@ -35,12 +44,7 @@ t_node	*ft_open_files(t_node *begin, t_node *node)
 		node->operator_output = 1;
 	}
 	else if (!ft_strcmp(begin->operators, "here_doc"))
-	{
-		g_data.here_doc = ft_strdup(begin->next->val[0]);
-		node->operator_input = 1;
-		node->operator_output = 1;
-		node->heredoc_bool = 1;
-	}
+		handle_heredoc_operations(&node, begin);
 	begin = begin->next;
 	return (begin);
 }

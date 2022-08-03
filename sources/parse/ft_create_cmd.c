@@ -12,6 +12,17 @@
 
 #include "ft_minishell.h"
 
+static void	update_g_data(t_node *node)
+{
+	if (ft_list_is_empty(g_data.cmd_table))
+		g_data.cmd_table->begin = node;
+	else
+		g_data.cmd_table->end->next = node;
+	g_data.cmd_table->end = node;
+	g_data.cmd_table->size++;
+	return ;
+}
+
 static t_node	*ft_add_command(t_node *begin, t_node *node)
 {
 	int	i;
@@ -33,29 +44,8 @@ static t_node	*ft_add_command(t_node *begin, t_node *node)
 	}
 	node->val[i] = NULL;
 	node->prev = g_data.cmd_table->end;
-	if (ft_list_is_empty(g_data.cmd_table))
-		g_data.cmd_table->begin = node;
-	else
-		g_data.cmd_table->end->next = node;
-	g_data.cmd_table->end = node;
-	g_data.cmd_table->size++;
+	update_g_data(node);
 	return (begin);
-}
-
-static int	ft_count_word(t_node *begin)
-{
-	t_node	*tmp;
-	int		count_word;
-
-	tmp = begin;
-	count_word = 0;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->operators, "word"))
-			count_word++;
-		tmp = tmp->next;
-	}
-	return (count_word);
 }
 
 static t_node	*ft_new_node_table(t_node *begin)

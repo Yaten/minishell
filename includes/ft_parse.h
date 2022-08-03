@@ -15,6 +15,16 @@
 
 # include "ft_doubly_linked_list.h"
 
+typedef struct s_var_path
+{
+	int		i;
+	int		check_bin_path;
+	char	*tmp;
+	char	*path;
+	char	**paths;
+	char	*path_slash;
+}t_var_path;
+
 void	ft_parse(void);
 int		ft_syntax(void);
 int		ft_tokenize(void);
@@ -24,5 +34,6 @@ void	ft_quoting(int bool_quotes);
 void	ft_create_cmd(t_node *begin, t_node *end);
 t_node	*ft_open_files(t_node *begin, t_node *node);
 void	ft_expand(char *input_string, int bool_quotes);
+int		ft_count_word(t_node *begin);
 
 #endif

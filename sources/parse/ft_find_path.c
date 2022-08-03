@@ -20,30 +20,63 @@ static void	ft_clearing_remaining_paths(char **paths, char *path, int i)
 	g_data.cmd_table->end->path = path;
 }
 
+static void	handle_path(char *aux, t_var_path *vars)
+{
+	char	*command;
+
+	command = NULL;
+	vars->check_bin_path = 0;
+	command = ft_strrchr(aux, '/');
+	if (!command)
+		return ;
+	vars->check_bin_path = 1;
+	return ;
+}
+
+static void	set_path(t_var_path *vars, char *aux)
+{
+	vars->path_slash = ft_strjoin(vars->paths[vars->i], "/");
+	free(vars->paths[vars->i]);
+	if (vars->check_bin_path)
+		vars->path = ft_strdup(aux);
+	else
+		vars->path = ft_strjoin(vars->path_slash, aux);
+	free(vars->path_slash);
+	return ;
+}
+
+static void	init_vars(t_var_path *vars)
+{
+	vars->i = -1;
+	vars->tmp = ft_find_value("PATH");
+	vars->paths = ft_split(vars->tmp, ':');
+	return ;
+}
+
 int	ft_find_path(char *aux)
 {
-	int		i;
-	char	*tmp;
-	char	*path;
-	char	**paths;
-	char	*path_slash;
+	t_var_path	vars;
 
-	i = -1;
-	tmp = ft_find_value("PATH");
-	paths = ft_split(tmp, ':');
-	while (paths != NULL && paths[++i])
+	handle_path(aux, &vars);
+	init_vars(&vars);
+	while (vars.paths != NULL && vars.paths[++vars.i])
 	{
-		path_slash = ft_strjoin(paths[i], "/");
-		free(paths[i]);
-		path = ft_strjoin(path_slash, aux);
-		free(path_slash);
-		if (!access(path, F_OK | X_OK))
+		set_path(&vars, aux);
+		if (!access(vars.path, F_OK | X_OK))
 		{
-			ft_clearing_remaining_paths(paths, path, i);
+			ft_clearing_remaining_paths(vars.paths, vars.path, vars.i);
 			return (TRUE);
 		}
-		free(path);
+		free(vars.path);
 	}
-	free(paths);
+	free(vars.paths);
+	if (vars.check_bin_path)
+	{
+		if (!access(aux, F_OK | X_OK))
+		{
+			g_data.cmd_table->end->path = ft_strdup(aux);
+			return (TRUE);
+		}
+	}
 	return (FALSE);
 }
