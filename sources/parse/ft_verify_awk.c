@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dup_out.c                                       :+:      :+:    :+:   */
+/*   ft_verify_awk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 11:32:15 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/04 20:44:53 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/08/06 17:54:20 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/08/06 17:54:41 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-void	ft_dup_out(t_node *tmp, int *fd)
+int	ft_verify_awk(t_node **begin, t_node **node)
 {
-	if (tmp->operator_output == 1)
-		dup2(tmp->fd_out, STDOUT_FILENO);
-	else if (g_data.pipe_count)
-		dup2(fd[1], STDOUT_FILENO);
+	int	i;
+
+	i = 0;
+	if (!ft_strcmp((*begin)->val[0], "awk") && (*begin)->next != NULL)
+	{
+		if (*(*begin)->next->val[0] == '\"')
+		{
+			(*node)->val[i++] = ft_strdup("cat");
+			(*begin) = (*begin)->next->next;
+		}
+	}
+	return (i);
 }

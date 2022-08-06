@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/02 19:38:28 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 14:53:54 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ int	ft_is_space(int c)
 
 static char	*ft_add_token_list(char *end, char *begin, char *tmp)
 {
-	if (*tmp == '\"' || *tmp == '\'')
+	if ((*tmp == '\"' || *tmp == '\'') && \
+	!(g_data.token->end != NULL && \
+	!ft_strcmp(g_data.token->end->val[0], "awk") && *tmp == '\"'))
 	{
 		tmp[ft_strlen(tmp) - 1] = '\0';
 		ft_list_add_last(g_data.token, tmp + 1);
 	}
 	else
 		ft_list_add_last(g_data.token, tmp);
-	if (!ft_strcmp(g_data.token->end->val[0], "\0"))
-		g_data.token->end->val[0] = "space";
 	free(tmp);
 	begin = end;
 	while (ft_is_space(*begin))

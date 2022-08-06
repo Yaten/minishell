@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/03 19:11:16 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:46:17 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_node	*ft_verify_heredoc(void)
 		if (tmp->heredoc_bool)
 		{
 			if (tmp->next != NULL)
-				tmp->operator_output = 0;
+				tmp->operator_output = 1;
 			if (tmp->next != NULL && tmp->prev != NULL)
 				g_data.pipe_count--;
 			return (tmp);
@@ -61,6 +61,13 @@ static t_node	*ft_verify_heredoc(void)
 	return (g_data.cmd_table->begin);
 }
 
+static void	ft_close_clean(int fd_aux)
+{
+	ft_close_fds(&fd_aux);
+	ft_list_destroy(&g_data.token);
+	ft_list_destroy(&g_data.cmd_table);
+}
+
 void	ft_exececutor(void)
 {
 	t_node	*tmp;
@@ -68,7 +75,7 @@ void	ft_exececutor(void)
 
 	fd_aux = dup(STDIN_FILENO);
 	tmp = ft_verify_heredoc();
-	if (tmp->heredoc_bool)
+	if (tmp->val[0] == NULL && tmp->heredoc_bool)
 		ft_create_heredoc(&tmp);
 	ft_insert(g_data.array, "?", ft_strdup("0"));
 	if (tmp->val[0] == NULL)
@@ -78,11 +85,13 @@ void	ft_exececutor(void)
 		if (tmp->is_builtin)
 			ft_exec_builtin(tmp, &fd_aux);
 		else
+		{
+			if (tmp->heredoc_bool)
+				ft_create_heredoc(&tmp);
 			ft_exec_sys(tmp, &fd_aux);
+		}
 		tmp = tmp->next;
 		g_data.pipe_count--;
 	}
-	ft_close_fds(&fd_aux);
-	ft_list_destroy(&g_data.token);
-	ft_list_destroy(&g_data.cmd_table);
+	ft_close_clean(fd_aux);
 }

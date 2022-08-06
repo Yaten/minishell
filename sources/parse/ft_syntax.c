@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 16:07:59 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 16:31:52 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 16:11:28 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_syntax(void)
 		}
 		else if (!ft_strcmp(tmp->operators, "redir_output") || !ft_strcmp \
 		(tmp->operators, "redir_append") || !ft_strcmp(tmp->operators, \
-		"redir_input"))
+		"redir_input") || !ft_strcmp(tmp->operators, "here_doc"))
 		{
 			if (!ft_verify_operator(tmp))
 				return (FALSE);

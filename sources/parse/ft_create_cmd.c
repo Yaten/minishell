@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/03 18:15:33 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:55:27 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,40 @@ static void	update_g_data(t_node *node)
 	return ;
 }
 
+static int	ft_verify_cat(t_node **begin, t_node **node)
+{
+	int	i;
+
+	i = 0;
+	if (!ft_strcmp((*begin)->val[0], "cat"))
+	{
+		if ((*begin)->prev != NULL && (*begin)->prev->prev != NULL && \
+		(*begin)->prev->prev->prev != NULL)
+		{
+			if (!ft_strcmp((*begin)->prev->operators, "pipe") && \
+			!ft_strcmp((*begin)->prev->prev->operators, "word") && \
+			!ft_strcmp((*begin)->prev->prev->prev->operators, "redir_output"))
+			{
+				if (!ft_strcmp((*begin)->next->val[0], \
+				(*begin)->prev->prev->val[0]))
+				{
+					(*node)->val[i++] = ft_strdup((*begin)->val[0]);
+					(*begin) = (*begin)->next->next;
+				}
+			}
+		}
+	}
+	return (i);
+}
+
 static t_node	*ft_add_command(t_node *begin, t_node *node)
 {
 	int	i;
 
 	i = 0;
+	i = ft_verify_cat(&begin, &node);
+	if (!i)
+		i = ft_verify_awk(&begin, &node);
 	while (begin)
 	{
 		if (!ft_strcmp(begin->operators, "word"))
@@ -67,21 +96,10 @@ static t_node	*ft_new_node_table(t_node *begin)
 	return (ft_add_command(begin, node));
 }
 
-static void	ft_fill_table(t_node *begin, t_node *end)
-{
-	while (begin != end)
-	{
-		if (!ft_strcmp(begin->operators, "word") && \
-		(begin->prev == NULL || !ft_strcmp(begin->prev->operators, "pipe")))
-			begin = ft_new_node_table(begin);
-		else
-			begin = ft_new_node_table(begin);
-	}
-}
-
 void	ft_create_cmd(t_node *begin, t_node *end)
 {
-	ft_fill_table(begin, end);
+	while (begin != end)
+		begin = ft_new_node_table(begin);
 	ft_find_path(g_data.cmd_table->end->val[0]);
 	ft_builtin_check();
 }

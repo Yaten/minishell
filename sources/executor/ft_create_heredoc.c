@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:51:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/02 17:16:26 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:06:46 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_read_here(t_node **tmp, char *s)
 	return (FALSE);
 }
 
-static int	ft_ctrl_d(t_node **tmp, char *s)
+static int	ft_ctrl_d2(t_node **tmp, char *s)
 {
 	if (!s)
 	{
@@ -67,7 +67,7 @@ void	ft_create_heredoc(t_node **tmp)
 		s = get_next_line(g_data.fd_heredoc);
 		if (g_data.signal_heredoc)
 		{
-			if (ft_ctrl_d(tmp, s) || ft_read_here(tmp, s))
+			if (ft_ctrl_d2(tmp, s) || ft_read_here(tmp, s))
 				break ;
 		}
 		else

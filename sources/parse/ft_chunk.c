@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:42:54 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/03 18:20:49 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 17:57:43 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,9 @@ void	ft_chunk(char *input_string, char *tmp)
 
 	first = ft_substr(input_string, 0, tmp - input_string);
 	last = ft_expand_last(tmp + 1);
-	if (!ft_strcmp(last, "?") || !ft_strcmp(last, "?\""))
-	{
-		if (last[1] == '\"')
-			middle = ft_getvalue("?");
-		else
-			middle = ft_getvalue(last);
-	}
-	else
-	{
-		middle = ft_substr(input_string, tmp + 1 - input_string, \
-		last - tmp - 1);
-		middle = ft_getvalue(middle);
-	}
+	middle = ft_substr(input_string, tmp + 1 - input_string, \
+	last - tmp - 1);
+	middle = ft_getvalue(middle);
 	last = ft_strdup(last);
 	former = ft_strjoin(first, middle);
 	ft_append_last(last, former);

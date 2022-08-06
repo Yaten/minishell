@@ -43,7 +43,7 @@
 # define REDIR_OUTPUT "REDIR_OUTPUT"
 # define APPEND_OUTPUT "APPEND_OUTPUT"
 
-# define SEPARATORS " ><\'\"|?$"
+# define SEPARATORS " ><\'\"|$"
 
 # define BLACK "\e[30;1m"
 # define RED "\e[31;1m"
@@ -79,7 +79,10 @@ extern t_shell	g_data;
 
 void	ft_event_loop(void);
 int		ft_clean_program(void);
-int		ft_set_new_line(void);
+int		ft_set_new_line(int *flag_heredoc_simple);
+void	ft_error_handler(char *message);
+int		ft_ctrl_d(char *s);
+int		ft_quotes(int *flag_heredoc_simple);
 void	ft_init_signals(void);
 void	here_doc_signal(int sig);
 
