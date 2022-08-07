@@ -23,7 +23,7 @@ t_node	*ft_node_create(char *val)
 	node->next = NULL;
 	node->path = NULL;
 	node->operators = NULL;
-	node->val = malloc(2 * sizeof(int));
+	node->val = malloc(2 * sizeof(char *));
 	node->val[0] = ft_strdup(val);
 	node->val[1] = NULL;
 	return (node);

@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 14:53:54 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:56:43 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,29 +64,28 @@ static char	*ft_add_token_list(char *end, char *begin, char *tmp)
 
 int	ft_tokenize(void)
 {
-	char	*end;
-	char	*tmp;
-	char	*begin;
-	int		amount_blanks;
-	int		input_string_size;
+	t_token_vars	vars;
 
-	begin = g_data.aux;
+	vars.begin = g_data.aux;
 	g_data.token = ft_list_create();
-	input_string_size = ft_strlen(g_data.aux);
-	while (*begin)
+	vars.input_string_size = ft_strlen(g_data.aux);
+	while (*vars.begin)
 	{
-		amount_blanks = 0;
-		while (ft_is_space(*begin))
+		vars.amount_blanks = 0;
+		while (ft_is_space(*vars.begin))
 		{
-			++amount_blanks;
-			++begin;
+			++vars.amount_blanks;
+			++vars.begin;
 		}
-		end = ft_verify_token(end, begin);
-		tmp = ft_substr(g_data.aux, begin - g_data.aux, \
-		end - begin);
-		if (input_string_size == amount_blanks)
+		vars.end = ft_verify_token(vars.end, vars.begin);
+		vars.tmp = ft_substr(g_data.aux, vars.begin - g_data.aux, \
+		vars.end - vars.begin);
+		if (vars.input_string_size == vars.amount_blanks)
+		{
+			free(vars.tmp);
 			return (FALSE);
-		begin = ft_add_token_list(end, begin, tmp);
+		}
+		vars.begin = ft_add_token_list(vars.end, vars.begin, vars.tmp);
 	}
 	return (ft_define_token());
 }

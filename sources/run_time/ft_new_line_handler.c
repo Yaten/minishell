@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 18:01:33 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/06 18:39:26 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:40:20 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	ft_ctrl_d(char *s)
 		ft_putstr_fd("')", STDOUT_FILENO);
 		ft_putstr_fd("\n"RESET, STDOUT_FILENO);
 		free(s);
+		close(g_data.fd_heredoc);
 		return (TRUE);
 	}
+	free(s);
 	return (FALSE);
 }
 
@@ -57,25 +59,29 @@ static void	ft_create_heredoc_simple(void)
 				break ;
 		}
 		else
+		{
+			free(s);
+			s = NULL;
 			break ;
+		}
 	}
 }
 
-static int	ft_quotes_aux(char *tmp, int *flag_heredoc_simple)
+static int	ft_quotes_aux(char **tmp, int *flag_heredoc_simple)
 {
-	if (*tmp == ';' || *tmp == '\\')
+	if (*tmp[0] == ';' || *tmp[0] == '\\')
 		return (FALSE);
-	if (*tmp == '\"')
-		tmp = ft_strchr(tmp + 1, '\"');
-	if (tmp == NULL)
+	if (*tmp[0] == '\"')
+		tmp[0] = ft_strchr(tmp[0] + 1, '\"');
+	if (tmp[0] == NULL)
 	{
 		ft_create_heredoc_simple();
 		*flag_heredoc_simple = 1;
 		return (FALSE);
 	}
-	if (*tmp == '\'')
-		tmp = ft_strchr(tmp + 1, '\'');
-	if (tmp == NULL)
+	if (*tmp[0] == '\'')
+		tmp[0] = ft_strchr(tmp[0] + 1, '\'');
+	if (tmp[0] == NULL)
 	{
 		ft_create_heredoc_simple();
 		*flag_heredoc_simple = 1;
@@ -91,7 +97,7 @@ int	ft_quotes(int *flag_heredoc_simple)
 	tmp = g_data.input_string;
 	while (*tmp)
 	{
-		if (!ft_quotes_aux(tmp, flag_heredoc_simple))
+		if (!ft_quotes_aux(&tmp, flag_heredoc_simple))
 			return (FALSE);
 		++tmp;
 	}

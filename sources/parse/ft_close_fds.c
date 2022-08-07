@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtin.h                                       :+:      :+:    :+:   */
+/*   ft_close_fds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 17:43:47 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 19:27:07 by wrosendo         ###   ########.fr       */
+/*   Created: 2022/08/06 19:22:11 by wrosendo          #+#    #+#             */
+/*   Updated: 2022/08/06 20:58:49 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BUILTIN_H
-# define FT_BUILTIN_H
+#include "ft_minishell.h"
 
-# include "ft_doubly_linked_list.h"
+void	ft_close_fds(int *fd_aux)
+{
+	int	fd;
 
-void	ft_cd(void);
-int		ft_pwd(void);
-void	ft_env(void);
-int		ft_exit(int *fd_aux);
-void	ft_unset(void);
-void	ft_echo(t_node *tmp);
-void	ft_export(t_node *tmp);
-int		ft_builtin_check(void);
-void	ft_builtin(t_node *tmp, int *fd_aux);
-
-#endif
+	fd = open("fd_tmp.txt", O_CREAT);
+	while (fd > 2)
+		close(fd--);
+	(void)fd_aux;
+	unlink("fd_tmp.txt");
+}

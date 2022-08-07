@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:41:44 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 17:55:27 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:05:26 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_node	*ft_new_node_table(t_node *begin)
 	int		count_word;
 
 	count_word = ft_count_word(begin);
-	node = (t_node *)malloc(sizeof(t_node) * 1);
+	node = malloc(1 * sizeof(t_node));
 	node->prev = NULL;
 	node->next = NULL;
 	node->path = NULL;

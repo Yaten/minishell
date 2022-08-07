@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 17:55:19 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:54:27 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ typedef struct s_var_path
 	char	*path_slash;
 }t_var_path;
 
+typedef struct s_token_vars
+{
+	char	*end;
+	char	*tmp;
+	char	*begin;
+	int		amount_blanks;
+	int		input_string_size;
+}t_token_vars;
+
 void	ft_parse(void);
 int		ft_syntax(void);
 int		ft_tokenize(void);
@@ -38,5 +47,6 @@ int		ft_count_word(t_node *begin);
 char	*ft_verify_token(char *end, char *begin);
 void	ft_chunk(char *input_string, char *tmp);
 int		ft_verify_awk(t_node **begin, t_node **node);
+void	ft_close_fds(int *fd_aux);
 
 #endif
