@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 10:51:30 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 18:06:46 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/07 20:59:23 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,21 @@ static int	ft_ctrl_d2(t_node **tmp, char *s)
 		ft_putstr_fd("')", STDOUT_FILENO);
 		ft_putstr_fd("\n"RESET, STDOUT_FILENO);
 		free(s);
+		free(g_data.here_doc);
 		return (TRUE);
 	}
 	return (FALSE);
+}
+
+static t_node	**ft_aux_heredoc(t_node **tmp)
+{
+	while (tmp[0])
+	{
+		close(tmp[0]->fd_in);
+		close(tmp[0]->fd_out);
+		tmp[0] = tmp[0]->next;
+	}
+	return (tmp);
 }
 
 void	ft_create_heredoc(t_node **tmp)
@@ -72,9 +84,8 @@ void	ft_create_heredoc(t_node **tmp)
 		}
 		else
 		{
-			(*tmp)->fd_in = STDIN_FILENO;
-			while (*tmp)
-				*tmp = (*tmp)->next;
+			while (tmp[0])
+				tmp = ft_aux_heredoc(tmp);
 			break ;
 		}
 	}

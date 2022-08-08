@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 11:04:17 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 20:18:26 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/07 10:30:55 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_set_zero(void)
 	tmp = g_data.input_string;
 	while (*tmp)
 		*tmp++ = '\0';
+	close(g_data.fd_heredoc);
 }
 
 int	ft_set_new_line(int *flag_heredoc_simple)

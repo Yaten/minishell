@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:42:54 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/06 17:57:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/07 20:59:43 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_getvalue(char *value)
 
 	content = NULL;
 	content = ft_find_value(value);
+	free(value);
 	if (!content)
 		return ("");
 	return (content);
@@ -32,21 +33,24 @@ char	*ft_getvalue(char *value)
 
 static void	ft_append_last(char *last, char *former)
 {
-	char	*aux;
+	int	i;
 
-	aux = NULL;
-	if (!ft_strcmp(last, "?"))
+	i = ft_strlen(last);
+	if (g_data.bool_expand)
+		free(g_data.aux);
+	if (i != 0 && last[0] != '\0' && last[0] != '\"' && !ft_strcmp(last, "?"))
 		g_data.aux = ft_strdup(former);
-	else if (!ft_strcmp(last, "?\""))
-	{
-		aux = ft_strjoin(former, "\"");
-		g_data.aux = ft_strdup(aux);
-	}
+	else if (i != 0 && last[0] != '\0' && last[0] != '\"' && \
+	!ft_strcmp(last, "?\""))
+		g_data.aux = ft_strjoin(former, "\"");
 	else
 	{
-		aux = ft_strjoin(former, last);
-		g_data.aux = ft_strdup(aux);
+		if (i != 0 && last[0] != '\0')
+			g_data.aux = ft_strjoin(former, last);
+		else
+			g_data.aux = ft_strdup(former);
 	}
+	g_data.bool_expand = 1;
 }
 
 void	ft_chunk(char *input_string, char *tmp)
@@ -61,7 +65,8 @@ void	ft_chunk(char *input_string, char *tmp)
 	middle = ft_substr(input_string, tmp + 1 - input_string, \
 	last - tmp - 1);
 	middle = ft_getvalue(middle);
-	last = ft_strdup(last);
 	former = ft_strjoin(first, middle);
+	free(first);
 	ft_append_last(last, former);
+	free(former);
 }

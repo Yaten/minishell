@@ -69,6 +69,7 @@ typedef struct s_shell
 	int			signal;
 	int			signal_heredoc;
 	int			fd_heredoc;
+	int			bool_expand;
 	t_node		*node;
 	t_hash		*array;
 	t_doubly	*token;

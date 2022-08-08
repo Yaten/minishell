@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 22:01:19 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/07/26 20:12:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/07 10:47:09 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	handle_heredoc_operations(t_node **node, t_node *begin)
 {
 	g_data.here_doc = ft_strdup(begin->next->val[0]);
 	(*node)->operator_input = 1;
-	(*node)->operator_output = 1;
+	(*node)->operator_output = 0;
 	(*node)->heredoc_bool = 1;
 	return ;
 }

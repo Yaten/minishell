@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:46:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 20:05:56 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/07 20:11:11 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@ static void	ft_insert_money(void)
 
 void	ft_event_loop(void)
 {
-	int		flag_heredoc_simple;
+	int	flag_heredoc_simple;
 
 	while (TRUE)
 	{
+		g_data.bool_expand = 0;
 		flag_heredoc_simple = 0;
 		ft_init_signals();
 		if (ft_print_dir() || ft_set_new_line(&flag_heredoc_simple) || \
@@ -72,11 +73,13 @@ void	ft_event_loop(void)
 		ft_quoting(FALSE);
 		if (!ft_tokenize())
 		{
-			ft_close_fds(0);
+			ft_close_fds();
 			ft_list_destroy(&g_data.token);
 			continue ;
 		}
 		ft_parse();
+		if (g_data.bool_expand)
+			free(g_data.aux);
 		ft_exececutor();
 	}
 }
