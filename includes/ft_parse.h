@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:21:32 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/07 10:22:23 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:30:48 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,10 @@ char	*ft_verify_token(char *end, char *begin);
 void	ft_chunk(char *input_string, char *tmp);
 int		ft_verify_awk(t_node **begin, t_node **node);
 void	ft_close_fds(void);
+int		ft_aux_doubly_quote(char ***aux, int i, int **count_quoting);
+int		ft_aux_simple_quote(char ***aux, int i, int **count_quoting);
+void	ft_echo_quoting_loop(int *count_quoting, char **aux, int *i);
+int		ft_doubly_loop(char ***aux, int *i);
+int		ft_loop_simple(char ***aux, int *i);
 
 #endif

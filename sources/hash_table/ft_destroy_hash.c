@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 09:38:55 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/15 14:22:32 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:02:35 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	ft_destroy_hash(t_hash *array)
 		{
 			if (temp[i].head->key != NULL)
 			{
-				free(temp[i].head->value);
+				if (temp[i].head->value != NULL)
+				{
+					free(temp[i].head->value);
+					temp[i].head->value = NULL;
+				}
 				free(temp[i].head->key);
 			}
 			aux = temp[i].head;

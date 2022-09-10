@@ -34,6 +34,13 @@ typedef struct s_hash
 	t_hnode	*tail;
 }t_hash;
 
+typedef struct s_insert_vars
+{
+	int		index;
+	t_hnode	*item;
+	t_hnode	*list;
+}t_insert_vars;
+
 /**
  * @brief The hash table maintains a position that can be set and queried.
  *

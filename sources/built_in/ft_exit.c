@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:51:25 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/07 10:23:15 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:22:49 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ static void	clean_exit(void)
 	return ;
 }
 
+static int	ft_many_arguments(void)
+{
+	if (g_data.cmd_table->begin->val[2] != NULL)
+	{
+		ft_putstr_fd("-bash: exit: too many arguments", STDOUT_FILENO);
+		clean_exit();
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 int	ft_exit(void)
 {
 	int		i;
@@ -35,6 +46,8 @@ int	ft_exit(void)
 		clean_exit();
 		exit (EXIT_SUCCESS);
 	}
+	if (ft_many_arguments())
+		exit (EXIT_FAILURE);
 	aux = ft_atoi(tmp);
 	while (tmp[++i])
 	{

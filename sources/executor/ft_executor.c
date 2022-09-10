@@ -6,28 +6,31 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:56:56 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/07 12:52:11 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:20:08 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-static void	ft_exec_builtin(t_node *tmp, int *fd_aux)
+static int	ft_exec_builtin(t_node *tmp, int *fd_aux)
 {
 	int	fd[2];
 	int	backup[2];
+	int	i;
 
+	i = 0;
 	backup[0] = dup(STDIN_FILENO);
 	backup[1] = dup(STDOUT_FILENO);
 	dup2(backup[0], STDIN_FILENO);
 	dup2(backup[1], STDOUT_FILENO);
 	pipe(fd);
 	ft_dup_out(tmp, fd);
-	ft_builtin(tmp);
+	i = ft_builtin(tmp);
 	close(fd[1]);
 	fd_aux[0] = fd[0];
 	dup2(backup[0], STDIN_FILENO);
 	dup2(backup[1], STDOUT_FILENO);
+	return (i);
 }
 
 static t_node	*ft_verify_heredoc(void)
@@ -58,7 +61,10 @@ static void	ft_executor_aux(t_node *tmp, int fd_aux)
 	while (tmp)
 	{
 		if (tmp->is_builtin)
-			ft_exec_builtin(tmp, &fd_aux);
+		{
+			if (ft_exec_builtin(tmp, &fd_aux))
+				break ;
+		}
 		else
 		{
 			if (tmp->heredoc_bool)
@@ -86,7 +92,7 @@ void	ft_exececutor(void)
 	tmp = ft_verify_heredoc();
 	if (tmp->val[0] == NULL && tmp->heredoc_bool)
 		ft_create_heredoc(&tmp);
-	ft_insert(g_data.array, "?", ft_strdup("0"));
+	ft_insert(g_data.array, "?", "0");
 	if (tmp->val[0] == NULL)
 	{
 		ft_close_fds();

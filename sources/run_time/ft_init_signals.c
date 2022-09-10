@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:47:58 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 16:49:02 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:59:09 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sigint_handler(int sig)
 	}
 	else
 		ft_putstr_fd("\n", STDERR_FILENO);
-	ft_insert(g_data.array, "?", ft_strdup("130"));
+	ft_insert(g_data.array, "?", "130");
 }
 
 void	sigquit_handler(int sig)
@@ -49,7 +49,7 @@ void	sigquit_handler(int sig)
 	}
 	else
 	{
-		ft_insert(g_data.array, "?", ft_strdup("131"));
+		ft_insert(g_data.array, "?", "131");
 		ft_putstr_fd("Quit (core dumped)", STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
 	}

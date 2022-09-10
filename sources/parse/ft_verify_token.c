@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:35:01 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/06 17:57:23 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:46:40 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ char	*ft_verify_token(char *end, char *begin)
 	if (*end == '\"')
 	{
 		end = ft_strchr(++end, '\"');
+		if (!end)
+			end = begin;
 		if (*++end == '\0')
 			return (end);
 	}
 	else if (*end == '\'')
 	{
 		end = ft_strchr(++end, '\'');
+		if (!end)
+			return (end);
 		if (*++end == '\0')
 			return (end);
 	}

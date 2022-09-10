@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:50:57 by prafael-          #+#    #+#             */
-/*   Updated: 2022/05/15 10:35:14 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:45:01 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,25 @@ void	ft_export(t_node *tmp)
 	char	*last;
 	char	*before;
 
+	last = NULL;
 	if (tmp->val[1] == NULL)
 	{
 		ft_declare_x();
 		return ;
 	}
 	before = tmp->val[1];
-	last = tmp->val[3];
-	ft_insert(g_data.array, before, ft_strdup(last));
+	if (tmp->val[2] && *tmp->val[2] == '=')
+	{
+		if (!tmp->val[3])
+			ft_insert(g_data.array, before, last);
+		else
+		{
+			last = ft_strdup(tmp->val[3]);
+			if (!ft_strcmp(tmp->val[3], "no"))
+				ft_insert(g_data.array, before, last);
+			else
+				ft_insert(g_data.array, before, last);
+			free(last);
+		}
+	}
 }

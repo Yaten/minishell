@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:11:53 by prafael-          #+#    #+#             */
-/*   Updated: 2022/08/06 20:56:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:47:19 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,16 @@ static char	*ft_add_token_list(char *end, char *begin, char *tmp)
 	!(g_data.token->end != NULL && \
 	!ft_strcmp(g_data.token->end->val[0], "awk") && *tmp == '\"'))
 	{
-		tmp[ft_strlen(tmp) - 1] = '\0';
-		ft_list_add_last(g_data.token, tmp + 1);
+		if (tmp[ft_strlen(tmp) - 1] == '\"' || tmp[ft_strlen(tmp) - 1] == '\'')
+			tmp[ft_strlen(tmp) - 1] = '\0';
+		if (ft_strcmp(tmp + 1, ""))
+			ft_list_add_last(g_data.token, tmp + 1);
 	}
 	else
 		ft_list_add_last(g_data.token, tmp);
 	free(tmp);
 	begin = end;
-	while (ft_is_space(*begin))
+	while (begin != NULL && ft_is_space(*begin))
 		++begin;
 	return (begin);
 }
@@ -69,7 +71,7 @@ int	ft_tokenize(void)
 	vars.begin = g_data.aux;
 	g_data.token = ft_list_create();
 	vars.input_string_size = ft_strlen(g_data.aux);
-	while (*vars.begin)
+	while (vars.begin != NULL && *vars.begin)
 	{
 		vars.amount_blanks = 0;
 		while (ft_is_space(*vars.begin))

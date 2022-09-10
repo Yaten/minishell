@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 19:42:54 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/08/07 20:59:43 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:59:07 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ static void	ft_append_last(char *last, char *former)
 
 	i = ft_strlen(last);
 	if (g_data.bool_expand)
+	{
+		last = ft_strdup(last);
 		free(g_data.aux);
+	}
 	if (i != 0 && last[0] != '\0' && last[0] != '\"' && !ft_strcmp(last, "?"))
 		g_data.aux = ft_strdup(former);
 	else if (i != 0 && last[0] != '\0' && last[0] != '\"' && \
@@ -50,6 +53,8 @@ static void	ft_append_last(char *last, char *former)
 		else
 			g_data.aux = ft_strdup(former);
 	}
+	if (g_data.bool_expand)
+		free(last);
 	g_data.bool_expand = 1;
 }
 

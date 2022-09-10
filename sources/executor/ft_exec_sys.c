@@ -6,7 +6,7 @@
 /*   By: wrosendo <wrosendo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:42:44 by wrosendo          #+#    #+#             */
-/*   Updated: 2022/05/12 20:59:42 by wrosendo         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:56:37 by wrosendo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 	ft_dup_out(tmp, fd);
 	close(fd[1]);
 	close(fd[0]);
-	result = execve(tmp->path, tmp->val, g_data.envp);
+	result = -1;
+	if (tmp->path)
+		result = execve(tmp->path, tmp->val, g_data.envp);
 	if (result != 0)
 	{
 		if (!ft_find_path(tmp->val[0]))
@@ -39,12 +41,15 @@ static void	ft_child_process(t_node *tmp, int *fd, int *fd_aux)
 
 static void	ft_parent_process(int *fd, int *fd_aux)
 {
-	int	status;
+	int		status;
+	char	*tmp;
 
 	status = 0;
 	wait(&status);
+	tmp = ft_itoa(WEXITSTATUS(status));
 	if (!g_data.signal)
-		ft_insert(g_data.array, "?", ft_itoa(WEXITSTATUS(status)));
+		ft_insert(g_data.array, "?", tmp);
+	free(tmp);
 	*fd_aux = fd[0];
 	close(fd[1]);
 }
